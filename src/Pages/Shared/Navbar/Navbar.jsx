@@ -1,5 +1,4 @@
 import { Link, useNavigate } from 'react-router-dom';
-import logo_1 from "../../../assets/Images/logo/logo_1.png"
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { FaBars } from 'react-icons/fa';
@@ -7,72 +6,97 @@ import { FaBars } from 'react-icons/fa';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const navigate = useNavigate()
+    const [activeMenuItem, setActiveMenuItem] = useState('');
+    const navigate = useNavigate();
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                navigate('/')
+                navigate('/');
             })
-            .catch(error => console.log(error))
-    }
+            .catch(error => console.log(error));
+    };
 
-    const navMenu = <>
-        <li className=''><Link to="/">Home</Link> </li>
-        <li className=''><Link to="/">Duids</Link> </li>
-        <li className=''><Link to="/">About Us</Link> </li>
-        {user?.email ? <>
-            <li className=''><Link to="/">user ache</Link> </li>
+    const handleMenuItemClick = (item) => {
+        setActiveMenuItem(item);
+    };
+
+    const navMenu = (
+        <>
+            <li style={{ color: activeMenuItem === 'Home' ? '#4CAF50' : 'inherit', fontWeight: activeMenuItem === 'Home' ? 'bold' : 'normal' }}>
+                <Link to="/" onClick={() => handleMenuItemClick('Home')}>Home</Link>
+            </li>
+            <li>
+                <details>
+                    <summary>Service</summary>
+                    <ul className="p-2">
+                        <li><a>Submenu 1</a></li>
+                        <li><a>Submenu 2</a></li>
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>Products</summary>
+                    <ul className="p-2">
+                        <li><a>Submenu 1</a></li>
+                        <li><a>Submenu 2</a></li>
+                    </ul>
+                </details>
+            </li>
+            <li style={{ color: activeMenuItem === 'Guids' ? '#4CAF50' : 'inherit', fontWeight: activeMenuItem === 'Guids' ? 'bold' : 'normal' }}>
+                <Link to="/" onClick={() => handleMenuItemClick('Guids')}>Guids</Link>
+            </li>
+            <li style={{ color: activeMenuItem === 'About Us' ? '#4CAF50' : 'inherit', fontWeight: activeMenuItem === 'About Us' ? 'bold' : 'normal' }}>
+                <Link to="/" onClick={() => handleMenuItemClick('About Us')}>About Us</Link>
+            </li>
+            <li style={{ color: activeMenuItem === 'Contact Us' ? '#4CAF50' : 'inherit', fontWeight: activeMenuItem === 'Contact Us' ? 'bold' : 'normal' }}>
+                <Link to="/" onClick={() => handleMenuItemClick('Contact Us')}>Contact Us</Link>
+            </li>
+
+            {user?.email ? (
+                <>
+                    {/* User-specific menu items */}
+                </>
+            ) : (
+                <>
+                    {/* Guest-specific menu items */}
+                </>
+            )}
         </>
-            : <>
-           
-            <li className=''> <Link to="/login">user nai</Link> </li>
-            </>
-        }
-    </>
+    );
 
     return (
-        <div className="navbar fixed z-10  bg-secondary text-white">
-
-            <div className="navbar-start  bg-secondary text-white">
-
-                <div className="dropdown  bg-secondary text-white">
-
-
+        <div className="navbar bg-white">
+            <div className="navbar-start bg-white">
+                <div className="dropdown bg-white">
                     <div className="flex flex-row justify-end mr-3">
-                        <label htmlFor="my-drawer-2" className="btn btn-ghost drawer-button lg:hidden">
+                        <button onClick={toggleDropdown} className="btn btn-ghost drawer-button lg:hidden">
                             <FaBars />
-                        </label>
+                        </button>
                     </div>
-
-
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-secondary text-white rounded w-52">
-                        {navMenu}
-                    </ul>
+                    {isDropdownOpen && (
+                        <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded w-52">
+                            {navMenu}
+                        </ul>
+                    )}
                 </div>
-                {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
-              
-
                 <Link to='/'>
-                    <div className='flex justify-center items-center sm:ml-5'><img style={{ width: '50px', height: '50px' }} src={logo_1} alt="" />
-                        <h1 className='text-2xl font-bold text-primary'> EduPlus</h1>
+                    <div className='flex justify-center items-center sm:ml-5'>
+                        <h1 className='text-2xl font-bold'>Logo</h1>
                     </div>
-
                 </Link>
-
             </div>
-
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden lg:flex mx-10">
                 <ul className="menu menu-horizontal px-1">
-               { navMenu}
+                    {navMenu}
                 </ul>
             </div>
-
-            <div className="navbar-end">
-                {user?.email ? <>
-                    <div className="relative ">
+            <div className="navbar-end mr-10">
+                {user?.email ? (
+                    <div className="relative">
                         <span onClick={toggleDropdown} className='rounded-full cursor-pointer'>
                             <img style={{ height: '30px', width: '30px', borderRadius: '50%' }} src={user?.photoURL} alt="" />
                         </span>
@@ -86,15 +110,12 @@ const Navbar = () => {
                             </div>
                         )}
                     </div>
-
-
-
-                </>
-                    : <button className="btn btn-sm mx-2"><Link to="/login">Login</Link></button>
-                }
-
+                ) : (
+                    <button className="btn btn-sm mx-5" style={{ backgroundColor: '#4CAF50' }}>
+                        <Link to="/login" style={{ color: 'white' }}>Sign In</Link>
+                    </button>
+                )}
             </div>
-
         </div>
     );
 };
