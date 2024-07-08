@@ -20,6 +20,10 @@ import StudentUpdate from '../Pages/Dashboard/Students/StudentUpdate';
 import Classes from '../Pages/Dashboard/Classes/Classes';
 import AddClasses from '../Pages/Dashboard/Classes/AddClasses';
 import UpdateClass from '../Pages/Dashboard/Classes/UpdateClass';
+import User from "../Pages/Dashboard/User/User";
+import Services from "../Pages/Dashboard/Services/Services";
+import Blog from "../Pages/Dashboard/Blog/Blog";
+import Invoice from "../Pages/Dashboard/Invoice/Invoice";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +32,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Login></Login>,
+        element: <Home></Home>,
       },
       {
         path: 'login',
@@ -46,10 +50,22 @@ export const router = createBrowserRouter([
     element: <Dashboard></Dashboard>,
     children: [
       {
-        path: 'employee',
-        element: <Home></Home>,
+        path: 'user',
+        element: <User></User>,
       },
-
+      
+      {
+        path: 'services',
+        element: <Services></Services>,
+      },
+      {
+        path: 'blog',
+        element: <Blog></Blog>,
+      },
+      {
+        path: 'invoice',
+        element: <Invoice></Invoice>,
+      },
       // sharmin akter section
       {
         path: 'teachers',
