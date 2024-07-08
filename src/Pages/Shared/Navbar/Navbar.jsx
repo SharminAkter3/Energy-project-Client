@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext,  } from 'react';
+import { useContext, } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { FaBars } from 'react-icons/fa';
 
@@ -8,7 +8,7 @@ const Navbar = () => {
     // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const navigate = useNavigate()
 
- { /*   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
+    { /*   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
     <div className="relative ">
     <span onClick={toggleDropdown} className='rounded-full cursor-pointer'>
         <img style={{ height: '30px', width: '30px', borderRadius: '50%' }} src={user?.photoURL} alt="" />
@@ -27,10 +27,10 @@ const Navbar = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                navigate('/')
+                navigate('/');
             })
-            .catch(error => console.log(error))
-    }
+            .catch(error => console.log(error));
+    };
 
     const navMenu = <>
 
@@ -72,9 +72,9 @@ const Navbar = () => {
                 <div className="dropdown  bg-white">
 
                     <div className="flex flex-row justify-end mr-3">
-                        <label htmlFor="my-drawer-2" className="btn btn-ghost drawer-button lg:hidden">
+                        <button className="btn btn-ghost drawer-button lg:hidden">
                             <FaBars />
-                        </label>
+                        </button>
                     </div>
 
 
@@ -89,12 +89,9 @@ const Navbar = () => {
                     <div className='flex justify-center items-center sm:ml-5'>
                         <h1 className='text-2xl font-bold'> Logo</h1>
                     </div>
-
                 </Link>
-
             </div>
-
-            <div className="navbar-center hidden lg:flex">
+            <div className="navbar-center hidden lg:flex mx-10">
                 <ul className="menu menu-horizontal px-1">
                     {navMenu}
                 </ul>
@@ -102,7 +99,7 @@ const Navbar = () => {
 
             <div className="navbar-end">
                 {user?.email ? <>
-                 
+
                     <button onClick={handleLogOut} className="btn btn-sm mx-5 bg-[#4CAF50]">LogOut</button>
 
 
@@ -111,7 +108,6 @@ const Navbar = () => {
                 }
 
             </div>
-
         </div>
     );
 };

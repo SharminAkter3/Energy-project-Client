@@ -1,0 +1,90 @@
+/* app.css */
+.banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 1440px; */
+    height: 640px;
+    padding: 64px 160px;
+    gap: 10px;
+    opacity: 1;
+    background-color: #4CAF50;
+}
+
+.h3-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 31.5px;
+    text-align: left;
+    width: 286px;
+    height: 32px;
+    color: #0E2510;
+    margin-bottom: 10px;
+}
+
+.h1-text {
+    font-family: 'Sora', sans-serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 57.6px;
+    text-align: left;
+    width: 527px;
+    height: 174px;
+    color: #FEFEFE;
+}
+
+.p-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    width: 510px;
+    height: 48px;
+    color: #F5F5F5;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 512px;
+    height: 512px;
+}
+
+.button {
+    background-color: white;
+    color: #0E2510;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.mission-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 120px;
+    height: 650px;
+    padding: 64px 160px;
+    gap: 64px;
+    opacity: 1;
+
+}
+
+.mission-image {
+    width: 485px;
+    height: 650px;
+    gap: 0px;
+    border-radius: var(--Borderradious);
+    opacity: 0px;
+    /* color: #D9D9D9; */
+}

@@ -1,12 +1,14 @@
+import Banner from "../Banner/Banner";
+import Mission from "../Mission/Mission";
 
 
 
 const Home = () => {
-   
+
     return (
         <div>
-            <h1 >this is home page</h1>
-            <h1>remove above h1 and add here banner.jsx component</h1>
+            <Banner></Banner>
+            <Mission></Mission>
 
         </div>
     );
