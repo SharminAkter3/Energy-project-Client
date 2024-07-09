@@ -25,6 +25,7 @@ import Services from "../Pages/Dashboard/Services/Services";
 import Blog from "../Pages/Dashboard/Blog/Blog";
 import Invoice from "../Pages/Dashboard/Invoice/Invoice";
 import About from "../Pages/About/About/About";
+import Contact from "../Pages/Contact/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: 'about',
         element: <About></About>
+      },
+      {
+        path: 'contact',
+        element: <Contact></Contact>
       },
       {
         path: 'login',

@@ -604,6 +604,9 @@
     color: #FEFEFE;
 }
 
+/* ------------------------------
+       about page CSS
+ --------------------------- */
 
 .banner-container {
     margin-left: 10%;
@@ -615,5 +618,91 @@
     height: 596px;
     gap: 0px;
     opacity: 0px;
+}
 
+/* ------------------------------
+       contact page CSS
+ --------------------------- */
+
+.description-style {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 31.5px;
+    text-align: left;
+
+}
+
+/* .team-card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 5% auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #F3FAF3;
+    width: 352px;
+    padding: 40px 56px 40px 56px;
+    gap: 0px;
+    border-radius: 16px 0px 0px 0px;
+    opacity: 0px;
+    position: inherit;
+}
+
+} */
+
+
+.team-card {
+    width: 352px;
+    padding: 20px;
+    background-color: #F3FAF3;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    margin-bottom: 80%;
+}
+
+
+.member-details {
+    margin-top: 10px;
+}
+
+.team-member-name {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 46.8px;
+    text-align: left;
+    color: #4CAF50;
+}
+
+.team-member-designation {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #6D6D6D
+}
+
+.contact-info {
+    margin-top: 15px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 2px;
 }
