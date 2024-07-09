@@ -78,7 +78,7 @@ const Login = () => {
                 </div>
 
                 <div className="">
-                    <div className="card-body">
+                    <div className="mx-10">
 
                         <h1 className="text-3xl text-center font-bold my-10">Sign in to your old account</h1>
 
@@ -86,7 +86,7 @@ const Login = () => {
                             <div className="form-control">
                                 <input type="text" name='email' placeholder="Email Address" className="input input-bordered" />
                             </div>
-                            <div className="form-control mt-5 relative">
+                            <div className="form-control mt-5 relative ">
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     name="password"
