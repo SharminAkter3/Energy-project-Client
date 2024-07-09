@@ -59,6 +59,7 @@ const Navbar = () => {
         <li className=''><Link to="/">Guids</Link> </li>
         <li className=''><Link to="/about">About Us</Link> </li>
         <li className=''><Link to="/">Contact Us</Link> </li>
+        <li className=''><Link to="/dashboard">Dashboard</Link> </li>
 
         {/* {user?.email ? } */}
     </>

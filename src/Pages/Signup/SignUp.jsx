@@ -105,7 +105,7 @@ const SignUp = () => {
 
 
                 <div className="">
-                    <div className="card-body">
+                    <div className="mx-10">
                         <h1 className="text-3xl text-center font-bold my-10">Sign up a new account</h1>
                         <form onSubmit={handleSignUp}>
 
