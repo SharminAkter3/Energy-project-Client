@@ -15,7 +15,7 @@ const Chose = () => {
                     <p className='text-black'>Your Partner in Smart <br /> Energy Solutions</p>
                 </h1>
             </div>
-            <div>
+            <div className="text-[#6D6D6D]">
                 <p className=''>Understand, Solve & Evolve <br />Powering Your World with Reliable & Sustainable Energy. <br />Affordable, cleaner and simple renewable energy solutions from a global energy partner.</p>
             </div>
 
