@@ -15,7 +15,7 @@ const Process = () => {
                 </h1>
             </div>
             <div>
-                <p className=''>Find commercial and consumer energy solutions in three simple steps.</p>
+                <p className="text-[#6D6D6D]">Find commercial and consumer energy solutions in three simple steps.</p>
             </div>
 
             <div className='process-card-container'>
@@ -46,7 +46,7 @@ const Process = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

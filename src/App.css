@@ -603,3 +603,17 @@
     text-align: left;
     color: #FEFEFE;
 }
+
+
+.banner-container {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.aboutImage {
+    width: 1120px;
+    height: 596px;
+    gap: 0px;
+    opacity: 0px;
+
+}

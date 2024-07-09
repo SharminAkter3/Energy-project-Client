@@ -24,6 +24,7 @@ import User from "../Pages/Dashboard/User/User";
 import Services from "../Pages/Dashboard/Services/Services";
 import Blog from "../Pages/Dashboard/Blog/Blog";
 import Invoice from "../Pages/Dashboard/Invoice/Invoice";
+import About from "../Pages/About/About/About";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
+      },
+      {
+        path: 'about',
+        element: <About></About>
       },
       {
         path: 'login',
@@ -53,7 +58,7 @@ export const router = createBrowserRouter([
         path: 'user',
         element: <User></User>,
       },
-      
+
       {
         path: 'services',
         element: <Services></Services>,
