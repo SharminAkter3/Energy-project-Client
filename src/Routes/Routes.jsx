@@ -6,15 +6,12 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
 import Dashboard from "../Layout/Dashboard";
-import Teachers from "../Pages/Dashboard/Teachers/Teachers";
 // import PrivateRoute from "./PrivateRoute";
-import AddTeachers from "../Pages/Dashboard/Teachers/AddTeachers";
-import TeacherProfile from "../Pages/Dashboard/Teachers/TeacherProfile";
 import User from "../Pages/Dashboard/User/User";
 import Services from "../Pages/Dashboard/Services/Services";
 import Blog from "../Pages/Dashboard/Blog/Blog";
 import Invoice from "../Pages/Dashboard/Invoice/Invoice";
-import Upload from "../Pages/Signup/Upload/Upload";
+import Upload from "../Pages/Dashboard/Upload/Upload";
 import About from "../Pages/About/About/About";
 
 export const router = createBrowserRouter([
@@ -67,22 +64,7 @@ export const router = createBrowserRouter([
         element: <Upload></Upload>,
       },
 
-
-      // sharmin akter section
-      {
-        path: 'teachers',
-        element: <Teachers></Teachers>,
-      },
-      {
-        path: 'add_teachers',
-        element: <AddTeachers></AddTeachers>
-      },
-      {
-        path: "teacher_profile/:teacherId",
-        element: <TeacherProfile></TeacherProfile>
-      },
-    
-
-    ],
+ 
+],
   },
 ]);
