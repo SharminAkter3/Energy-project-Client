@@ -1,5 +1,7 @@
 import '../../../App.css';
 import heatIcon from '../../../assets/Images/Mission/heat.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 const Service = () => {
     return (
@@ -54,7 +56,9 @@ const Service = () => {
                     </div>
                 </div>
             </div>
-            <button className='see-button'>See more</button>
+            <button className='see-button'> See More
+                <FontAwesomeIcon icon={faArrowRightLong} className='ml-3' />
+            </button>
         </div>
 
     )
