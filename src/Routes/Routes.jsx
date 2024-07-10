@@ -16,6 +16,7 @@ import About from "../Pages/About/About/About";
 import Contact from "../Pages/Contact/Contact/Contact";
 import OurService from "../Pages/OurService/OurService/OurService";
 import OurProduct from "../Pages/OurProduct/OurProduct/OurProduct";
+import Guides from "../Pages/Guides/Guides/Guides";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: 'our_product',
         element: <OurProduct></OurProduct>
+      },
+      {
+        path: 'guides',
+        element: <Guides></Guides>
       },
       {
         path: 'about',
