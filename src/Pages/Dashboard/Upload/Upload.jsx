@@ -14,7 +14,7 @@ const Upload = () => {
         ctaImage: '',
     });
 
-   
+
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
@@ -66,7 +66,7 @@ const Upload = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/products', data, {
+            const response = await axios.post('https://energy-project-server.vercel.app/products', data, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
