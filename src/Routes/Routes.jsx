@@ -14,6 +14,7 @@ import Invoice from "../Pages/Dashboard/Invoice/Invoice";
 import Upload from "../Pages/Dashboard/Upload/Upload";
 import About from "../Pages/About/About/About";
 import Contact from "../Pages/Contact/Contact/Contact";
+import Products from "../Pages/Dashboard/Products/Products";
 
 export const router = createBrowserRouter([
   {
@@ -68,7 +69,11 @@ export const router = createBrowserRouter([
         path: 'upload',
         element: <Upload></Upload>,
       },
-
+      {
+        path: 'products',
+        element: <Products></Products>,
+      },
+    
  
 ],
   },

@@ -1,133 +1,130 @@
 import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
-import chatIcon from '../../../assets/Images/dashboard/chat_8214728.png'
-import user1 from '../../../assets/Images/dashboard/user-image-1.png'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 const Services = () => {
+    const [services, setServices] = useState([]);
+    const [selectedService, setSelectedService] = useState(null);
+
+    useEffect(() => {
+        const fetchServices = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/services');
+                const fetchedServices = response.data.reverse(); // Reverse the array to show the last inserted service first
+                setServices(fetchedServices);
+                if (fetchedServices.length > 0) {
+                    setSelectedService(fetchedServices[0]);
+                }
+            } catch (error) {
+                console.error('Error fetching services:', error);
+            }
+        };
+
+        fetchServices();
+    }, []);
+
+    const handleServiceClick = (service) => {
+        setSelectedService(service);
+    };
+
     return (
         <div className="grid bg-[#F5F5F5] p-5 gap-3 grid-cols-3">
-
-        {/* side bar one */}
-
+            {/* Side bar one */}
             <div className="bg-[#FEFEFE] p-5 mr-5 col-span-2">
-                <h1>Details</h1>
-                <div className='text-center'>
-                    <div className='w-full flex justify-center mb-2'><img style={{ height: '100px', width: '100px', color: 'white', borderRadius: '50%' }} src={chatIcon} alt="" /></div>
-
-                    <h1 className='text-2xl font-bold'>Business gas</h1>
-                    <p>Cutting-edge renewable energy solutions designed for maximum efficiency and reliability.</p>
-                    <div className='w-full flex justify-center mt-4'>
-
-                        <button className="btn btn-circle  bg-black text-white">
-                            <FaEdit />
-                        </button>
-                        <button className="btn btn-circle bg-black text-white mx-3">
-                            <FaTrash />
-                        </button>
-
+                {selectedService ? (
+                    <>
+                        <h1>Details</h1>
+                        <div className='text-center'>
+                            <div className='w-full flex justify-center mb-2'>
+                                <img style={{ height: '100px', width: '100px', color: 'white', borderRadius: '50%' }} src={selectedService.ctaImage} alt="" />
+                            </div>
+                            <h1 className='text-2xl font-bold'>{selectedService.headerTitle}</h1>
+                            <p>{selectedService.titleDescription}</p>
+                            <div className='w-full flex justify-center mt-4'>
+                                <button className="btn btn-circle bg-black text-white">
+                                    <FaEdit />
+                                </button>
+                                <button className="btn btn-circle bg-black text-white mx-3">
+                                    <FaTrash />
+                                </button>
+                            </div>
+                        </div>
+                        <div className='mt-4'>
+                            <h1 className='text-2xl font-bold'>Header</h1>
+                            <p><span className='text-[#64748B] font-bold'>Prefix of title</span> : {selectedService.titlePrefix}</p>
+                            <p><span className='text-[#64748B] font-bold'>Title</span> : {selectedService.headerTitle}</p>
+                            <p><span className='text-[#64748B] font-bold'>Description</span> : {selectedService.titleDescription}</p>
+                            <p><span className='text-[#64748B] font-bold'>Service details</span> : {selectedService.details}</p>
+                            <p><span className='text-[#64748B] font-bold'>CTA</span> : {selectedService.cta}</p>
+                            {selectedService.ctaImage && <img src={selectedService.ctaImage} alt="CTA" className="w-full" />}
+                        </div>
+                        <div className='mt-4'>
+                            <h1 className='text-2xl font-bold'>1st Section</h1>
+                            {selectedService.sections.length > 0 ? (
+                                <ul className="list-disc ml-8">
+                                    {selectedService.sections.map((section, index) => (
+                                        <li key={index} className='mb-4'>
+                                            <p><span className='text-[#64748B] font-bold'>Prefix of title</span>: {section.prefix}</p>
+                                            <p><span className='text-[#64748B] font-bold'>Title</span>: {section.title}</p>
+                                            <p><span className='text-[#64748B] font-bold'>Description</span>: {section.description}</p>
+                                            <p><span className='text-[#64748B] font-bold'>CTA</span>: {section.cta}</p>
+                                            {section.ctaImage && <img src={section.ctaImage} alt="Section" className="w-full" />}
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>No sections available</p>
+                            )}
+                        </div>
+                        <div className='mt-4'>
+                            { /* <h1 className='text-2xl font-bold'>Subtitle Section</h1> */}
+                            {selectedService.subTitles.length > 0 ? (
+                                <ul className="list-disc ml-8">
+                                    {selectedService.subTitles.map((subtitle, index) => (
+                                        <li key={index} className='mb-4'>
+                                            <p><span className='text-[#64748B] font-bold'>Sub title</span>: {subtitle.subTitle}</p>
+                                            <p><span className='text-[#64748B] font-bold'>Sub title description</span>: {subtitle.subTitleDescription}</p>
+                                            <p><span className='text-[#64748B] font-bold'>CTA</span>: {subtitle.cta}</p>
+                                            {subtitle.ctaImage && <img src={subtitle.ctaImage} alt="Subtitle" className="w-full" />}
+                                        </li>
+                                    ))}
+                                </ul>
+                            ) : (
+                                <p>No subtitles available</p>
+                            )}
+                        </div>
+                    </>
+                ) : (
+                    <div className="text-center">
+                        <h1 className="text-2xl font-bold">Select a Service</h1>
                     </div>
-                </div>
-
-
-
-                <div className='mt-4'>
-                    <h1 className='text-2xl font-bold'>Details</h1>
-                    <p><span className='text-[#64748B] font-bold'>  Total sell</span> : USD 10,222.45</p>
-                    <p><span className='text-[#64748B] font-bold'>Pending order  </span> : 5</p>
-                    <p><span className='text-[#64748B] font-bold'>Delivered order  </span>: 130</p>
-                    <p><span className='text-[#64748B] font-bold'>Service details </span> : Lorem ipsum dolor sit amet consectetur. Commodo semper velit aliquet sit est iaculis pellentesque mattis. Duis est dui et sagittis faucibus vel elit. Morbi aliquam nullam vitae gravida. Vulputate lectus lorem ultrices urna ipsum eget.</p>
-                </div>
-
-
-                <div className='mt-4'>
-                    <h1 className='text-2xl font-bold'>Header</h1>
-                    <p><span className='text-[#64748B] font-bold'>Prefix of title</span> : Service</p>
-
-                    <p><span className='text-[#64748B] font-bold'> Title</span>  : Your Business Electricity Broker</p>
-
-                    <p><span className='text-[#64748B] font-bold'>Description </span>     While we offer some one-size-fits-all solutions, we also recognise that no two businesses are the same. As such, our electricity plans are fully adjustable to suit you.Our fixed-rate plan offers budget certainty, while our flexible arrangement enables you to modify your pricing according to your changing energy needs.</p>
-
-                    <p><span className='text-[#64748B] font-bold'>Service details </span> : Lorem ipsum dolor sit amet consectetur. Commodo semper velit aliquet sit est iaculis pellentesque mattis. Duis est dui et sagittis faucibus vel elit. Morbi aliquam nullam vitae gravida. Vulputate lectus lorem ultrices urna ipsum eget.</p>
-                    <p><span className='text-[#64748B] font-bold'>CTA </span> : Find best services</p>
-
-                    <p><span className='text-[#64748B] font-bold'>  Image  </span> : Image</p>
-
-                </div>
-
-                <div className='mt-4'>
-                    <h1 className='text-2xl font-bold'>1st section</h1>
-                    <p><span className='text-[#64748B] font-bold'>Prefix of title</span> : -</p>
-
-                    <p><span className='text-[#64748B] font-bold'> Title </span>: Why our services are best?</p>
-
-                    <p><span className='text-[#64748B] font-bold'>Description </span>: When running a business, having good quality business gas and electricity is key. Here at Energy Solutions, we are committed to helping you find the best business energy deal which is not only efficient but also keeps your costs down. We are experts in supporting small businesses in finding a deal that is tailored to their unique needs and requirements. With us, comparing and switching business energy brokers is easy. Take your first step towards cheaper, greener, more efficient electricity today. </p>
-                    <p><span className='text-[#64748B] font-bold'>CTA </span> : - </p>
-
-                    <p><span className='text-[#64748B] font-bold'>  Image  </span> : Image</p>
-
-                </div>
-
-
-
-                Image :
-
-                <div className='mt-4'>
-                    <p><span className='text-[#64748B] font-bold'>Sub title</span>: Customized plans</p>
-
-                    <p><span className='text-[#64748B] font-bold'>Sub title description</span>: When running a business, having good quality business gas and electricity is key. Here at Energy Solutions, we are committed to helping you find the best business energy deal which is not only efficient but also keeps your costs down. We are experts in supporting small businesses in finding a deal that is tailored to their unique needs and requirements. With us, comparing and switching business energy brokers is easy. Take your first step towards cheaper, greener, more efficient electricity today.</p>
-
-                    <p><span className='text-[#64748B] font-bold'>CTA </span> : - </p>
-
-                    <p><span className='text-[#64748B] font-bold'>  Image  </span> : Image</p>
-
-                </div>
-
-
-
-
+                )}
             </div>
-
-            {/* side bar two */}
-
+            {/* Side bar two */}
             <div className="bg-[#FEFEFE] p-5 col-span-1">
-                <h1>Servics</h1>
+                <h1>Services</h1>
                 <div>
-
-                    <div className='grid grid-cols-3 gap-5 mt-5 items-center'>
-                        <div className='flex justify-center'>
-                            <img className="circular-img" style={{ height: '50px', width: '50px', color: 'white', borderRadius: '50%' }} src={user1} alt="" />
+                    {services.map((service) => (
+                        <div key={service._id} className='grid grid-cols-3 gap-5 mt-5 items-center cursor-pointer' onClick={() => handleServiceClick(service)}>
+                            <div className='flex justify-center'>
+                                <img className="circular-img" style={{ height: '50px', width: '50px', color: 'white', borderRadius: '50%' }} src={service.ctaImage} alt="" />
+                            </div>
+                            <div className='col-span-2 flex items-center'>
+                                <p className='text-xl font-bold'>{service.headerTitle}</p>
+                            </div>
                         </div>
-                        <div className='col-span-2 flex items-center'>
-                            <p className='text-xl font-bold'>Business electricity</p>
-                        </div>
-                    </div>
-
-                    <div className='grid grid-cols-3 gap-5 mt-5 items-center'>
-                        <div className='flex justify-center'>
-                            <img className="circular-img" style={{ height: '50px', width: '50px', color: 'white', borderRadius: '50%' }} src={user1} alt="" />
-                        </div>
-                        <div className='col-span-2 flex items-center'>
-                            <p className='text-xl font-bold'>Business electricity</p>
-                        </div>
-                    </div>
-
-
-
+                    ))}
                     <div className='bg-[#E8EFFF] text-center p-5 my-4'>
-
-                        <button className="btn btn-circle bg-black text-white mx-3">
-                            <FaPlus></FaPlus>
-                        </button>
-                        <p>Add Service</p>
-
+                        <Link to="/dashboard/upload">
+                            <button className="btn btn-circle bg-black text-white mx-3">
+                                <FaPlus />
+                            </button>
+                            <p>Add Service</p>
+                        </Link>
                     </div>
-
-
-
-
-
                 </div>
             </div>
-
         </div>
     );
 };

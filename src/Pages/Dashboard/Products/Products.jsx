@@ -3,52 +3,44 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
-const Blog = () => {
-    const [blogs, setBlogs] = useState([]);
-    const [selectedBlog, setSelectedBlog] = useState(null);
+const Products = () => {
+    const [products, setProducts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     useEffect(() => {
-        const fetchBlogs = async () => {
+        const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/blogs');
-                const fetchedBlogs = response.data.reverse(); // Reverse the array to show the last inserted blog first
-                setBlogs(fetchedBlogs);
-                if (fetchedBlogs.length > 0) {
-                    setSelectedBlog(fetchedBlogs[0]);
+                const response = await axios.get('http://localhost:5000/products');
+                const fetchedProducts = response.data.reverse(); // Reverse the array to show the last inserted product first
+                setProducts(fetchedProducts);
+                if (fetchedProducts.length > 0) {
+                    setSelectedProduct(fetchedProducts[0]);
                 }
             } catch (error) {
-                console.error('Error fetching blogs:', error);
+                console.error('Error fetching products:', error);
             }
         };
 
-        fetchBlogs();
+        fetchProducts();
     }, []);
 
-    const handleBlogClick = (blog) => {
-        setSelectedBlog(blog);
+    const handleProductClick = (product) => {
+        setSelectedProduct(product);
     };
-
-    useEffect(() => {
-        if (selectedBlog) {
-            console.log('from blog', selectedBlog);
-            console.log('from blog sections', selectedBlog?.sections);
-            console.log('from blog subTitles', selectedBlog?.subTitles);
-        }
-    }, [selectedBlog]);
 
     return (
         <div className="grid bg-[#F5F5F5] p-5 gap-3 grid-cols-3">
             {/* Side bar one */}
             <div className="bg-[#FEFEFE] p-5 mr-5 col-span-2">
-                {selectedBlog ? (
+                {selectedProduct ? (
                     <>
                         <h1>Details</h1>
                         <div className='text-center'>
                             <div className='w-full flex justify-center mb-2'>
-                                <img style={{ height: '100px', width: '100px', color: 'white', borderRadius: '50%' }} src={selectedBlog.ctaImage} alt="" />
+                                <img style={{ height: '100px', width: '100px', color: 'white', borderRadius: '50%' }} src={selectedProduct.ctaImage} alt="" />
                             </div>
-                            <h1 className='text-2xl font-bold'>{selectedBlog.headerTitle}</h1>
-                            <p>{selectedBlog.titleDescription}</p>
+                            <h1 className='text-2xl font-bold'>{selectedProduct.headerTitle}</h1>
+                            <p>{selectedProduct.titleDescription}</p>
                             <div className='w-full flex justify-center mt-4'>
                                 <button className="btn btn-circle bg-black text-white">
                                     <FaEdit />
@@ -60,24 +52,24 @@ const Blog = () => {
                         </div>
                         <div className='mt-4'>
                             <h1 className='text-2xl font-bold'>Header</h1>
-                            
-                            <p><span className='text-[#64748B] font-bold'>Prefix of title</span> : {selectedBlog.titlePrefix}</p>
-                            <p><span className='text-[#64748B] font-bold'>Title</span> : {selectedBlog.headerTitle}</p>
-                            <p><span className='text-[#64748B] font-bold'>Author</span> : {selectedBlog.author}</p>
-                            <p><span className='text-[#64748B] font-bold'>Description</span> : {selectedBlog.titleDescription}</p>
-                            <p><span className='text-[#64748B] font-bold'>CTA</span> : {selectedBlog.cta}</p>
+                            <p><span className='text-[#64748B] font-bold'>Prefix of title</span> : {selectedProduct.titlePrefix}</p>
+                            <p><span className='text-[#64748B] font-bold'>Title</span> : {selectedProduct.headerTitle}</p>
+                            <p><span className='text-[#64748B] font-bold'>Description</span> : {selectedProduct.titleDescription}</p>
+                            <p><span className='text-[#64748B] font-bold'>Product details</span> : {selectedProduct.details}</p>
+                            <p><span className='text-[#64748B] font-bold'>CTA</span> : {selectedProduct.cta}</p>
+                            {selectedProduct.ctaImage && <img src={selectedProduct.ctaImage} alt="CTA" className="w-full" />}
                         </div>
                         <div className='mt-4'>
                             <h1 className='text-2xl font-bold'>1st Section</h1>
-                            {selectedBlog.sections.length > 0 ? (
+                            {selectedProduct.sections && selectedProduct.sections.length > 0 ? (
                                 <ul className="list-disc ml-8">
-                                    {selectedBlog.sections.map((section, index) => (
+                                    {selectedProduct.sections.map((section, index) => (
                                         <li key={index} className='mb-4'>
                                             <p><span className='text-[#64748B] font-bold'>Prefix of title</span>: {section.prefix}</p>
                                             <p><span className='text-[#64748B] font-bold'>Title</span>: {section.title}</p>
                                             <p><span className='text-[#64748B] font-bold'>Description</span>: {section.description}</p>
                                             <p><span className='text-[#64748B] font-bold'>CTA</span>: {section.cta}</p>
-                                            <img src={section.ctaImage} alt="Section" className="w-full" />
+                                            {section.ctaImage && <img src={section.ctaImage} alt="Section" className="w-full" />}
                                         </li>
                                     ))}
                                 </ul>
@@ -86,14 +78,15 @@ const Blog = () => {
                             )}
                         </div>
                         <div className='mt-4'>
-                            {selectedBlog.subTitles.length > 0 ? (
+                          { /* <h1 className='text-2xl font-bold'>Subtitle Section</h1> */}
+                            {selectedProduct.subTitles && selectedProduct.subTitles.length > 0 ? (
                                 <ul className="list-disc ml-8">
-                                    {selectedBlog.subTitles.map((subtitle, index) => (
+                                    {selectedProduct.subTitles.map((subtitle, index) => (
                                         <li key={index} className='mb-4'>
                                             <p><span className='text-[#64748B] font-bold'>Sub title</span>: {subtitle.subTitle}</p>
                                             <p><span className='text-[#64748B] font-bold'>Sub title description</span>: {subtitle.subTitleDescription}</p>
                                             <p><span className='text-[#64748B] font-bold'>CTA</span>: {subtitle.cta}</p>
-                                            <img src={subtitle.ctaImage} alt="Subtitle" className="w-full" />
+                                            {subtitle.ctaImage && <img src={subtitle.ctaImage} alt="Subtitle" className="w-full" />}
                                         </li>
                                     ))}
                                 </ul>
@@ -104,21 +97,21 @@ const Blog = () => {
                     </>
                 ) : (
                     <div className="text-center">
-                        <h1 className="text-2xl font-bold">Select a Blog</h1>
+                        <h1 className="text-2xl font-bold">Select a Product</h1>
                     </div>
                 )}
             </div>
             {/* Side bar two */}
             <div className="bg-[#FEFEFE] p-5 col-span-1">
-                <h1>Blogs</h1>
+                <h1>Products</h1>
                 <div>
-                    {blogs.map((blog) => (
-                        <div key={blog._id} className='grid grid-cols-3 gap-5 mt-5 items-center cursor-pointer' onClick={() => handleBlogClick(blog)}>
+                    {products.map((product) => (
+                        <div key={product._id} className='grid grid-cols-3 gap-5 mt-5 items-center cursor-pointer' onClick={() => handleProductClick(product)}>
                             <div className='flex justify-center'>
-                                <img className="circular-img" style={{ height: '50px', width: '50px', color: 'white', borderRadius: '50%' }} src={blog.ctaImage} alt="" />
+                                <img className="circular-img" style={{ height: '50px', width: '50px', color: 'white', borderRadius: '50%' }} src={product.ctaImage} alt="" />
                             </div>
                             <div className='col-span-2 flex items-center'>
-                                <p className='text-xl font-bold'>{blog.headerTitle}</p>
+                                <p className='text-xl font-bold'>{product.headerTitle}</p>
                             </div>
                         </div>
                     ))}
@@ -127,7 +120,7 @@ const Blog = () => {
                             <button className="btn btn-circle bg-black text-white mx-3">
                                 <FaPlus />
                             </button>
-                            <p>Add Blog</p>
+                            <p>Add Product</p>
                         </Link>
                     </div>
                 </div>
@@ -136,4 +129,4 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default Products;
