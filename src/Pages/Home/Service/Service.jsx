@@ -27,7 +27,7 @@ const Service = () => {
                             src={heatIcon}
                             alt="stat-image"
                         />
-                        <p className='card-title'>service name</p>
+                        <p className='card-title-style'>service name</p>
                         <button className='service-button'>Get Service</button>
                     </div>
                     <div className='stat'>
@@ -35,7 +35,7 @@ const Service = () => {
                             src={heatIcon}
                             alt="stat-image"
                         />
-                        <p className='card-title'>service name</p>
+                        <p className='card-title-style'>service name</p>
                         <button className='service-button'>Get Service</button>
                     </div>
                     <div className='stat'>
@@ -43,7 +43,7 @@ const Service = () => {
                             src={heatIcon}
                             alt="stat-image"
                         />
-                        <p className='card-title'>service name</p>
+                        <p className='card-title-style'>service name</p>
                         <button className='service-button'>Get Service</button>
                     </div>
                     <div className='stat'>
@@ -51,7 +51,7 @@ const Service = () => {
                             src={heatIcon}
                             alt="stat-image"
                         />
-                        <p className='card-title'>service name</p>
+                        <p className='card-title-style'>service name</p>
                         <button className='service-button'>Get Service</button>
                     </div>
                 </div>

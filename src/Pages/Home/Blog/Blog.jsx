@@ -24,10 +24,10 @@ const Blog = () => {
                         <img
                             src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
                             alt="Shoes"
-                            className="no-rounded card-image" />
+                            className="no-rounded card-image-style" />
                     </figure>
-                    <div className="card-body items-center text-center no-rounded">
-                        <h2 className="card-title">Blog</h2>
+                    <div className="card-body-style items-center text-center no-rounded">
+                        <h2 className="card-title-style">Blog</h2>
                         <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
                         <div className="mb-3">
                             <button className="button">Read More</button>
@@ -39,10 +39,10 @@ const Blog = () => {
                         <img
                             src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
                             alt="Shoes"
-                            className="no-rounded card-image" />
+                            className="no-rounded card-image-style" />
                     </figure>
-                    <div className="card-body items-center text-center no-rounded">
-                        <h2 className="card-title">Shoes!</h2>
+                    <div className="card-body-style items-center text-center no-rounded">
+                        <h2 className="card-title-style">Shoes!</h2>
                         <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
                         <div className="mb-3">
                             <button className="button">Read More</button>
@@ -54,10 +54,10 @@ const Blog = () => {
                         <img
                             src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
                             alt="Shoes"
-                            className="no-rounded card-image" />
+                            className="no-rounded card-image-style" />
                     </figure>
-                    <div className="card-body items-center text-center no-rounded">
-                        <h2 className="card-title">Shoes!</h2>
+                    <div className="card-body-style items-center text-center no-rounded">
+                        <h2 className="card-title-style">Shoes!</h2>
                         <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
                         <div className="mb-3">
                             <button className="button">Read More</button>
