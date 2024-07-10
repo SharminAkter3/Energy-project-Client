@@ -1,5 +1,7 @@
 import '../../../App.css';
 import heatIcon from '../../../assets/Images/Mission/heat.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 const Service = () => {
     return (
@@ -25,7 +27,7 @@ const Service = () => {
                             src={heatIcon}
                             alt="stat-image"
                         />
-                        <p className='card-title'>service name</p>
+                        <p className='card-title-style'>service name</p>
                         <button className='service-button'>Get Service</button>
                     </div>
                     <div className='stat'>
@@ -33,7 +35,7 @@ const Service = () => {
                             src={heatIcon}
                             alt="stat-image"
                         />
-                        <p className='card-title'>service name</p>
+                        <p className='card-title-style'>service name</p>
                         <button className='service-button'>Get Service</button>
                     </div>
                     <div className='stat'>
@@ -41,7 +43,7 @@ const Service = () => {
                             src={heatIcon}
                             alt="stat-image"
                         />
-                        <p className='card-title'>service name</p>
+                        <p className='card-title-style'>service name</p>
                         <button className='service-button'>Get Service</button>
                     </div>
                     <div className='stat'>
@@ -49,12 +51,14 @@ const Service = () => {
                             src={heatIcon}
                             alt="stat-image"
                         />
-                        <p className='card-title'>service name</p>
+                        <p className='card-title-style'>service name</p>
                         <button className='service-button'>Get Service</button>
                     </div>
                 </div>
             </div>
-            <button className='see-button'>See more</button>
+            <button className='see-button'> See More
+                <FontAwesomeIcon icon={faArrowRightLong} className='ml-3' />
+            </button>
         </div>
 
     )

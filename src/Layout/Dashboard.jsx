@@ -37,7 +37,10 @@ const Dashboard = () => {
 
 
               <li className='mt-6 mb-14'>
-                <h1 className='text-3xl font-bold text-white'>Logo</h1>
+                <NavLink to="/" className="flex items-center space-x-2">
+                  <h1 className='text-3xl font-bold text-white'>Logo</h1>
+                </NavLink>
+              
               </li>
 
 
@@ -106,7 +109,7 @@ const Dashboard = () => {
                   <ul className="shadow menu  w-48 ">
                     <li className="mb-1">
                       <NavLink to="/dashboard/teachers" className="inline-flex items-center">
-                      Sign In
+                        Sign In
                       </NavLink>
                     </li>
                     <li className="mb-1"><a>Sign Up</a></li>
