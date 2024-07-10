@@ -39,11 +39,11 @@ const Navbar = () => {
         <li className=''><Link to="/">Home</Link> </li>
         <li>
             <details>
-                <summary>Service</summary>
-                <ul className="p-2">
+                <summary><Link to="/our_service">Service</Link></summary>
+                {/* <ul className="p-2">
                     <li><a>Submenu 1</a></li>
                     <li><a>Submenu 2</a></li>
-                </ul>
+                </ul> */}
             </details>
         </li>
 
