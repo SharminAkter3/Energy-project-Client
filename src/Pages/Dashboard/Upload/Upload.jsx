@@ -14,7 +14,7 @@ const Upload = () => {
         ctaImage: '',
     });
 
-   
+
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
