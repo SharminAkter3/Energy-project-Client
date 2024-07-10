@@ -15,6 +15,7 @@ import Upload from "../Pages/Dashboard/Upload/Upload";
 import About from "../Pages/About/About/About";
 import Contact from "../Pages/Contact/Contact/Contact";
 import OurService from "../Pages/OurService/OurService/OurService";
+import OurProduct from "../Pages/OurProduct/OurProduct/OurProduct";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: 'our_service',
         element: <OurService></OurService>
+      },
+      {
+        path: 'our_product',
+        element: <OurProduct></OurProduct>
       },
       {
         path: 'about',
