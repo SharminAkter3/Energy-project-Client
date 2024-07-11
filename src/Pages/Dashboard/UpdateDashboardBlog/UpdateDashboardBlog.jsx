@@ -1,19 +1,38 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { useLoaderData, useParams } from "react-router-dom";
+// import {  useNavigate } from "react-router-dom";
 
-const Upload = () => {
-    const [selectedOption, setSelectedOption] = useState('Products');
-    const [subTitles, setSubTitles] = useState([]);
-    const [sections, setSections] = useState([]);
+const UpdateDashboardBlog = () => {
+    const { blogId } = useParams();
+    const existingBlog = useLoaderData();
+    // const navigate = useNavigate();
+
+    const [selectedOption, setSelectedOption] = useState('Blog');
+    const [subTitles, setSubTitles] = useState(existingBlog.subTitles || []);
+    const [sections, setSections] = useState(existingBlog.sections || []);
     const [formData, setFormData] = useState({
-        headerTitle: '',
-        titleDescription: '',
-        titlePrefix: '',
-        cta: '',
-        ctaImage: '',
-        author: '',
+        headerTitle: existingBlog.headerTitle || '',
+        titleDescription: existingBlog.titleDescription || '',
+        titlePrefix: existingBlog.titlePrefix || '',
+        cta: existingBlog.cta || '',
+        ctaImage: existingBlog.ctaImage || '',
+        author: existingBlog.author || '',
     });
+
+    useEffect(() => {
+        setFormData({
+            headerTitle: existingBlog.headerTitle,
+            titleDescription: existingBlog.titleDescription,
+            titlePrefix: existingBlog.titlePrefix,
+            cta: existingBlog.cta,
+            ctaImage: existingBlog.ctaImage,
+            author: existingBlog.author,
+        });
+        setSubTitles(existingBlog.subTitles);
+        setSections(existingBlog.sections);
+    }, [existingBlog]);
 
     const handleOptionChange = (e) => {
         setSelectedOption(e.target.value);
@@ -63,41 +82,35 @@ const Upload = () => {
             sections: sections
         };
 
-        const endpoint = selectedOption === 'Products'
-            ? 'http://localhost:5000/products'
-            : selectedOption === 'Services'
-                ? 'http://localhost:5000/services'
-                : 'http://localhost:5000/blogs';  
-                {/* https://energy-project-server.vercel.app/ */}
-                  {/* http://localhost:5000/ */}
+        const endpoint = `http://localhost:5000/blogs/${blogId}`;
 
         try {
-            const response = await axios.post(endpoint, data, {
+            const response = await axios.put(endpoint, data, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            console.log('Data saved successfully:', response.data);
-            if (response.data.insertedId) {
+            console.log('Data updated successfully:', response.data);
+            if (response.data.modifiedCount) {
                 Swal.fire({
                     position: 'top-start',
                     icon: 'success',
-                    title: `${selectedOption} Added Successfully.`,
+                    title: 'Blog Updated Successfully.',
                     showConfirmButton: false,
                     timer: 2000
                 });
-
                 form.reset();
+                {/* navigate(`/dashboard/blog`); */}
             }
 
+
         } catch (error) {
-            console.error('Error saving data:', error);
+            console.error('Error updating data:', error);
         }
     };
-
     return (
         <div className="container mx-auto p-6">
-            <h1 className="text-3xl font-bold mb-4 text-left">Post</h1>
+            <h1 className="text-3xl font-bold mb-4 text-left">Update Blog</h1>
             <div className="mb-4 flex">
                 <label className="inline-flex items-center mr-4">
                     <input
@@ -144,6 +157,7 @@ const Upload = () => {
                         className="input w-full mt-2 shadow-md border border-gray-300"
                         name="headerTitle"
                         placeholder="Enter Header’s Title"
+                        value={formData.headerTitle}
                         onChange={handleInputChange}
                     />
                 </div>
@@ -152,6 +166,7 @@ const Upload = () => {
                         className="textarea w-full mt-2 shadow-md border border-gray-300"
                         name="titleDescription"
                         placeholder="Enter Title’s description"
+                        value={formData.titleDescription}
                         onChange={handleInputChange}
                         rows="3"
                     ></textarea>
@@ -162,6 +177,7 @@ const Upload = () => {
                         className="input w-full mt-2 shadow-md border border-gray-300"
                         name="titlePrefix"
                         placeholder="Enter Title’s prefix"
+                        value={formData.titlePrefix}
                         onChange={handleInputChange}
                     />
                 </div>
@@ -171,6 +187,7 @@ const Upload = () => {
                         className="input w-full mt-2 shadow-md border border-gray-300"
                         name="cta"
                         placeholder="Enter CTA"
+                        value={formData.cta}
                         onChange={handleInputChange}
                     />
                 </div>
@@ -181,6 +198,7 @@ const Upload = () => {
                             className="input w-full h-full p-2"
                             name="ctaImage"
                             placeholder="Enter Image Link"
+                            value={formData.ctaImage}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -192,6 +210,7 @@ const Upload = () => {
                             className="input w-full mt-2 shadow-md border border-gray-300"
                             name="author"
                             placeholder="Enter Author"
+                            value={formData.author}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -326,9 +345,7 @@ const Upload = () => {
                 </div>
             </form>
         </div>
-
     );
 };
 
-export default Upload;
-
+export default UpdateDashboardBlog;
