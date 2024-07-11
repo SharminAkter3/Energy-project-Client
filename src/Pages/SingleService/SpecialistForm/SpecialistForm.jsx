@@ -1,7 +1,7 @@
 
 const SpecialistForm = () => {
     return (
-        <div className="container my-52">
+        <div className="section-container my-52">
             <h1 className="text-3xl text-center font-bold">Request a call from a Specialist</h1>
             <p className="text-[#6D6D6D]">Please enter your business information. A representative will reach out to you shortly.</p>
             <form className="mx-40 px-8">

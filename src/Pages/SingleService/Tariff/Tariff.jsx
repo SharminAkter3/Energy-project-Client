@@ -6,7 +6,7 @@ import traiff3 from '../../../assets/Images/Process/traiff3.png';
 const Tariff = () => {
     return (
         <div className='my-40'>
-            <div className='container mt-20'>
+            <div className='section-container mt-20'>
                 <div>
                     <h1 className='h1-text'>
                         <p className='text-black'>Types of business <br /> electricity tariffs</p>

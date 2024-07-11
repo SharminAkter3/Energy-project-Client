@@ -5,7 +5,7 @@ import statisticsLogo from '../../../assets/Images/Process/stat.png';
 const ServiceProcess = () => {
     return (
         <div className='my-48'>
-            <div className="container">
+            <div className="section-container">
                 <div>
                     <h1 className='h1-text'>
                         <p className='text-black'>How it works?</p>

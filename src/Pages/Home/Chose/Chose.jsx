@@ -6,7 +6,7 @@ import choseImage3 from '../../../assets/Images/Process/choseImage3.png';
 
 const Chose = () => {
     return (
-        <div className='container'>
+        <div className='section-container'>
             <div>
                 <small className='section-title'>Why Chose Us?</small>
             </div>

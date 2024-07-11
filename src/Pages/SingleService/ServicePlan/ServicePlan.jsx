@@ -5,7 +5,7 @@ import service_plan_image4 from '../../../assets/Images/Process/service_plan_ima
 
 const ServicePlan = () => {
     return (
-        <div className='container my-52'>
+        <div className='section-container my-52'>
             <div>
                 <h1 className='h1-text'>
                     <p className='text-black'>Why our services are <br />best?</p>

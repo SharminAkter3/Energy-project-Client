@@ -2,7 +2,7 @@
 const AllBlog = () => {
     return (
         <div>
-            <div className="container">
+            <div className="section-container">
                 <div>
                     <small className='section-title'>Blog</small>
                 </div>

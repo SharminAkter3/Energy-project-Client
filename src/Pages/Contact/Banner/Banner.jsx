@@ -2,7 +2,7 @@ import contactBanner from '../../../assets/Images/banner/contact_banner.png';
 
 const Banner = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <small className='section-title'>Contact us</small>
             </div>

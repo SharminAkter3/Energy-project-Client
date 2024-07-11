@@ -3,7 +3,7 @@ import heatIcon from '../../../assets/Images/Mission/heat.png';
 
 const MoreService = () => {
     return (
-        <div className="container my-40">
+        <div className="section-container my-40">
             <div>
                 <h1 className='h1-text'>
                     <p className='text-black'>Explore more <br /> service</p>

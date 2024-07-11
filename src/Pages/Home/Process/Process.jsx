@@ -5,7 +5,7 @@ import statisticsLogo from '../../../assets/Images/Process/stat.png';
 
 const Process = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <small className='section-title'>Our Process</small>
             </div>

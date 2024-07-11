@@ -6,7 +6,7 @@ import email from '../../../assets/Images/icons/email_logo.png';
 
 const Team = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div className="h1-text">
                 <h1 className="text-black">Our team</h1>
             </div>
@@ -21,11 +21,11 @@ const Team = () => {
                         <p className='team-member-designation'>Technical director</p>
                     </div>
                     <div className='contact-info'>
-                        <div className='flex'>
+                        <div className='flex-style'>
                             <img className='contact-icon' src={email} alt='Facebook' />
                             <p>exaamle@company.com</p>
                         </div>
-                        <div className='flex'>
+                        <div className='flex-style'>
                             <img className='contact-icon' src={facebook} alt='Facebook' />
                             <p>Wade Warren</p>
                         </div>
@@ -40,11 +40,11 @@ const Team = () => {
                         <p className='team-member-designation'>Programme director</p>
                     </div>
                     <div className='contact-info'>
-                        <div className='flex'>
+                        <div className='flex-style'>
                             <img className='contact-icon' src={email} alt='Facebook' />
                             <p>exaamle@company.com</p>
                         </div>
-                        <div className='flex'>
+                        <div className='flex-style'>
                             <img className='contact-icon' src={facebook} alt='Facebook' />
                             <p>Jenny Wilson</p>
                         </div>
@@ -59,11 +59,11 @@ const Team = () => {
                         <p className='team-member-designation'>Commercial director</p>
                     </div>
                     <div className='contact-info'>
-                        <div className='flex'>
+                        <div className='flex-style'>
                             <img className='contact-icon' src={email} alt='Facebook' />
                             <p>exaamle@company.com</p>
                         </div>
-                        <div className='flex'>
+                        <div className='flex-style'>
                             <img className='contact-icon' src={facebook} alt='Facebook' />
                             <p>Esther Howard</p>
                         </div>

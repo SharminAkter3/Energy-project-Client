@@ -2,7 +2,7 @@ import aboutImage from '../../../assets/Images/banner/about.png';
 
 const Banner = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <small className='section-title'>Who we are?</small>
             </div>

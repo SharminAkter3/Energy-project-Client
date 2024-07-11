@@ -11,7 +11,7 @@ const Question = () => {
     };
 
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <h1 className='h1-text'>
                     <p className='text-black'>Frequently asked questions</p>
