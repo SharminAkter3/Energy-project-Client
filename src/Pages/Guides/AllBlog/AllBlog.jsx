@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const AllBlog = () => {
     return (
@@ -29,7 +30,7 @@ const AllBlog = () => {
                             <h2 className="card-title-style">Blog</h2>
                             <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
                             <div className="mb-3">
-                                <button className="button">Read More</button>
+                                <button className='button'><Link to="/single_guide">Read More</Link></button>
                             </div>
                         </div>
                     </div>
@@ -44,7 +45,7 @@ const AllBlog = () => {
                             <h2 className="card-title-style">Shoes!</h2>
                             <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
                             <div className="mb-3">
-                                <button className="button">Read More</button>
+                                <button className='button'><Link to="/single_guide">Read More</Link></button>
                             </div>
                         </div>
                     </div>
@@ -59,7 +60,7 @@ const AllBlog = () => {
                             <h2 className="card-title-style">Shoes!</h2>
                             <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
                             <div className="mb-3">
-                                <button className="button">Read More</button>
+                                <button className='button'><Link to="/single_guide">Read More</Link></button>
                             </div>
                         </div>
                     </div>
