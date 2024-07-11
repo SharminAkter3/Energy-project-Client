@@ -1,16 +1,17 @@
 import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('https://energy-project-server.vercel.app/products');
+                const response = await axios.get('http://localhost:5000/products');
                 const fetchedProducts = response.data.reverse(); // Reverse the array to show the last inserted product first
                 setProducts(fetchedProducts);
                 if (fetchedProducts.length > 0) {
@@ -27,6 +28,28 @@ const Products = () => {
     const handleProductClick = (product) => {
         setSelectedProduct(product);
     };
+    const handleUpdateClick = (productsId) => {
+        navigate(`/dashboard/updateProducts/${productsId}`);
+    };
+
+    const handleDeleteClick = async (productsId) => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/products/${productsId}`);
+            console.log('Blog deleted successfully:', response.data);
+            // Optionally, update state or perform any necessary actions after deletion
+            const updatedProducts= products.filter(product => product._id !== productsId);
+            setProducts(updatedProducts);
+            if (updatedProducts.length > 0) {
+                setSelectedProduct(updatedProducts[0]);
+            } // Clear selected blog after deletion
+            else{
+                setSelectedProduct(null);
+            }
+        } catch (error) {
+            console.error('Error deleting blog:', error);
+        }
+    };
+
 
     return (
         <div className="grid bg-[#F5F5F5] p-5 gap-3 grid-cols-3">
@@ -42,10 +65,10 @@ const Products = () => {
                             <h1 className='text-2xl font-bold'>{selectedProduct.headerTitle}</h1>
                             <p>{selectedProduct.titleDescription}</p>
                             <div className='w-full flex justify-center mt-4'>
-                                <button className="btn btn-circle bg-black text-white">
+                                  <button className="btn btn-circle bg-black text-white" onClick={() => handleUpdateClick(selectedProduct._id)}>
                                     <FaEdit />
                                 </button>
-                                <button className="btn btn-circle bg-black text-white mx-3">
+                                <button className="btn btn-circle bg-black text-white mx-3" onClick={() => handleDeleteClick(selectedProduct._id)}>
                                     <FaTrash />
                                 </button>
                             </div>
@@ -78,7 +101,7 @@ const Products = () => {
                             )}
                         </div>
                         <div className='mt-4'>
-                          { /* <h1 className='text-2xl font-bold'>Subtitle Section</h1> */}
+                            { /* <h1 className='text-2xl font-bold'>Subtitle Section</h1> */}
                             {selectedProduct.subTitles && selectedProduct.subTitles.length > 0 ? (
                                 <ul className="list-disc ml-8">
                                     {selectedProduct.subTitles.map((subtitle, index) => (
