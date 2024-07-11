@@ -19,6 +19,7 @@ import OurService from "../Pages/OurService/OurService/OurService";
 import OurProduct from "../Pages/OurProduct/OurProduct/OurProduct";
 import Guides from "../Pages/Guides/Guides/Guides";
 import SingleService from "../Pages/SingleService/SingleService/SingleService";
+import SingleProduct from "../Pages/SingleProduct/SingleProduct/SingleProduct";
 
 export const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const router = createBrowserRouter([
       {
         path: 'single_service',
         element: <SingleService></SingleService>
+      },
+      {
+        path: 'single_product',
+        element: <SingleProduct></SingleProduct>
       },
       {
         path: 'login',
@@ -93,7 +98,7 @@ export const router = createBrowserRouter([
         path: 'products',
         element: <Products></Products>,
       },
-    
-],
+
+    ],
   },
 ]);
