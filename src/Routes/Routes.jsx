@@ -15,6 +15,10 @@ import Upload from "../Pages/Dashboard/Upload/Upload";
 import About from "../Pages/About/About/About";
 import Contact from "../Pages/Contact/Contact/Contact";
 import Products from "../Pages/Dashboard/Products/Products";
+import OurService from "../Pages/OurService/OurService/OurService";
+import OurProduct from "../Pages/OurProduct/OurProduct/OurProduct";
+import Guides from "../Pages/Guides/Guides/Guides";
+import SingleService from "../Pages/SingleService/SingleService/SingleService";
 
 export const router = createBrowserRouter([
   {
@@ -26,12 +30,28 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: 'our_service',
+        element: <OurService></OurService>
+      },
+      {
+        path: 'our_product',
+        element: <OurProduct></OurProduct>
+      },
+      {
+        path: 'guides',
+        element: <Guides></Guides>
+      },
+      {
         path: 'about',
         element: <About></About>
       },
       {
         path: 'contact',
         element: <Contact></Contact>
+      },
+      {
+        path: 'single_service',
+        element: <SingleService></SingleService>
       },
       {
         path: 'login',
@@ -74,7 +94,6 @@ export const router = createBrowserRouter([
         element: <Products></Products>,
       },
     
- 
 ],
   },
 ]);
