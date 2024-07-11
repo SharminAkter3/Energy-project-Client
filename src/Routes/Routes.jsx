@@ -23,6 +23,8 @@ import UpdateDashboardBlog from "../Pages/Dashboard/UpdateDashboardBlog/UpdateDa
 import axios from "axios";
 import UpdateDashboardServices from "../Pages/Dashboard/UpdateDashboardServices/UpdateDashboardServices";
 import UpdateDashboardProducts from "../Pages/Dashboard/UpdateDashboardProducts/UpdateDashboardProducts";
+import SingleProduct from "../Pages/SingleProduct/SingleProduct/SingleProduct";
+import SingleGuide from "../Pages/SingleGuide/SingleGuide/SingleGuide";
 
 export const router = createBrowserRouter([
   {
@@ -56,6 +58,14 @@ export const router = createBrowserRouter([
       {
         path: 'single_service',
         element: <SingleService></SingleService>
+      },
+      {
+        path: 'single_product',
+        element: <SingleProduct></SingleProduct>
+      },
+      {
+        path: 'single_guide',
+        element: <SingleGuide></SingleGuide>
       },
       {
         path: 'login',
