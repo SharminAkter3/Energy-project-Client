@@ -25,6 +25,7 @@ import UpdateDashboardServices from "../Pages/Dashboard/UpdateDashboardServices/
 import UpdateDashboardProducts from "../Pages/Dashboard/UpdateDashboardProducts/UpdateDashboardProducts";
 import SingleProduct from "../Pages/SingleProduct/SingleProduct/SingleProduct";
 import SingleGuide from "../Pages/SingleGuide/SingleGuide/SingleGuide";
+import Profile from "../Pages/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -74,6 +75,10 @@ export const router = createBrowserRouter([
       {
         path: 'signup',
         element: <SignUp></SignUp>,
+      },
+      {
+        path: 'profile',
+        element: <Profile></Profile>,
       },
     ],
   },
