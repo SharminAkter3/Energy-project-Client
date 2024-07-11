@@ -3,7 +3,7 @@ import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 const Blog = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <small className='section-title'>Blog</small>
             </div>

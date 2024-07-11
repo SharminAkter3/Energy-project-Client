@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const AllService = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <small className='section-title'>Our Service</small>
             </div>

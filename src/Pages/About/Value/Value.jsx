@@ -6,7 +6,7 @@ import supportImage from '../../../assets/Images/icons/support.png';
 
 const Value = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <small className='section-title'>Our Core Value</small>
             </div>

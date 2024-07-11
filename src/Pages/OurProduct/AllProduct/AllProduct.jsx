@@ -1,7 +1,7 @@
 
 const AllProduct = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <small className='section-title'>Our Products</small>
             </div>

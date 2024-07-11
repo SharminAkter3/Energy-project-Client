@@ -4,7 +4,7 @@ import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 
 const Product = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <div>
                 <small className='section-title'>Our Products</small>
             </div>

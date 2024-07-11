@@ -1,7 +1,7 @@
 
 const ContactForm = () => {
     return (
-        <div className="container">
+        <div className="section-container">
             <h1 className="text-3xl text-center font-bold">Connect with us</h1>
             <form className="mx-40 px-8">
                 <div className="form-control mt-5">

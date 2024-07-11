@@ -4,7 +4,7 @@ const SingleServiceBanner = () => {
     return (
         <div>
             <div className='mx-40 mt-20'>
-                <div className='flex gap-20'>
+                <div className='flex-style gap-20'>
                     <div className='' style={{ display: "flex", flexDirection: 'column', alignContent: 'space-between' }}>
                         <div className='mb-5'>
                             <small className='section-title'>Service</small>
