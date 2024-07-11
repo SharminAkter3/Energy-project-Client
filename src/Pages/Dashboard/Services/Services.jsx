@@ -10,7 +10,7 @@ const Services = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/services');
+                const response = await axios.get('https://energy-project-server.vercel.app/services');
                 const fetchedServices = response.data.reverse(); // Reverse the array to show the last inserted service first
                 setServices(fetchedServices);
                 if (fetchedServices.length > 0) {

@@ -10,7 +10,7 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/products');
+                const response = await axios.get('https://energy-project-server.vercel.app/products');
                 const fetchedProducts = response.data.reverse(); // Reverse the array to show the last inserted product first
                 setProducts(fetchedProducts);
                 if (fetchedProducts.length > 0) {

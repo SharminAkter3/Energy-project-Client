@@ -10,7 +10,7 @@ const Blog = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/blogs');
+                const response = await axios.get('https://energy-project-server.vercel.app/blogs');
                 const fetchedBlogs = response.data.reverse(); // Reverse the array to show the last inserted blog first
                 setBlogs(fetchedBlogs);
                 if (fetchedBlogs.length > 0) {
