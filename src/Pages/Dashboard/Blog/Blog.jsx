@@ -2,10 +2,12 @@ import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Blog = () => {
     const [blogs, setBlogs] = useState([]);
     const [selectedBlog, setSelectedBlog] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBlogs = async () => {
@@ -26,6 +28,29 @@ const Blog = () => {
 
     const handleBlogClick = (blog) => {
         setSelectedBlog(blog);
+    };
+
+    const handleUpdateClick = (blogId) => {
+        navigate(`/dashboard/updateBlog/${blogId}`);
+    };
+
+
+    const handleDeleteClick = async (blogId) => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/blogs/${blogId}`);
+            console.log('Blog deleted successfully:', response.data);
+            // Optionally, update state or perform any necessary actions after deletion
+            const updatedBlogs = blogs.filter(blog => blog._id !== blogId);
+            setBlogs(updatedBlogs);
+            if (updatedBlogs.length > 0) {
+                setSelectedBlog(updatedBlogs[0]);
+            } // Clear selected blog after deletion
+            else{
+                setSelectedBlog(null);
+            }
+        } catch (error) {
+            console.error('Error deleting blog:', error);
+        }
     };
 
     useEffect(() => {
@@ -50,17 +75,17 @@ const Blog = () => {
                             <h1 className='text-2xl font-bold'>{selectedBlog.headerTitle}</h1>
                             <p>{selectedBlog.titleDescription}</p>
                             <div className='w-full flex justify-center mt-4'>
-                                <button className="btn btn-circle bg-black text-white">
+                                <button className="btn btn-circle bg-black text-white" onClick={() => handleUpdateClick(selectedBlog._id)}>
                                     <FaEdit />
                                 </button>
-                                <button className="btn btn-circle bg-black text-white mx-3">
+                                <button className="btn btn-circle bg-black text-white mx-3" onClick={() => handleDeleteClick(selectedBlog._id)}>
                                     <FaTrash />
                                 </button>
                             </div>
                         </div>
                         <div className='mt-4'>
                             <h1 className='text-2xl font-bold'>Header</h1>
-                            
+
                             <p><span className='text-[#64748B] font-bold'>Prefix of title</span> : {selectedBlog.titlePrefix}</p>
                             <p><span className='text-[#64748B] font-bold'>Title</span> : {selectedBlog.headerTitle}</p>
                             <p><span className='text-[#64748B] font-bold'>Author</span> : {selectedBlog.author}</p>
