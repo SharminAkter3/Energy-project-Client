@@ -1,5 +1,6 @@
 import technologyImage from '../../../assets/Images/icons/technology.png';
 import solutionImage from '../../../assets/Images/icons/solution.png';
+import { Link } from 'react-router-dom';
 
 const AllService = () => {
     return (
@@ -27,7 +28,7 @@ const AllService = () => {
                             <h5>Innovative Technology</h5>
                             <p>ECutting-edge renewable energy solutions designed for <br /> maximum efficiency and reliability.</p>
                             <div className='w-50'>
-                                <button className='service-button'>Get Service</button>
+                                <button className='service-button'><Link to="/single_service">Get Service</Link></button>
                             </div>
                         </div>
                         <div className='stat process-card mt-5'>
@@ -38,7 +39,7 @@ const AllService = () => {
                             <h5>Tailored Solutions</h5>
                             <p>Customized energy plans to fit your unique needs and <br /> budget, ensuring optimal value.</p>
                             <div className='w-50'>
-                                <button className='service-button'>Get Service</button>
+                                <button className='service-button'><Link to="/single_service">Get Service</Link></button>
                             </div>
                         </div>
                     </div>

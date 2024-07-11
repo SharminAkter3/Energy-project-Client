@@ -17,6 +17,7 @@ import Contact from "../Pages/Contact/Contact/Contact";
 import OurService from "../Pages/OurService/OurService/OurService";
 import OurProduct from "../Pages/OurProduct/OurProduct/OurProduct";
 import Guides from "../Pages/Guides/Guides/Guides";
+import SingleService from "../Pages/SingleService/SingleService/SingleService";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact></Contact>
+      },
+      {
+        path: 'single_service',
+        element: <SingleService></SingleService>
       },
       {
         path: 'login',
