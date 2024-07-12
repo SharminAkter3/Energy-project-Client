@@ -25,6 +25,7 @@ import UpdateDashboardServices from "../Pages/Dashboard/UpdateDashboardServices/
 import UpdateDashboardProducts from "../Pages/Dashboard/UpdateDashboardProducts/UpdateDashboardProducts";
 import SingleProduct from "../Pages/SingleProduct/SingleProduct/SingleProduct";
 import SingleGuide from "../Pages/SingleGuide/SingleGuide/SingleGuide";
+import DashboardAnalytics from "../Pages/Dashboard/DashboardAnalytics/DashboardAnalytics";
 
 export const router = createBrowserRouter([
   {
@@ -121,6 +122,10 @@ export const router = createBrowserRouter([
         path: 'updateProducts/:productsId',
         element: <UpdateDashboardProducts />,
         loader: async ({ params }) => (await axios.get(`http://localhost:5000/products/${params.productsId}`)).data,
+      },
+      {
+        path: 'dashboard',
+        element: <DashboardAnalytics></DashboardAnalytics>,
       },
       
     
