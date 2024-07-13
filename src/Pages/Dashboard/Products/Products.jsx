@@ -28,28 +28,26 @@ const Products = () => {
     const handleProductClick = (product) => {
         setSelectedProduct(product);
     };
-    const handleUpdateClick = (productsId) => {
-        navigate(`/dashboard/updateProducts/${productsId}`);
+
+    const handleUpdateClick = (productId) => {
+        navigate(`/dashboard/updateProducts/${productId}`);
     };
 
-    const handleDeleteClick = async (productsId) => {
+    const handleDeleteClick = async (productId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/products/${productsId}`);
-            console.log('Blog deleted successfully:', response.data);
-            // Optionally, update state or perform any necessary actions after deletion
-            const updatedProducts= products.filter(product => product._id !== productsId);
+            const response = await axios.delete(`http://localhost:5000/products/${productId}`);
+            console.log('Product deleted successfully:', response.data);
+            const updatedProducts = products.filter(product => product._id !== productId);
             setProducts(updatedProducts);
             if (updatedProducts.length > 0) {
                 setSelectedProduct(updatedProducts[0]);
-            } // Clear selected blog after deletion
-            else{
+            } else {
                 setSelectedProduct(null);
             }
         } catch (error) {
-            console.error('Error deleting blog:', error);
+            console.error('Error deleting product:', error);
         }
     };
-
 
     return (
         <div className="grid bg-[#F5F5F5] p-5 gap-3 grid-cols-3">
@@ -65,7 +63,7 @@ const Products = () => {
                             <h1 className='text-2xl font-bold'>{selectedProduct.headerTitle}</h1>
                             <p>{selectedProduct.titleDescription}</p>
                             <div className='w-full flex justify-center mt-4'>
-                                  <button className="btn btn-circle bg-black text-white" onClick={() => handleUpdateClick(selectedProduct._id)}>
+                                <button className="btn btn-circle bg-black text-white" onClick={() => handleUpdateClick(selectedProduct._id)}>
                                     <FaEdit />
                                 </button>
                                 <button className="btn btn-circle bg-black text-white mx-3" onClick={() => handleDeleteClick(selectedProduct._id)}>
