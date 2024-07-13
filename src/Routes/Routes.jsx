@@ -57,15 +57,15 @@ export const router = createBrowserRouter([
         element: <Contact></Contact>
       },
       {
-        path: 'single_service',
+        path: 'single_service/:id',
         element: <SingleService></SingleService>
       },
       {
-        path: 'single_product',
+        path: 'single_product/:id',
         element: <SingleProduct></SingleProduct>
       },
       {
-        path: 'single_guide',
+        path: 'single_guide/:id',
         element: <SingleGuide></SingleGuide>
       },
       {
@@ -127,8 +127,8 @@ export const router = createBrowserRouter([
         element: <UpdateDashboardProducts />,
         loader: async ({ params }) => (await axios.get(`http://localhost:5000/products/${params.productsId}`)).data,
       },
-      
-    
-],
+
+
+    ],
   },
 ]);

@@ -1,36 +1,49 @@
-import singleServiceBanner from '../../../assets/Images/banner/singleService.png';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const SingleProductBanner = () => {
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/products/${id}`)
+            .then(response => response.json())
+            .then(data => setProduct(data))
+            .catch(error => console.error('Error fetching product:', error));
+    }, [id]);
+
+    if (!product) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <div>
-            <div className='mx-40 mt-20'>
-                <div className='flex-style gap-20'>
-                    <div className='' style={{ display: "flex", flexDirection: 'column', alignContent: 'space-between' }}>
+        <div className='mt-20 mx-20'>
+            <div className='container mx-auto p-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+                    <div className='grid grid-rows-[auto,auto,1fr,auto] gap-3'>
                         <div className='mb-5'>
-                            <small className='section-title'>Product</small>
+                            <small className='section-title'>{product.headerTitle}</small>
                         </div>
                         <div>
-                            <h1 className='h1-text'><p className='text-black'>Solar Photovoltaic <br /> (Solar PV)</p></h1>
+                            <h1 className='h1-text'><p className='text-black'>{product.titlePrefix}</p></h1>
                         </div>
                         <div>
-                            <p className='p-text'><small className='text-[#6D6D6D]'>Solar PV is an established, well developed, and sustainable <br /> technology that harnesses sunlight and converts it into electricity <br />  via solar panels. A very versatile technology, the application of solar  <br /> ranges from large grid scale ground mounted arrays, providing  <br /> bespoke power solutions for businesses, to small roof mounted <br />  domestic installation providing renewable power to our homes. <br />
-                                Power generated can be used on site, stored for later use,  <br /> combined with complimentary technologies such as heat pumps or <br />  electric car charging points, or exported to the grid (subject to a <br />  suitable connection).</small>
-                            </p>
+                            <p className='p-text'><small className='text-[#6D6D6D]'>{product.titleDescription}</small></p>
                         </div>
-                        <div className='mt-48'>
+                        <div className='mt-10'>
                             <button className='service-button'>Request a call</button>
                         </div>
                     </div>
 
-                    <div>
-                        <img className='' style={{ width: '544px', height: '492px', borderRadius: '20px' }}
-                            src={singleServiceBanner}
-                            alt="mission-image"
+                    <div className='flex justify-center'>
+                        <img
+                            src={product.ctaImage}
+                            alt={product.headerTitle}
+                            className='rounded-xl w-full h-auto md:w-1/2 lg:w-3/4'
                         />
                     </div>
-
                 </div>
-            </div >
+            </div>
         </div>
     );
 };
