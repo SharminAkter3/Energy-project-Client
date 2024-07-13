@@ -2,8 +2,24 @@ import '../../../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const Product = () => {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(response => response.json())
+            .then(data => setProducts(data))
+            .catch(error => console.error('Error fetching products:', error));
+    }, []);
+
+    const truncateDescription = (description, wordLimit) => {
+        const words = description.split(' ');
+        return words.length > wordLimit ? words.slice(0, wordLimit).join(' ') + '...' : description;
+    };
+
     return (
         <div className="section-container">
             <div>
@@ -20,56 +36,35 @@ const Product = () => {
                 </p>
             </div>
 
-            <div className='card-container'>
-                <div className="card w-96 shadow-xl no-rounded bg-[#4CAF50]">
-                    <figure className="no-rounded">
-                        <img
-                            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes"
-                            className="no-rounded card-image-style" />
-                    </figure>
-                    <div className="card-body-style items-center text-center no-rounded">
-                        <h2 className="card-title-style">Shoes!</h2>
-                        <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="mb-3">
-                            <button className="button"><Link to="/single_product">Learn More</Link></button>
+            <div className='flex justify-center items-center'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 p-5'>
+                    {products.slice(0, 3).map(product => (
+                        <div key={product._id} className="card w-96 shadow-xl no-rounded bg-[#4CAF50]">
+                            <figure className="no-rounded">
+                                <img
+                                    src={product.ctaImage}
+                                    alt={product.headerTitle}
+                                    className="no-rounded card-image-style" />
+                            </figure>
+                            <div className="card-body-style items-center text-center no-rounded">
+                                <h2 className="card-title-style">{product.titlePrefix}</h2>
+                                {/* <p className='card-description'>{product.titleDescription}</p> */}
+                                <p className='card-description'>
+                                    {truncateDescription(product.titleDescription, 15)}
+                                </p>
+                                <div className="mb-3">
+                                    <button className="button">
+                                        <Link to={`/single_product/${product._id}`}>Learn More</Link>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className="card w-96 shadow-xl no-rounded bg-[#4CAF50]">
-                    <figure className="no-rounded">
-                        <img
-                            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes"
-                            className="no-rounded card-image-style" />
-                    </figure>
-                    <div className="card-body-style items-center text-center no-rounded">
-                        <h2 className="card-title-style">Shoes!</h2>
-                        <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="mb-3">
-                            <button className="button"><Link to="/single_product">Learn More</Link></button>
-                        </div>
-                    </div>
-                </div>
-                <div className="card w-96 shadow-xl no-rounded bg-[#4CAF50]">
-                    <figure className="no-rounded">
-                        <img
-                            src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                            alt="Shoes"
-                            className="no-rounded card-image-style" />
-                    </figure>
-                    <div className="card-body-style items-center text-center no-rounded">
-                        <h2 className="card-title-style">Shoes!</h2>
-                        <p className='card-description'>If a dog chews shoes whose shoes does he choose?</p>
-                        <div className="mb-3">
-                            <button className="button"><Link to="/single_product">Learn More</Link></button>
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
 
-            <button className='see-button'> See More
-                <FontAwesomeIcon icon={faArrowRightLong} className='ml-3' />
+            <button className='see-button'><Link to='/our_product'>See More
+                <FontAwesomeIcon icon={faArrowRightLong} className='ml-3' /></Link>
             </button>
         </div >
     );
