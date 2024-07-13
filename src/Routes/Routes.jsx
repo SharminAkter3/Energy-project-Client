@@ -26,6 +26,7 @@ import UpdateDashboardProducts from "../Pages/Dashboard/UpdateDashboardProducts/
 import SingleProduct from "../Pages/SingleProduct/SingleProduct/SingleProduct";
 import SingleGuide from "../Pages/SingleGuide/SingleGuide/SingleGuide";
 import DashboardAnalytics from "../Pages/Dashboard/DashboardAnalytics/DashboardAnalytics";
+import Profile from "../Pages/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -57,15 +58,15 @@ export const router = createBrowserRouter([
         element: <Contact></Contact>
       },
       {
-        path: 'single_service',
+        path: 'single_service/:id',
         element: <SingleService></SingleService>
       },
       {
-        path: 'single_product',
+        path: 'single_product/:id',
         element: <SingleProduct></SingleProduct>
       },
       {
-        path: 'single_guide',
+        path: 'single_guide/:id',
         element: <SingleGuide></SingleGuide>
       },
       {
@@ -75,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: 'signup',
         element: <SignUp></SignUp>,
+      },
+      {
+        path: 'profile',
+        element: <Profile></Profile>,
       },
     ],
   },

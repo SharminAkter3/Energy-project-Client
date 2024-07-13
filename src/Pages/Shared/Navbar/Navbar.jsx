@@ -101,8 +101,8 @@ const Navbar = () => {
             <div className="navbar-end">
                 {user?.email ? <>
 
-                    <button onClick={handleLogOut} className="btn btn-sm mx-5 bg-[#4CAF50]">LogOut</button>
-
+                    <button className="btn btn-sm  bg-[#4CAF50]"><Link to="/profile">Profile</Link></button>
+                    <button onClick={handleLogOut} className="btn btn-sm mx-2 bg-[#4CAF50]">LogOut</button>
 
                 </>
                     : <button className="btn btn-sm mx-5 bg-[#4CAF50]"><Link to="/login">Sign In</Link></button>
