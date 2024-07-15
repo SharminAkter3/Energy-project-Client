@@ -1,4 +1,3 @@
-import '../../../App.css';
 import missionImage from '../../../assets/Images/Mission/mission.png';
 import heatIcon from '../../../assets/Images/Mission/heat.png';
 import co2Icon from '../../../assets/Images/Mission/co2.png';
@@ -7,56 +6,49 @@ import foundIcon from '../../../assets/Images/Mission/found.png';
 
 const Mission = () => {
     return (
-        <div className='mission-card-container'>
-            <div className='mission-card'>
-                <div>
-                    <img className='mission-image'
-                        src={missionImage}
-                        alt="mission-image"
-                    />
+        <div className="flex justify-center py-10 m-20 lg:m-40">
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full max-w-7xl gap-16 opacity-100">
+                <div className="flex-shrink-0 w-full md:w-1/4 lg:w-2/5">
+                    <img className="w-full h-auto md:h-[100vh] lg:h-auto rounded-lg" src={missionImage} alt="mission-image" />
                 </div>
-                <div className='mission-content'>
+                <div className="flex flex-col justify-between p-4 md:p-5 lg:p-10 w-full md:w-3/4 lg:w-3/5">
                     <div>
-                        <small className='section-title'>Our Mission</small>
+                        <small className="font-poppins text-lg font-semibold leading-[31.5px] text-[#4CAF50]">Our Mission</small>
                     </div>
                     <div>
-                        <h1 className='h1-text'><p className='text-black'>Driving the Future of
-                            <br /> Clean Energy <br />
-                            Solutions</p></h1>
+                        <h1 className="font-sora text-2xl lg:text-4xl font-bold text-[#0E2510] leading-none lg:leading-tight">
+                            Driving the Future of
+                            <br /> Clean Energy <br /> Solutions
+                        </h1>
                     </div>
                     <div>
-                        <p className='p-text'><small className='text-[#6D6D6D]'>Understand, Solve & Evolve <br /> Powering Your World with Reliable & Sustainable Energy. <br /> Affordable, cleaner and simple renewable energy solutions from a <br />global energy partner.</small></p>
+                        <p className="font-poppins text-base text-[#6D6D6D] mt-4 mb-8 leading-relaxed">
+                            Understand, Solve & Evolve <br />
+                            Powering Your World with Reliable & Sustainable Energy. <br />
+                            Affordable, cleaner and simple renewable energy solutions from a <br />
+                            global energy partner.
+                        </p>
                     </div>
-
-                    <div className='all-stats mt-20 gap-5'>
-                        <div className='stat'>
-                            <img className='stat-image'
-                                src={heatIcon}
-                                alt="stat-image"
-                            />
-                            <h5>7.0 MW</h5>
-                            <p>7.0 MW of heat <br />pumps installed</p>
+                    <div className="flex flex-col md:flex-row justify-between gap-2 mt-5">
+                        <div className="bg-[#F3FAF3] p-5 rounded-lg flex flex-col items-start">
+                            <img className="w-12 h-16 mb-2" src={heatIcon} alt="stat-image" />
+                            <h5 className="font-sora text-base font-semibold text-[#0E2510] mb-1">7.0 MW</h5>
+                            <p className="font-poppins text-base text-[#6D6D6D]">7.0 MW of heat <br /> pumps installed</p>
                         </div>
-                        <div className='stat'>
-                            <img className='stat-image'
-                                src={co2Icon}
-                                alt="stat-image"
-                            />
-                            <h5>65k tonnes</h5>
-                            <p>65,000 tonnes of <br /> carbon saved</p>
+                        <div className="bg-[#F3FAF3] p-5 rounded-lg flex flex-col items-start">
+                            <img className="w-12 h-16 mb-2" src={co2Icon} alt="stat-image" />
+                            <h5 className="font-sora text-base font-semibold text-[#0E2510] mb-1">65k tonnes</h5>
+                            <p className="font-poppins text-base text-[#6D6D6D]">65,000 tonnes of <br /> carbon saved</p>
                         </div>
-                        <div className='stat'>
-                            <img className='stat-image'
-                                src={foundIcon}
-                                alt="stat-image"
-                            />
-                            <h5>£850,000</h5>
-                            <p>£850,000 of grant <br />funding raised</p>
+                        <div className="bg-[#F3FAF3] p-5 rounded-lg flex flex-col items-start">
+                            <img className="w-12 h-16 mb-2" src={foundIcon} alt="stat-image" />
+                            <h5 className="font-sora text-base font-semibold text-[#0E2510] mb-1">£850,000</h5>
+                            <p className="font-poppins text-base text-[#6D6D6D]">£850,000 of grant <br /> funding raised</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 
