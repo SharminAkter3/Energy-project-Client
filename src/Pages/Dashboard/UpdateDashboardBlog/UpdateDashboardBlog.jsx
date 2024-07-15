@@ -82,7 +82,7 @@ const UpdateDashboardBlog = () => {
             sections: sections
         };
 
-        const endpoint = `http://localhost:5000/blogs/${blogId}`;
+        const endpoint = `https://energy-project-server.vercel.app/blogs/${blogId}`;
 
         try {
             const response = await axios.put(endpoint, data, {

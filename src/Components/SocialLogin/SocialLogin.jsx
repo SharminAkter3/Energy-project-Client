@@ -31,7 +31,7 @@ const SocialLogin = () => {
                     role: 'user',
                 }
 
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://energy-project-server.vercel.app/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userInfo)
@@ -72,7 +72,7 @@ const SocialLogin = () => {
                     role: 'admin',
                 };
 
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://energy-project-server.vercel.app/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userInfo)

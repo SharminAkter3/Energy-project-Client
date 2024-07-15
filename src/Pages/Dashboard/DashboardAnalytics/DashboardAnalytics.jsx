@@ -86,11 +86,11 @@ const DashboardAnalytics = () => {
                 </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className='bg-[#FEFEFE] p-12 rounded-lg w-full' style={{ height: '400px', width: '600px' }}>
+                <div className='bg-[#FEFEFE] p-12 rounded-lg w-full' style={{ height: '400px', width: '100%' }}>
                     <h2 className="text-xl font-bold mb-2">Distribution</h2>
-                    <div><Pie data={pieData} options={pieOptions} /></div>
+                    <Pie data={pieData} options={pieOptions} />
                 </div>
-                <div className='bg-[#FEFEFE] p-12 rounded-lg w-full' style={{ height: '400px', width: '600px' }}>
+                <div className='bg-[#FEFEFE] p-12 rounded-lg w-full' style={{ height: '400px', width: '100%' }}>
                     <h2 className="text-xl font-bold mb-2">Counts</h2>
                     <Bar data={barData} options={barOptions} />
                 </div>

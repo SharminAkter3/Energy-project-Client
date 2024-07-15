@@ -12,7 +12,7 @@ const Services = () => {
     useEffect(() => {
         const fetchServices = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/services');
+                const response = await axios.get('https://energy-project-server.vercel.app/services');
                 const fetchedServices = response.data.reverse(); // Reverse the array to show the last inserted service first
                 setServices(fetchedServices);
                 if (fetchedServices.length > 0) {
@@ -35,7 +35,7 @@ const Services = () => {
     };
     const handleDeleteClick = async (servicesId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/services/${servicesId}`);
+            const response = await axios.delete(`https://energy-project-server.vercel.app/services/${servicesId}`);
             console.log('Service deleted successfully:', response.data);
             // Optionally, update state or perform any necessary actions after deletion
             const updatedServices = services.filter(blog => blog._id !== servicesId);

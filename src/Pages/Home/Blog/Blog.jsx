@@ -8,7 +8,7 @@ const Blog = () => {
     const [blogs, setBlogs] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/blogs')
+        fetch('https://energy-project-server.vercel.app/blogs')
             .then(response => response.json())
             .then(data => setBlogs(data))
             .catch(error => console.error('Error fetching blogs:', error));

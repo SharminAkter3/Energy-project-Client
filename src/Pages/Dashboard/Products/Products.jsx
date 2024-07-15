@@ -11,7 +11,7 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/products');
+                const response = await axios.get('https://energy-project-server.vercel.app/products');
                 const fetchedProducts = response.data.reverse(); // Reverse the array to show the last inserted product first
                 setProducts(fetchedProducts);
                 if (fetchedProducts.length > 0) {
@@ -35,7 +35,7 @@ const Products = () => {
 
     const handleDeleteClick = async (productId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/products/${productId}`);
+            const response = await axios.delete(`https://energy-project-server.vercel.app/products/${productId}`);
             console.log('Product deleted successfully:', response.data);
             const updatedProducts = products.filter(product => product._id !== productId);
             setProducts(updatedProducts);

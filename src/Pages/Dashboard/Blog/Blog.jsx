@@ -12,7 +12,7 @@ const Blog = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/blogs');
+                const response = await axios.get('https://energy-project-server.vercel.app/blogs');
                 const fetchedBlogs = response.data.reverse(); // Reverse the array to show the last inserted blog first
                 setBlogs(fetchedBlogs);
                 if (fetchedBlogs.length > 0) {
@@ -37,7 +37,7 @@ const Blog = () => {
 
     const handleDeleteClick = async (blogId) => {
         try {
-            const response = await axios.delete(`http://localhost:5000/blogs/${blogId}`);
+            const response = await axios.delete(`https://energy-project-server.vercel.app/blogs/${blogId}`);
             console.log('Blog deleted successfully:', response.data);
             // Optionally, update state or perform any necessary actions after deletion
             const updatedBlogs = blogs.filter(blog => blog._id !== blogId);
