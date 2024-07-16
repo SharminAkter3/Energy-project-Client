@@ -11,14 +11,14 @@ const Question = () => {
     };
 
     return (
-        <div className="section-container">
+        <div className="text-center flex flex-col justify-between gap-5 my-10 md:m-10 lg:m-20">
             <div>
-                <h1 className='h1-text'>
-                    <p className='text-black'>Frequently asked questions</p>
+                <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">
+                    Frequently asked questions
                 </h1>
             </div>
 
-            <div className="mx-40 p-4 text-left">
+            <div className="mx-10 md:mx-20 p-4 text-left">
                 {[{
                     question: "What types of renewable energy solutions do you offer?",
                     answer: "Lorem ipsum dolor sit amet consectetur. Suspendisse porta scelerisque vitae sociis ut quam scelerisque diam. Metus faucibus tortor malesuada nunc nec pharetra venenatis massa ut. Dictum vitae curabitur lorem etiam accumsan venenatis nec. Mi in vulputate sed sed viverra proin netus sollicitudin tincidunt. Porta imperdiet rutrum tortor phasellus id. Justo consequat neque semper velit laoreet donec vestibulum nisl nibh. Mauris ornare diam vitae a ullamcorper. Elit vulputate ac amet faucibus vestibulum augue donec lobortis. Interdum risus aenean amet arcu posuere semper cursus congue."

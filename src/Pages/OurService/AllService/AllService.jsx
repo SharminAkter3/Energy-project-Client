@@ -21,20 +21,20 @@ const AllService = () => {
     };
 
     return (
-        <div className="section-container">
+        <div className="text-center flex flex-col justify-between gap-5 m-5 md:m-20 lg:m-40">
             <div>
-                <small className='section-title'>Our Service</small>
+                <small className="font-poppins text-lg font-semibold leading-[31.5px] text-[#4CAF50]">Our Service</small>
             </div>
             <div>
-                <h1 className='h1-text'>
-                    <p className='text-black'>Get a Free Energy <br /> Assessment</p>
+                <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">
+                    Get a Free Energy <br /> Assessment
                 </h1>
             </div>
             <div>
-                <p className="text-[#6D6D6D]">We provide top-tier renewable energy solutions tailored to your needs. From solar panel installations and <br /> wind energy systems to efficient energy storage and smart grid technology, our services ensure <br /> sustainability and savings. Partner with us for expert consultation, seamless implementation, and ongoing <br /> support. Power your future with our innovative energy solutions.</p>
+                <p className="font-poppins text-base text-[#6D6D6D] mt-4 mb-8 leading-relaxed">We provide top-tier renewable energy solutions tailored to your needs. From solar panel installations and <br /> wind energy systems to efficient energy storage and smart grid technology, our services ensure <br /> sustainability and savings. Partner with us for expert consultation, seamless implementation, and ongoing <br /> support. Power your future with our innovative energy solutions.</p>
             </div>
 
-            <div className='service-card-container'>
+            <div className="flex justify-center items-center">
                 <div className='mt-20 gap-5 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2'>
                     {services.map(service => (
                         <div key={service._id} className='stat shadow-lg rounded-lg'>
@@ -49,7 +49,7 @@ const AllService = () => {
                                 {truncateDescription(service.titleDescription, 20)}
                             </p>
 
-                            <button className='service-button w-1/2 bg-blue-500 text-white py-2 px-2 rounded'>
+                            <button className='mt-2 w-1/2 bg-[#4CAF50] text-white py-2 px-2 rounded-lg'>
                                 <Link to={`/single_service/${service._id}`}>Get Service</Link>
                             </button>
                         </div>

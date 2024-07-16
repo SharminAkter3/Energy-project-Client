@@ -72,38 +72,6 @@
        mission section CSS
  --------------------------- */
 
-.mission-card-container {
-    display: flex;
-    justify-content: center;
-    padding: 40px 0;
-    margin-top: 8%;
-}
-
-.mission-card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* align-items: center; */
-    width: 1120px;
-    height: 650px;
-    gap: 64px;
-    opacity: 1;
-}
-
-.mission-image {
-    width: 485px;
-    height: 650px;
-    border-radius: 12px;
-}
-
-.mission-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* align-items: center; */
-    padding: 10px;
-}
-
 .section-title {
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
@@ -240,16 +208,6 @@
 /* ------------------------------
        expert section CSS
  --------------------------- */
-.expert-says-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 507px;
-    padding: 10%;
-    background: linear-gradient(to right, #013e01, #a3cce5);
-    color: white;
-    margin-top: 12%;
-}
 
 .text-container {
     max-width: 50%;
@@ -258,17 +216,6 @@
     justify-content: space-between;
 }
 
-.text-container h2 {
-    font-family: 'Sora';
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 46.8px;
-    text-align: left;
-}
-
-.text-container .highlight {
-    color: #16bd3b;
-}
 
 .text-container .quote-mark {
     color: #16bd3b;
@@ -279,44 +226,6 @@
     text-align: left;
 }
 
-.text-container .description {
-    font-family: 'Poppins';
-    font-size: 21px;
-    font-weight: 500;
-    line-height: 31.5px;
-    text-align: left;
-    color: #F5F5F5;
-}
-
-.image-container {
-    max-width: 50%;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-}
-
-.expert-image {
-    width: 100%;
-    height: 610.27px;
-    margin-bottom: 103.27px;
-    border-radius: 12px;
-    object-fit: cover;
-}
-
-
-/* ------------------------------
-       process section CSS
- --------------------------- */
-
-.process-card-container {
-    text-align: left !important;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-.process-card {
-    padding: 5%;
-}
 
 /* ------------------------------
        chose section CSS
@@ -326,37 +235,26 @@
     margin-right: 10%;
 }
 
-.chose-card {
-    display: flex;
+/* .chose-card {
+    /* display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 5%;
-    margin-top: 4%;
-}
+    justify-content: center; */
+/* gap: 5%;
+margin-top: 4%;
+} */
 
-.chose-image {
-    width: 480px;
-    height: 386px;
-    border-radius: 12px;
-}
+/* .chose-image {
+    /* width: 480px;
+    height: 386px; */
+/* border-radius: 12px; */
 
-.chose-content {
-    text-align: left;
-    align-items: center;
-    margin-bottom: 20px;
-}
+/* .chose-content {
+    /* text-align: left;
+    align-items: center; */
+/* margin-bottom: 20px; */
 
-.chose-content h1 {
-    color: black;
-    font-size: 36px;
-}
 
-.chose-content p {
-    color: #6D6D6D;
-    font-size: 16px;
-    margin-bottom: 20px;
-}
-
+*/
 /* ------------------------------
        review section CSS
  --------------------------- */
@@ -370,7 +268,7 @@
 
 .review-card {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 2%;
     margin: 5% auto;
     display: flex;
     justify-content: space-between;
@@ -384,6 +282,47 @@
     border-radius: 16px 0px 0px 0px;
     opacity: 0px;
     position: inherit;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .review-card {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2%;
+        margin: 5% auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        background-color: #F3FAF3;
+        width: 1088px;
+        height: auto;
+        padding: 40px 56px 40px 56px;
+        gap: 0px;
+        border-radius: 16px 0px 0px 0px;
+        opacity: 0px;
+        position: inherit;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+    .review-card {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2%;
+        margin: 5% auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        background-color: #F3FAF3;
+        width: 1088px;
+        height: auto;
+        padding: 40px 56px 40px 56px;
+        gap: 0px;
+        border-radius: 16px 0px 0px 0px;
+        opacity: 0px;
+        position: inherit;
+    }
 
 }
 
@@ -427,14 +366,14 @@
     border: 4px solid #4CAF50;
     opacity: 0px;
     object-fit: cover;
-    margin-bottom: 80%;
+    margin-bottom: 70%;
     margin-left: 30%;
     position: relative;
 }
 
 .botton-circle {
-    margin-left: 12%;
-    margin-right: 12%;
+    /* margin-left: 12%;
+    margin-right: 12%; */
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -455,91 +394,6 @@
        footer section CSS
  --------------------------- */
 
-.footer-container {
-    background-color: #12231D;
-    color: #FFFFFF;
-    text-align: left;
-    margin-top: 5%;
-    margin-bottom: 0;
-    padding: 5% 10%;
-    font-family: 'Sora', sans-serif;
-}
-
-.newsletter-section {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-.newsletter-title {
-    font-family: Sora;
-    font-size: 36px;
-    font-weight: 600;
-    line-height: 46.8px;
-    text-align: left;
-
-}
-
-.highlight {
-    color: #9DD89F;
-}
-
-.newsletter-subtitle {
-    color: #D1D1D1;
-    margin-bottom: 20px;
-    font-family: Poppins;
-    font-size: 21px;
-    font-weight: 500;
-    line-height: 31.5px;
-    text-align: left;
-}
-
-.newsletter-input-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.newsletter-input {
-    padding: 20px;
-    border-radius: 50px 0 0 50px;
-    border: 3px solid #4CAF50;
-    width: 452px;
-    position: relative;
-}
-
-.newsletter-button {
-    padding: 20px;
-    background-color: #4CAF50;
-    color: #FFFFFF;
-    border: 3px solid #4CAF50;
-    border-radius: 0 50px 50px 0;
-    cursor: pointer;
-    position: relative;
-}
-
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 40px;
-}
-
-.footer-logo {
-    flex: 1;
-}
-
-.footer-logo h3 {
-    font-family: Sora;
-    font-size: 55px;
-    font-weight: 600;
-    line-height: 72px;
-    text-align: left;
-    margin-bottom: 8%;
-
-}
-
 .social-icons {
     display: flex;
     flex-direction: column;
@@ -554,53 +408,6 @@
     align-items: center;
     cursor: pointer;
     gap: 10px;
-}
-
-
-.footer-links {
-    display: flex;
-    flex: 2;
-    justify-content: space-between;
-}
-
-.footer-column h3 {
-    font-family: Sora;
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 46.8px;
-    text-align: left;
-}
-
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-column ul li {
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 31.5px;
-    text-align: left;
-}
-
-.footer-column p {
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 31.5px;
-    text-align: left;
-}
-
-.footer-bottom {
-    border-top: 1px solid #A1A1A1;
-    padding-top: 10px;
-    font-family: Poppins;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
-    color: #FEFEFE;
 }
 
 

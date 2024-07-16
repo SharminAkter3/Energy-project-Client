@@ -19,23 +19,23 @@ const SingleGuideBanner = () => {
 
 
     return (
-        <div className='mt-20 mx-20'>
+        <div className="flex flex-col justify-between gap-5 m-5 my-20 md:m-20">
             <div className='container p-5'>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
                     <div>
                         <div className='m-3'>
-                            <small className='section-title'>{blog.headerTitle}</small>
+                            <small className="font-poppins text-lg font-semibold leading-[31.5px] text-[#4CAF50]">{blog.headerTitle}</small>
                         </div>
                         <div className='m-3'>
-                            <h1 className='h1-text'><p className='text-black'>{blog.titlePrefix}</p></h1>
+                            <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">{blog.titlePrefix}</h1>
                         </div>
                         <div className='font-bold m-3'>
                             {/* <h1>By {blog.author} / {new Date(blog.date).toLocaleDateString()}</h1> */}
                             <h1>By {blog.author} </h1>
                         </div>
                         <div className='m-3'>
-                            <p className='p-text'>
-                                <small className='text-[#6D6D6D]'>{blog.titleDescription}</small>
+                            <p className="font-poppins text-base text-[#6D6D6D] mt-4 mb-8 leading-relaxed">
+                                {blog.titleDescription}
                             </p>
                         </div>
                     </div>

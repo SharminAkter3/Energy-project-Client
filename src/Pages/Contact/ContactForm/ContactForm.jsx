@@ -1,9 +1,9 @@
 
 const ContactForm = () => {
     return (
-        <div className="section-container">
-            <h1 className="text-3xl text-center font-bold">Connect with us</h1>
-            <form className="mx-40 px-8">
+        <div className="text-center flex flex-col justify-between gap-5 mx-5 my-10 md:mx-10 md:my-12">
+            <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">Connect with us</h1>
+            <form className="mx-10 md:mx-40 px-8">
                 <div className="form-control mt-5">
                     <input type="text" name='firstName' placeholder="First Name" className="input shadow-lg" />
                 </div>
@@ -34,7 +34,7 @@ const ContactForm = () => {
 
 
 
-                <div className="marketing-preferences description-style">
+                <div className="description-style">
                     <p className="mt-5">You can choose your marketing preferences below. These let you decide how you’d like to hear from Shell <br /> Energy UK Ltd. By opting in you will be kept informed about:</p>
                     <ul className="mt-4">
                         <li className="ml-10">Our energy supply and solutions offering</li>
@@ -78,7 +78,7 @@ const ContactForm = () => {
                     </div>
                 </div>
             </form>
-            <p className="mx-40 px-8 description-style mt-5">
+            <p className="mx-10 px-8 md:mx-40 mt-5 text-left font-semibold">
                 You can unsubscribe from marketing communications at any time.<br />
                 You can find out more about how to unsubscribe in our Privacy policy.<br />
                 Your preferences also include offers and news from other subsidiaries of X company.

@@ -18,18 +18,18 @@ const SingleServiceBanner = () => {
     }
 
     return (
-        <div className='mt-20 mx-20'>
+        <div className="flex flex-col justify-between gap-5 m-5 my-20 md:m-20">
             <div className='container p-5'>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
                     <div className='grid grid-rows-[auto,auto,1fr,auto] gap-3'>
                         <div>
-                            <small className='section-title'>{service.headerTitle}</small>
+                            <small className="font-poppins text-lg font-semibold leading-[31.5px] text-[#4CAF50]">{service.headerTitle}</small>
                         </div>
                         <div>
-                            <h1 className='h1-text'><p className='text-black'>{service.titlePrefix}</p></h1>
+                            <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">{service.titlePrefix}</h1>
                         </div>
                         <div>
-                            <p className='p-text'><small className='text-[#6D6D6D]'>{service.titleDescription}</small></p>
+                            <p className="font-poppins text-base text-[#6D6D6D] mt-4 mb-8 leading-relaxed">{service.titleDescription}</p>
                         </div>
                         <div>
                             <button className='service-button'>Request a call</button>
