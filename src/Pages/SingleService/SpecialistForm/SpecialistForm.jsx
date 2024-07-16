@@ -5,7 +5,7 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 
 const SpecialistForm = () => {
     const { user } = useContext(AuthContext);
-    console.log('SpecialistForm',user);
+    console.log('SpecialistForm', user);
     const [formData, setFormData] = useState({
         username: '',
         phone: '',
@@ -86,10 +86,10 @@ const SpecialistForm = () => {
     };
 
     return (
-        <div className="section-container my-52">
+        <div className="text-center flex flex-col justify-between gap-5 m-5 my-20 md:m-20">
             <h1 className="text-3xl text-center font-bold">Request a call from a Specialist</h1>
             <p className="text-[#6D6D6D]">Please enter your business information. A representative will reach out to you shortly.</p>
-            <form className="mx-40 px-8" onSubmit={handleSubmit}>
+            <form className="mx-10 md:mx-10 lg:mx-20 px-4 md:px-8" onSubmit={handleSubmit}>
                 <div className="form-control mt-5">
                     <input type="text" name='username' placeholder="Full Name" className="input shadow-lg" value={formData.username} onChange={handleChange} />
                 </div>

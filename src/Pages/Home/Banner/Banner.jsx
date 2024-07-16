@@ -24,22 +24,29 @@ const Banner = () => {
 
     return (
         <div>
-            <div className='banner'>
-                <div>
-                    <h3 className='h3-text'>Understand, Solve & Evolve</h3>
-                    <h1 className='h1-text'>Powering Your World <br />
-                        with <small className="text-black">Reliable</small> & <br />
-                        <small className="text-black">Sustainable</small> Energy.</h1>
-                    <p className='p-text'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 bg-[#4CAF50] min-h-screen'>
+                <div className="px-8 md:px-16 lg:px-32 py-8 md:py-16 lg:py-40">
+                    <h3 className="font-poppins text-lg md:text-xl lg:text-2xl font-medium leading-tight text-left text-[#0E2510] mb-4">
+                        Understand, Solve & Evolve
+                    </h3>
+                    <h1 className="font-sora leading-[57.6px] text-3xl md:text-4xl lg:text-5xl font-bold text-[#FEFEFE]">
+                        Powering Your World <br />
+                        with <b className="text-black">Reliable</b> & <br />
+                        <b className="text-black">Sustainable</b> Energy.
+                    </h1>
+                    <p className="font-poppins text-sm md:text-base lg:text-lg font-normal leading-relaxed text-[#F5F5F5] mt-5 mb-5">
                         Affordable, cleaner and simple renewable energy solutions from a global energy partner.
                     </p>
-                    <button className='button'>Request a quote</button>
+                    <button className="bg-white text-[#0E2510] border-none px-5 py-2 text-sm md:text-base lg:text-lg rounded-lg cursor-pointer mt-5">
+                        Request a quote
+                    </button>
                 </div>
-                <div className='image-container'>
+                <div
+                    className="flex items-center justify-center p-4"
+                >
                     <img
                         src={bannerImage}
                         alt="Banner-Illustration"
-                        style={{ maxWidth: '100%' }}
                     />
                 </div>
             </div>
