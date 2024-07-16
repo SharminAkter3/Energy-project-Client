@@ -77,7 +77,7 @@ const UpdateDashboardServices = () => {
             sections: sections
         };
 
-        const endpoint = `https://energy-project-server.vercel.app/services/${servicesId}`;
+        const endpoint = `http://localhost:5000/services/${servicesId}`;
 
         try {
             const response = await axios.put(endpoint, data, {

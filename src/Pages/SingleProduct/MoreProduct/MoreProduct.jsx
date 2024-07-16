@@ -6,7 +6,7 @@ const MoreProduct = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://energy-project-server.vercel.app/products')
+        fetch('http://localhost:5000/products')
             .then(response => response.json())
             .then(data => setProducts(data))
             .catch(error => console.error('Error fetching products:', error));

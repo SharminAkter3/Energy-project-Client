@@ -7,7 +7,7 @@ const SingleGuideBanner = () => {
     const [blog, setBlog] = useState(null);
 
     useEffect(() => {
-        fetch(`https://energy-project-server.vercel.app/blogs/${id}`)
+        fetch(`http://localhost:5000/blogs/${id}`)
             .then(response => response.json())
             .then(data => setBlog(data))
             .catch(error => console.error('Error fetching blog:', error));

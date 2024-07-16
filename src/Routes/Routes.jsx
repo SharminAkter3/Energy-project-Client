@@ -28,7 +28,7 @@ import SingleGuide from "../Pages/SingleGuide/SingleGuide/SingleGuide";
 import DashboardAnalytics from "../Pages/Dashboard/DashboardAnalytics/DashboardAnalytics";
 import Profile from "../Pages/Profile/Profile";
 import ProfileUpdate from "../Pages/Profile/ProfileUpdate";
-import SpecialistForm from "../Pages/SingleService/SpecialistForm/SpecialistForm";
+
 
 export const router = createBrowserRouter([
   {
@@ -87,10 +87,6 @@ export const router = createBrowserRouter([
         path: 'profile/profileUpdate',
         element: <ProfileUpdate></ProfileUpdate>,
       },
-      {
-        path: 'specialistForm',
-        element: <SpecialistForm></SpecialistForm>,
-      },
     ],
   },
   {
@@ -126,17 +122,17 @@ export const router = createBrowserRouter([
       {
         path: 'updateBlog/:blogId',
         element: <UpdateDashboardBlog />,
-        loader: async ({ params }) => (await axios.get(`https://energy-project-server.vercel.app/blogs/${params.blogId}`)).data,
+        loader: async ({ params }) => (await axios.get(`http://localhost:5000/blogs/${params.blogId}`)).data,
       },
       {
         path: 'updateServices/:servicesId',
         element: <UpdateDashboardServices />,
-        loader: async ({ params }) => (await axios.get(`https://energy-project-server.vercel.app/services/${params.servicesId}`)).data,
+        loader: async ({ params }) => (await axios.get(`http://localhost:5000/services/${params.servicesId}`)).data,
       },
       {
         path: 'updateProducts/:productsId',
         element: <UpdateDashboardProducts />,
-        loader: async ({ params }) => (await axios.get(`https://energy-project-server.vercel.app/products/${params.productsId}`)).data,
+        loader: async ({ params }) => (await axios.get(`http://localhost:5000/products/${params.productsId}`)).data,
       },
       {
         path: '',

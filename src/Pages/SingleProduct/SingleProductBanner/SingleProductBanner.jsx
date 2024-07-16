@@ -6,7 +6,7 @@ const SingleProductBanner = () => {
     const [product, setProduct] = useState(null);
 
     useEffect(() => {
-        fetch(`https://energy-project-server.vercel.app/products/${id}`)
+        fetch(`http://localhost:5000/products/${id}`)
             .then(response => response.json())
             .then(data => setProduct(data))
             .catch(error => console.error('Error fetching product:', error));

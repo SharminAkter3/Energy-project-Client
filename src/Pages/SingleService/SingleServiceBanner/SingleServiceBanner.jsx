@@ -7,7 +7,7 @@ const SingleServiceBanner = () => {
     const [service, setService] = useState(null);
 
     useEffect(() => {
-        fetch(`https://energy-project-server.vercel.app/services/${id}`)
+        fetch(`http://localhost:5000/services/${id}`)
             .then(response => response.json())
             .then(data => setService(data))
             .catch(error => console.error('Error fetching service:', error));

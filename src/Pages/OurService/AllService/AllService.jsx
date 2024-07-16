@@ -9,7 +9,7 @@ const AllService = () => {
     const [services, setServices] = useState([]);
 
     useEffect(() => {
-        fetch('https://energy-project-server.vercel.app/services')
+        fetch('http://localhost:5000/services')
             .then(response => response.json())
             .then(data => setServices(data))
             .catch(error => console.error('Error fetching services:', error));

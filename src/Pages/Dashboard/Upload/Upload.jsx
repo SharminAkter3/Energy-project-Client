@@ -64,11 +64,11 @@ const Upload = () => {
         };
 
         const endpoint = selectedOption === 'Products'
-            ? 'https://energy-project-server.vercel.app/products'
+            ? 'http://localhost:5000/products'
             : selectedOption === 'Services'
-                ? 'https://energy-project-server.vercel.app/services'
-                : 'https://energy-project-server.vercel.app/blogs';  
-                {/* https://energy-project-server.vercel.app/ */}
+                ? 'http://localhost:5000/services'
+                : 'http://localhost:5000/blogs';  
+                {/* http://localhost:5000/ */}
                   {/* http://localhost:5000/ */}
 
         try {

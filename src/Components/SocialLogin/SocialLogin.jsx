@@ -1,6 +1,7 @@
 // import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../Hooks/useAuth";
-import { useLocation, useNavigate } from "react-router-dom";
+// import { useLocation, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 // import icons from '../../assets/Images/icons/google_icons.jpeg'
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -10,8 +11,8 @@ const SocialLogin = () => {
     // const { googleSignIn , facebookSignIn } = useAuth();
     const { googleSignIn  } = useAuth();
     const navigate = useNavigate()
-    const location = useLocation();
-    let from = location.state?.from?.pathname || "/dashboard";
+    // const location = useLocation();
+    // let from = location.state?.from?.pathname || "/dashboard";
 
 
     const handleGoogleSignIn = () => {
@@ -31,7 +32,7 @@ const SocialLogin = () => {
                     role: 'user',
                 }
 
-                fetch(`https://energy-project-server.vercel.app/users`, {
+                fetch(`http://localhost:5000/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userInfo)
@@ -48,13 +49,14 @@ const SocialLogin = () => {
                                 showConfirmButton: false,
                                 timer: 1500
                             });
+                            navigate('/');
                             // navigate('/dashboard');
-                            navigate(from, { replace: true });
+                            // navigate(from, { replace: true });
                         }
                     })
 
 
-                navigate(from, { replace: true });
+                // navigate(from, { replace: true });
                 // navigate('/dashboard')
 
             })
@@ -72,7 +74,7 @@ const SocialLogin = () => {
                     role: 'admin',
                 };
 
-                fetch(`https://energy-project-server.vercel.app/users`, {
+                fetch(`http://localhost:5000/users`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userInfo)
