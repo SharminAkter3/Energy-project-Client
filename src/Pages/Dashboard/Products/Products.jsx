@@ -50,9 +50,9 @@ const Products = () => {
     };
 
     return (
-        <div className="grid bg-[#F5F5F5] p-5 gap-3 grid-cols-3">
+        <div className="grid bg-[#F5F5F5] p-5 gap-3 md:grid-cols-3 grid-cols-1">
             {/* Side bar one */}
-            <div className="bg-[#FEFEFE] p-5 mr-5 col-span-2">
+            <div className="bg-[#FEFEFE] p-5 mr-3 col-span-2 md:col-span-2 sm:col-span-1 col-span-1">
                 {selectedProduct ? (
                     <>
                         <h1>Details</h1>
@@ -123,7 +123,7 @@ const Products = () => {
                 )}
             </div>
             {/* Side bar two */}
-            <div className="bg-[#FEFEFE] p-5 col-span-1">
+            <div className="bg-[#FEFEFE] p-5 col-span-1 md:col-span-1 sm:col-span-1 col-span-1">
                 <h1>Products</h1>
                 <div>
                     {products.map((product) => (
