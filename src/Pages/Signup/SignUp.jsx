@@ -16,7 +16,7 @@ const SignUp = () => {
 
     const togglePasswordVisibility1 = () => {
         setShowPassword1(!showPassword1);
-    }; 
+    };
 
     const togglePasswordVisibility2 = () => {
         setShowPassword2(!showPassword2);
@@ -32,10 +32,10 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-        const role = 'admin';
-        console.log({ username, email, password,confirmPassword, role });
+        const role = 'user';
+        console.log({ username, email, password, confirmPassword, role });
 
-        if( password !== confirmPassword ) return setError('Password does not match')
+        if (password !== confirmPassword) return setError('Password does not match')
 
         createUser(email, password)
             .then(result => {
@@ -45,52 +45,44 @@ const SignUp = () => {
                 updateUserProfile(username)
                     .then(() => {
                         // create user entry in the database
-                        /*    const userInfo = {
-                               name: name,
-                               email: email
-                           }
-                           */
-                        fetch(`https://edu-plus-server.onrender.com/accounts/register/`, {
+                        const userInfo = {
+                            firstName: firstName,
+                            lastName: lastName,
+                            username: username,
+                            email: email,
+                            role: role,
+                        }
+
+                        fetch(`http://localhost:5000/users`, {
                             method: "POST",
                             headers: { 'content-type': 'application/json' },
-                            body: JSON.stringify({ username, email, password, role })
+                            body: JSON.stringify(userInfo)
                         })
                             .then(res => res.json())
-                            .then(data => console.log(data))
-
-                        /*      .then(res => {
-                                 if (res.data.insertedId) {
-                                     console.log('user added to the database')
-                                     Swal.fire({
-                                         position: 'top-end',
-                                         icon: 'success',
-                                         title: 'User created successfully.',
-                                         showConfirmButton: false,
-                                         timer: 1500
-                                     });
-                                     navigate('/');
-                                 }
-                             }) */
-
-
-                        Swal.fire({
-                            position: 'top-start',
-                            icon: 'success',
-                            title: 'User created successfully.',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        navigate('/dashboard');
-
-
+                            .then(data => {
+                                if (data.insertedId) {
+                                    console.log('user added to the database', data)
+                                    form.reset()
+                                    Swal.fire({
+                                        position: 'top-start',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    // navigate('/dashboard');
+                                    navigate('/');
+                                }
+                            })
                     })
+
                     .catch(error => console.log(error))
             })
 
     }
 
     return (
-        <div className=" min-h-screen  text-center">
+        <div className="text-center flex flex-col justify-between gap-5 mx-10 my-10 md:mx-20 md:my-14 lg:mx-40 lg:my-20">
 
             <p className='mt-5 text-[#4CAF50] font-bold'>Welcome</p>
             <h1 className='text-3xl font-bold my-5'>Stay connected with us</h1>
@@ -115,15 +107,15 @@ const SignUp = () => {
                             </div>
 
                             <div className="form-control mt-5">
-                            
+
                                 <input type="text" name='lastName' placeholder="Last Name" className="input input-bordered" />
                             </div>
 
                             <div className="form-control mt-5">
-                              
+
                                 <input type="text" name='email' placeholder="Email address" className="input input-bordered" />
                             </div>
-                            
+
                             <div className="form-control mt-5 relative">
                                 <input
                                     type={showPassword1 ? "text" : "password"}
@@ -141,24 +133,24 @@ const SignUp = () => {
                             </div>
 
                             <div className="form-control mt-5 relative">
-                            <input
-                                type={showPassword2 ? "text" : "password"}
-                                name="confirmPassword"
-                                placeholder="Confirm Password"
-                                className="input input-bordered"
-                            />
-                            <button
-                                type="button"
-                                onClick={togglePasswordVisibility2}
-                                className="absolute right-3 top-1/2 transform -translate-y-1/2"
-                            >
-                                {showPassword2 ? <FaEyeSlash /> : <FaEye />}
-                            </button>
-                        </div>
+                                <input
+                                    type={showPassword2 ? "text" : "password"}
+                                    name="confirmPassword"
+                                    placeholder="Confirm Password"
+                                    className="input input-bordered"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={togglePasswordVisibility2}
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2"
+                                >
+                                    {showPassword2 ? <FaEyeSlash /> : <FaEye />}
+                                </button>
+                            </div>
 
                             {error}
 
-                            
+
                             <div className="form-control mt-6">
                                 <input className="btn bg-[#4CAF50] text-white" type="submit" value="Sign Up" />
                             </div>

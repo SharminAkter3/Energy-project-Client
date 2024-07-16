@@ -67,7 +67,9 @@ const Upload = () => {
             ? 'http://localhost:5000/products'
             : selectedOption === 'Services'
                 ? 'http://localhost:5000/services'
-                : 'http://localhost:5000/blogs';  // Added for Blogs
+                : 'http://localhost:5000/blogs';  
+                {/* http://localhost:5000/ */}
+                  {/* http://localhost:5000/ */}
 
         try {
             const response = await axios.post(endpoint, data, {

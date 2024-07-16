@@ -19,6 +19,16 @@ import OurService from "../Pages/OurService/OurService/OurService";
 import OurProduct from "../Pages/OurProduct/OurProduct/OurProduct";
 import Guides from "../Pages/Guides/Guides/Guides";
 import SingleService from "../Pages/SingleService/SingleService/SingleService";
+import UpdateDashboardBlog from "../Pages/Dashboard/UpdateDashboardBlog/UpdateDashboardBlog";
+import axios from "axios";
+import UpdateDashboardServices from "../Pages/Dashboard/UpdateDashboardServices/UpdateDashboardServices";
+import UpdateDashboardProducts from "../Pages/Dashboard/UpdateDashboardProducts/UpdateDashboardProducts";
+import SingleProduct from "../Pages/SingleProduct/SingleProduct/SingleProduct";
+import SingleGuide from "../Pages/SingleGuide/SingleGuide/SingleGuide";
+import DashboardAnalytics from "../Pages/Dashboard/DashboardAnalytics/DashboardAnalytics";
+import Profile from "../Pages/Profile/Profile";
+import ProfileUpdate from "../Pages/Profile/ProfileUpdate";
+
 
 export const router = createBrowserRouter([
   {
@@ -50,8 +60,16 @@ export const router = createBrowserRouter([
         element: <Contact></Contact>
       },
       {
-        path: 'single_service',
+        path: 'single_service/:id',
         element: <SingleService></SingleService>
+      },
+      {
+        path: 'single_product/:id',
+        element: <SingleProduct></SingleProduct>
+      },
+      {
+        path: 'single_guide/:id',
+        element: <SingleGuide></SingleGuide>
       },
       {
         path: 'login',
@@ -60,6 +78,14 @@ export const router = createBrowserRouter([
       {
         path: 'signup',
         element: <SignUp></SignUp>,
+      },
+      {
+        path: 'profile',
+        element: <Profile></Profile>,
+      },
+      {
+        path: 'profile/profileUpdate',
+        element: <ProfileUpdate></ProfileUpdate>,
       },
     ],
   },
@@ -93,6 +119,26 @@ export const router = createBrowserRouter([
         path: 'products',
         element: <Products></Products>,
       },
+      {
+        path: 'updateBlog/:blogId',
+        element: <UpdateDashboardBlog />,
+        loader: async ({ params }) => (await axios.get(`http://localhost:5000/blogs/${params.blogId}`)).data,
+      },
+      {
+        path: 'updateServices/:servicesId',
+        element: <UpdateDashboardServices />,
+        loader: async ({ params }) => (await axios.get(`http://localhost:5000/services/${params.servicesId}`)).data,
+      },
+      {
+        path: 'updateProducts/:productsId',
+        element: <UpdateDashboardProducts />,
+        loader: async ({ params }) => (await axios.get(`http://localhost:5000/products/${params.productsId}`)).data,
+      },
+      {
+        path: '',
+        element: <DashboardAnalytics></DashboardAnalytics>,
+      },
+      
     
 ],
   },

@@ -1,11 +1,12 @@
 import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -28,10 +29,30 @@ const Products = () => {
         setSelectedProduct(product);
     };
 
+    const handleUpdateClick = (productId) => {
+        navigate(`/dashboard/updateProducts/${productId}`);
+    };
+
+    const handleDeleteClick = async (productId) => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/products/${productId}`);
+            console.log('Product deleted successfully:', response.data);
+            const updatedProducts = products.filter(product => product._id !== productId);
+            setProducts(updatedProducts);
+            if (updatedProducts.length > 0) {
+                setSelectedProduct(updatedProducts[0]);
+            } else {
+                setSelectedProduct(null);
+            }
+        } catch (error) {
+            console.error('Error deleting product:', error);
+        }
+    };
+
     return (
-        <div className="grid bg-[#F5F5F5] p-5 gap-3 grid-cols-3">
+        <div className="grid bg-[#F5F5F5] p-5 gap-3 md:grid-cols-3 grid-cols-1">
             {/* Side bar one */}
-            <div className="bg-[#FEFEFE] p-5 mr-5 col-span-2">
+            <div className="bg-[#FEFEFE] p-5 mr-3 col-span-2 md:col-span-2 sm:col-span-1 col-span-1">
                 {selectedProduct ? (
                     <>
                         <h1>Details</h1>
@@ -42,10 +63,10 @@ const Products = () => {
                             <h1 className='text-2xl font-bold'>{selectedProduct.headerTitle}</h1>
                             <p>{selectedProduct.titleDescription}</p>
                             <div className='w-full flex justify-center mt-4'>
-                                <button className="btn btn-circle bg-black text-white">
+                                <button className="btn btn-circle bg-black text-white" onClick={() => handleUpdateClick(selectedProduct._id)}>
                                     <FaEdit />
                                 </button>
-                                <button className="btn btn-circle bg-black text-white mx-3">
+                                <button className="btn btn-circle bg-black text-white mx-3" onClick={() => handleDeleteClick(selectedProduct._id)}>
                                     <FaTrash />
                                 </button>
                             </div>
@@ -78,7 +99,7 @@ const Products = () => {
                             )}
                         </div>
                         <div className='mt-4'>
-                          { /* <h1 className='text-2xl font-bold'>Subtitle Section</h1> */}
+                            { /* <h1 className='text-2xl font-bold'>Subtitle Section</h1> */}
                             {selectedProduct.subTitles && selectedProduct.subTitles.length > 0 ? (
                                 <ul className="list-disc ml-8">
                                     {selectedProduct.subTitles.map((subtitle, index) => (
@@ -102,7 +123,7 @@ const Products = () => {
                 )}
             </div>
             {/* Side bar two */}
-            <div className="bg-[#FEFEFE] p-5 col-span-1">
+            <div className="bg-[#FEFEFE] p-5 col-span-1 md:col-span-1 sm:col-span-1 col-span-1">
                 <h1>Products</h1>
                 <div>
                     {products.map((product) => (

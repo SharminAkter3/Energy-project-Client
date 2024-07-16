@@ -21,7 +21,7 @@ const Login = () => {
     };
 
 
-    let from = location.state?.from?.pathname || "/dashboard";
+    // let from = location.state?.from?.pathname || "/dashboard";
 
     console.log(location)
 
@@ -42,8 +42,9 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 2000
                 });
+                navigate('/')
                 // navigate('/dashboard')
-                navigate(from, { replace: true });
+                // navigate(from, { replace: true });
 
             })
             .catch(error => console.log(error));
@@ -65,7 +66,7 @@ const Login = () => {
     };
 
     return (
-        <div className=" min-h-screen text-center ">
+        <div className="text-center flex flex-col justify-between gap-5 mx-10 my-10 md:mx-20 md:my-14 lg:mx-40 lg:my-20">
             <p className='mt-5 text-[#4CAF50] font-bold'>Welcome back</p>
             <h1 className='text-3xl font-bold my-5'>Stay connected with us</h1>
             <p>Access your account to manage energy usage, view bills, and explore our latest <br></br> services effortlessly.</p>
@@ -101,23 +102,23 @@ const Login = () => {
                                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                                 </button>
                             </div>
-                      
+
 
                             <div className='flex justify-end'>
-                            <label className="label text-end">
-                                <a href="#" 
-                                   className="label-text-alt text-[#4CAF50]" 
-                                   onClick={() => {
-                                       const email = prompt('Enter your email address:');
-                                       if (email) {
-                                           setEmailForReset(email);
-                                           handlePasswordReset();
-                                       }
-                                   }}>
-                                   Forgot password?
-                                </a>
-                            </label>
-                        </div>
+                                <label className="label text-end">
+                                    <a href="#"
+                                        className="label-text-alt text-[#4CAF50]"
+                                        onClick={() => {
+                                            const email = prompt('Enter your email address:');
+                                            if (email) {
+                                                setEmailForReset(email);
+                                                handlePasswordReset();
+                                            }
+                                        }}>
+                                        Forgot password?
+                                    </a>
+                                </label>
+                            </div>
 
                             <div className="form-control mt-6">
                                 <input className="btn bg-[#4CAF50] text-white" type="submit" value="Sign in" />

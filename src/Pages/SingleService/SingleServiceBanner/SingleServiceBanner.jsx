@@ -1,35 +1,49 @@
-import singleServiceBanner from '../../../assets/Images/banner/singleService.png';
+// import singleServiceBanner from '../../../assets/Images/banner/singleService.png';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const SingleServiceBanner = () => {
+    const { id } = useParams();
+    const [service, setService] = useState(null);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/services/${id}`)
+            .then(response => response.json())
+            .then(data => setService(data))
+            .catch(error => console.error('Error fetching service:', error));
+    }, [id]);
+
+    if (!service) {
+        return <div>Loading...</div>;
+    }
+
     return (
-        <div>
-            <div className='mx-40 mt-20'>
-                <div className='flex gap-20'>
-                    <div className='' style={{ display: "flex", flexDirection: 'column', alignContent: 'space-between' }}>
-                        <div className='mb-5'>
-                            <small className='section-title'>Service</small>
+        <div className="flex flex-col justify-between gap-5 m-5 my-20 md:m-20">
+            <div className='container p-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
+                    <div className='grid grid-rows-[auto,auto,1fr,auto] gap-3'>
+                        <div>
+                            <small className="font-poppins text-lg font-semibold leading-[31.5px] text-[#4CAF50]">{service.headerTitle}</small>
                         </div>
                         <div>
-                            <h1 className='h1-text'><p className='text-black'>Your Business <br />Electricity Broker</p></h1>
+                            <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">{service.titlePrefix}</h1>
                         </div>
                         <div>
-                            <p className='p-text'><small className='text-[#6D6D6D]'>When running a business, having good quality business gas and <br /> electricity is key. Here at Energy Solutions, we are committed to <br /> helping you find the best business energy deal which is not only <br /> efficient but also keeps your costs down. We are experts in <br /> supporting small businesses in finding a deal that is tailored to their <br /> unique needs and requirements. With us, comparing and switching<br />  business energy brokers is easy. Take your first step towards<br />  cheaper, greener, more efficient electricity today.</small>
-                            </p>
+                            <p className="font-poppins text-base text-[#6D6D6D] mt-4 mb-8 leading-relaxed">{service.titleDescription}</p>
                         </div>
-                        <div className='mt-40'>
-                            <button className='service-button'>Find best service</button>
+                        <div>
+                            <button className='service-button'>Request a call</button>
                         </div>
                     </div>
-
-                    <div>
-                        <img className='' style={{ width: '544px', height: '492px', borderRadius: '20px' }}
-                            src={singleServiceBanner}
-                            alt="mission-image"
+                    <div className='flex justify-center'>
+                        <img
+                            src={service.ctaImage}
+                            alt={service.headerTitle}
+                            className='rounded-xl w-full h-auto md:w-1/2 lg:w-3/4'
                         />
                     </div>
-
                 </div>
-            </div >
+            </div>
         </div>
     );
 };

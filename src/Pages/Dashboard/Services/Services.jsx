@@ -2,10 +2,12 @@ import { FaEdit, FaPlus, FaTrash } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Services = () => {
     const [services, setServices] = useState([]);
     const [selectedService, setSelectedService] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchServices = async () => {
@@ -28,10 +30,32 @@ const Services = () => {
         setSelectedService(service);
     };
 
+    const handleUpdateClick = (servicesId) => {
+        navigate(`/dashboard/updateServices/${servicesId}`);
+    };
+    const handleDeleteClick = async (servicesId) => {
+        try {
+            const response = await axios.delete(`http://localhost:5000/services/${servicesId}`);
+            console.log('Service deleted successfully:', response.data);
+            // Optionally, update state or perform any necessary actions after deletion
+            const updatedServices = services.filter(blog => blog._id !== servicesId);
+            setServices(updatedServices);
+            if (updatedServices.length > 0) {
+                setSelectedService(updatedServices[0]);
+            } // Clear selected blog after deletion
+            else{
+                setSelectedService(null);
+            }
+        } catch (error) {
+            console.error('Error deleting blog:', error);
+        }
+    };
+
+
     return (
-        <div className="grid bg-[#F5F5F5] p-5 gap-3 grid-cols-3">
+        <div className="grid bg-[#F5F5F5] p-5 gap-3 md:grid-cols-3 grid-cols-1">
             {/* Side bar one */}
-            <div className="bg-[#FEFEFE] p-5 mr-5 col-span-2">
+            <div className="bg-[#FEFEFE] p-5 mr-3 col-span-2 md:col-span-2 sm:col-span-1 col-span-1">
                 {selectedService ? (
                     <>
                         <h1>Details</h1>
@@ -42,12 +66,14 @@ const Services = () => {
                             <h1 className='text-2xl font-bold'>{selectedService.headerTitle}</h1>
                             <p>{selectedService.titleDescription}</p>
                             <div className='w-full flex justify-center mt-4'>
-                                <button className="btn btn-circle bg-black text-white">
+
+                                <button className="btn btn-circle bg-black text-white" onClick={() => handleUpdateClick(selectedService._id)}>
                                     <FaEdit />
                                 </button>
-                                <button className="btn btn-circle bg-black text-white mx-3">
+                                <button className="btn btn-circle bg-black text-white mx-3" onClick={() => handleDeleteClick(selectedService._id)}>
                                     <FaTrash />
                                 </button>
+
                             </div>
                         </div>
                         <div className='mt-4'>
@@ -102,7 +128,7 @@ const Services = () => {
                 )}
             </div>
             {/* Side bar two */}
-            <div className="bg-[#FEFEFE] p-5 col-span-1">
+            <div className="bg-[#FEFEFE] p-5 col-span-1 md:col-span-1 sm:col-span-1 col-span-1">
                 <h1>Services</h1>
                 <div>
                     {services.map((service) => (
