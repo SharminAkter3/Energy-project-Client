@@ -34,7 +34,7 @@ const Service = () => {
 
             <div className="mx-10 md:mx-auto mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 {services.slice(0, 4).map((service) => (
-                    <div key={service._id} className="bg-white shadow-lg rounded-lg p-4">
+                    <div key={service._id} className="bg-[#F3FAF3] shadow-lg rounded-lg p-4">
                         <img className='w-1/3 h-auto'
                             src={service.ctaImage || heatIcon}
                             alt={service.headerTitle}

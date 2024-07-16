@@ -19,17 +19,17 @@ const Process = () => {
 
             <div className='text-left'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10'>
-                    <div className='bg-white p-6 rounded-lg shadow-md'>
+                    <div className='bg-[#F3FAF3] p-6 rounded-lg shadow-md'>
                         <img className='w-12 h-12 mb-3' src={informationLogo} alt="stat-image" />
                         <h5 className='text-lg font-semibold text-green-800'>Compare energy providers</h5>
                         <p className='text-gray-600'>Explore a wide array of options from our trusted partners, ensuring you are well-informed on each energy provider and ready to choose the deal that benefits you most</p>
                     </div>
-                    <div className='bg-white p-6 rounded-lg shadow-md'>
+                    <div className='bg-[#F3FAF3] p-6 rounded-lg shadow-md'>
                         <img className='w-12 h-12 mb-3' src={searchLogo} alt="stat-image" />
                         <h5 className='text-lg font-semibold text-green-800'>Find the right deal</h5>
                         <p className='text-gray-600'>Decide with confidence. Rely on our insights and expertise to guide you toward the optimal pick tailored to your specific needs.</p>
                     </div>
-                    <div className='bg-white p-6 rounded-lg shadow-md'>
+                    <div className='bg-[#F3FAF3] p-6 rounded-lg shadow-md'>
                         <img className='w-12 h-12 mb-3' src={statisticsLogo} alt="stat-image" />
                         <h5 className='text-lg font-semibold text-green-800'>Switch and save</h5>
                         <p className='text-gray-600'>Switch to your new energy provider and enjoy energy-efficient gas and electricity. Save money and enjoy the benefits of greener, higher quality energy.</p>

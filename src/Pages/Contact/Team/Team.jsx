@@ -6,12 +6,12 @@ import email from '../../../assets/Images/icons/email_logo.png';
 
 const Team = () => {
     return (
-        <div className="section-container">
-            <div className="h1-text">
-                <h1 className="text-black">Our team</h1>
+        <div className="text-center flex flex-col justify-between gap-5 mx-5 my-10 md:mx-10 md:my-28">
+            <div>
+                <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">Our team</h1>
             </div>
 
-            <section className="team-member-container">
+            <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-10 my-20 md:mx-40 md:my-40">
                 <div className='team-card'>
                     <div className='profile-image'>
                         <img src={memberImage1} alt='Wade Warren' />
