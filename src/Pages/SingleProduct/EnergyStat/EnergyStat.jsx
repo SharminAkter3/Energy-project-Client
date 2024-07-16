@@ -7,51 +7,51 @@ import photo3 from '../../../assets/Images/banner/photo3.png';
 
 const EnergyStat = () => {
     return (
-        <div className='my-52'>
+        <div className="text-center flex flex-col justify-between gap-5 m-5 my-20 md:m-20">
             <div>
                 <div className="section-container">
                     <div>
-                        <h1 className='h1-text'>
-                            <p className='text-black'>Energy Stats</p>
+                        <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">
+                            Energy Stats
                         </h1>
                     </div>
                     <div>
-                        <p className="text-[#6D6D6D]">Solar PV provides a sustainable, long-term solution to improving resilience on site, providing cheaper power <br /> and reducing carbon dioxide emissions. Direct capital investment or funded solutions are standard in the <br /> current market.</p>
+                        <p className="font-poppins text-base text-[#6D6D6D] mt-4 mb-8 leading-relaxed">Solar PV provides a sustainable, long-term solution to improving resilience on site, providing cheaper power <br /> and reducing carbon dioxide emissions. Direct capital investment or funded solutions are standard in the <br /> current market.</p>
                     </div>
 
-                    <div className='process-card-container'>
-                        <div className='all-stats gap-8 p-10'>
-                            <div className='stat process-card mt-5'>
-                                <img className='stat-image'
+                    <div className='text-left'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-10'>
+                            <div className='bg-[#F3FAF3] p-6 rounded-lg shadow-md'>
+                                <img className='w-12 h-12 mb-3'
                                     src={statisticsLogo}
                                     alt="stat-image"
                                 />
-                                <h5>Finance</h5>
-                                <p>Lower energy costs and improved <br /> resilience.</p>
+                                <h5 className='text-lg font-semibold text-green-800'>Finance</h5>
+                                <p className='text-gray-600'>Lower energy costs and improved <br /> resilience.</p>
                                 <div className='w-50'>
-                                    <button className='service-button'>Learn more</button>
+                                    <button className="bg-[#4CAF50] text-[#F3FAF3] w-1/2 py-2 px-4 rounded-lg mt-4">Learn more</button>
                                 </div>
                             </div>
-                            <div className='stat process-card mt-5'>
-                                <img className='stat-image'
+                            <div className='bg-[#F3FAF3] p-6 rounded-lg shadow-md'>
+                                <img className='w-12 h-12 mb-3'
                                     src={co2Icon}
                                     alt="stat-image"
                                 />
-                                <h5>Carbon Footprint</h5>
-                                <p>Sustainable power with lower <br /> carbon footprint.</p>
+                                <h5 className='text-lg font-semibold text-green-800'>Carbon Footprint</h5>
+                                <p className='text-gray-600'>Sustainable power with lower <br /> carbon footprint.</p>
                                 <div className='w-50'>
-                                    <button className='service-button'>Learn more</button>
+                                    <button className="bg-[#4CAF50] text-[#F3FAF3] w-1/2 py-2 px-4 rounded-lg mt-4">Learn more</button>
                                 </div>
                             </div>
-                            <div className='stat process-card mt-5'>
-                                <img className='stat-image'
+                            <div className='bg-[#F3FAF3] p-6 rounded-lg shadow-md'>
+                                <img className='w-12 h-12 mb-3'
                                     src={technologyImage}
                                     alt="stat-image"
                                 />
-                                <h5>Complexity</h5>
-                                <p>Simple, effective technology for diverse <br /> applications.</p>
+                                <h5 className='text-lg font-semibold text-green-800'>Complexity</h5>
+                                <p className='text-gray-600'>Simple, effective technology for diverse <br /> applications.</p>
                                 <div className='w-50'>
-                                    <button className='service-button'>Learn more</button>
+                                    <button className="bg-[#4CAF50] text-[#F3FAF3] w-1/2 py-2 px-4 rounded-lg mt-4">Learn more</button>
                                 </div>
                             </div>
                         </div>
@@ -61,13 +61,13 @@ const EnergyStat = () => {
 
 
             <div>
-                <div className="section-container">
+                <div className="text-center flex flex-col justify-between gap-5 mx-10 my-10 md:mx-20 md:my-20">
                     <div className='my-14'>
-                        <h1 className='h1-text'>
-                            <p className='text-black'>More photos</p>
+                        <h1 className="font-sora text-4xl font-bold text-[#0E2510] leading-tight">
+                            More photos
                         </h1>
                     </div>
-                    <div className='mx-40' style={{ display: "flex", flexDirection: 'row', alignContent: 'space-between', justifyContent: 'center', gap: '3%' }}>
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2' >
                         <div>
                             <img className=''
                                 style={{ width: '352px', height: '352px', borderRadius: '20px' }}

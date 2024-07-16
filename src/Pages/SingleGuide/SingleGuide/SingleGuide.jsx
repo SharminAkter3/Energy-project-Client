@@ -1,5 +1,5 @@
 import BlogHeader from "../BlogHeader/BlogHeader";
-import BlogSection from "../BlogSection/BlogSection";
+// import BlogSection from "../BlogSection/BlogSection";
 import MoreBlog from "../MoreBlog/MoreBlog";
 import SingleGuideBanner from "../SingleGuideBanner/SingleGuideBanner";
 
@@ -8,7 +8,7 @@ const SingleGuide = () => {
         <div>
             <SingleGuideBanner></SingleGuideBanner>
             <BlogHeader></BlogHeader>
-            <BlogSection></BlogSection>
+            {/* <BlogSection></BlogSection> */}
             <MoreBlog></MoreBlog>
         </div>
     );

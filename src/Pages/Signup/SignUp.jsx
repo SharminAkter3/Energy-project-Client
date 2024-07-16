@@ -39,50 +39,50 @@ const SignUp = () => {
 
         createUser(email, password)
             .then(result => {
-                    const user = result.user;
-                    console.log('created user', user)
+                const user = result.user;
+                console.log('created user', user)
 
-                    updateUserProfile(username)
-                        .then(() => {
-                            // create user entry in the database
-                            const userInfo = {
-                                firstName: firstName,
-                                lastName: lastName,
-                                username: username,
-                                email: email,
-                                role: role,
-                            }
+                updateUserProfile(username)
+                    .then(() => {
+                        // create user entry in the database
+                        const userInfo = {
+                            firstName: firstName,
+                            lastName: lastName,
+                            username: username,
+                            email: email,
+                            role: role,
+                        }
 
-                            fetch(`http://localhost:5000/users`, {
-                                method: "POST",
-                                headers: { 'content-type': 'application/json' },
-                                body: JSON.stringify(userInfo)
-                            })
-                                .then(res => res.json())
-                                .then(data => {
-                                    if (data.insertedId) {
-                                        console.log('user added to the database', data)
-                                        form.reset()
-                                        Swal.fire({
-                                            position: 'top-start',
-                                            icon: 'success',
-                                            title: 'User created successfully.',
-                                            showConfirmButton: false,
-                                            timer: 1500
-                                        });
-                                        // navigate('/dashboard');
-                                        navigate('/');
-                                    }
-                                })
+                        fetch(`http://localhost:5000/users`, {
+                            method: "POST",
+                            headers: { 'content-type': 'application/json' },
+                            body: JSON.stringify(userInfo)
                         })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    console.log('user added to the database', data)
+                                    form.reset()
+                                    Swal.fire({
+                                        position: 'top-start',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    // navigate('/dashboard');
+                                    navigate('/');
+                                }
+                            })
+                    })
 
-                        .catch(error => console.log(error))
+                    .catch(error => console.log(error))
             })
 
     }
 
     return (
-        <div className=" min-h-screen  text-center">
+        <div className="text-center flex flex-col justify-between gap-5 mx-10 my-10 md:mx-20 md:my-14 lg:mx-40 lg:my-20">
 
             <p className='mt-5 text-[#4CAF50] font-bold'>Welcome</p>
             <h1 className='text-3xl font-bold my-5'>Stay connected with us</h1>

@@ -4,7 +4,7 @@ import authorImage1 from '../../../assets/Images/Expert/author1.png';
 
 const Review = () => {
     return (
-        <div className="text-center flex flex-col justify-between gap-5">
+        <div className="text-center flex flex-col justify-between gap-5 mx-10 md:mx-40">
             <div>
                 <small className="font-poppins text-lg font-semibold leading-[31.5px] text-[#4CAF50]">Review</small>
             </div>
@@ -36,7 +36,7 @@ const Review = () => {
                                 <small className="">CEO, X company</small>
                             </div>
                         </div>
-                        <div className="author-image ">
+                        <div className="author-image">
                             <img className='hidden lg:block' src={authorImage1} alt="Author image" />
                         </div>
                     </div>

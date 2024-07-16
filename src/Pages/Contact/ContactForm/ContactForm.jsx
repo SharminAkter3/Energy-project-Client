@@ -78,7 +78,7 @@ const ContactForm = () => {
                     </div>
                 </div>
             </form>
-            <p className="mx-20 px-8 md:mx-40 mt-5 text-left font-semibold">
+            <p className="mx-10 px-8 md:mx-40 mt-5 text-left font-semibold">
                 You can unsubscribe from marketing communications at any time.<br />
                 You can find out more about how to unsubscribe in our Privacy policy.<br />
                 Your preferences also include offers and news from other subsidiaries of X company.
