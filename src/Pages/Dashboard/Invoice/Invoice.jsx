@@ -49,9 +49,9 @@ const Invoice = () => {
     };
 
     return (
-        <div className="grid bg-[#F5F5F5] p-5 gap-3 grid-cols-3">
+        <div className="grid bg-[#F5F5F5] p-5 gap-3 md:grid-cols-3 grid-cols-1">
             {/* Main content */}
-            <div className="bg-[#FEFEFE] p-5 col-span-2">
+            <div className="bg-[#FEFEFE] p-5 mr-3 col-span-2 md:col-span-2 sm:col-span-1 col-span-1">
                 {selectedUser ? (
                     <>
                         <h1>User Details</h1>
@@ -75,10 +75,11 @@ const Invoice = () => {
                                 <p><span className='text-[#64748B] font-bold'>Description  </span>: {selectedUser.description}</p>
                             )}
                         </div>
-                        <div className='w-full flex justify-center mt-4'>
-                            <button className="btn btn-outline">Reply through call</button>
-                            <button className="btn bg-black text-white mx-3">Reply through mail</button>
+                        <div className='flex flex-col md:flex-row justify-center items-center mt-4'>
+                            <button className="btn btn-outline mb-2 md:mb-0 md:mr-3">Reply through call</button>
+                            <button className="btn bg-black text-white md:ml-3">Reply through mail</button>
                         </div>
+
                     </>
                 ) : (
                     <div className="text-center">
@@ -88,7 +89,7 @@ const Invoice = () => {
             </div>
 
             {/* Users in Specialist API */}
-            <div className="bg-[#FEFEFE] p-5 col-span-1">
+            <div className="bg-[#FEFEFE] p-5 col-span-1 md:col-span-1 sm:col-span-1 col-span-1">
                 <h1>Users in Specialist API</h1>
                 <div>
                     {users.map((user) => {
