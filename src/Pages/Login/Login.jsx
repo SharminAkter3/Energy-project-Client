@@ -21,7 +21,7 @@ const Login = () => {
     };
 
 
-    let from = location.state?.from?.pathname || "/dashboard";
+    // let from = location.state?.from?.pathname || "/dashboard";
 
     console.log(location)
 
@@ -42,8 +42,9 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 2000
                 });
+                navigate('/')
                 // navigate('/dashboard')
-                navigate(from, { replace: true });
+                // navigate(from, { replace: true });
 
             })
             .catch(error => console.log(error));

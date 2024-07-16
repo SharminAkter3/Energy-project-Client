@@ -27,6 +27,8 @@ import SingleProduct from "../Pages/SingleProduct/SingleProduct/SingleProduct";
 import SingleGuide from "../Pages/SingleGuide/SingleGuide/SingleGuide";
 import DashboardAnalytics from "../Pages/Dashboard/DashboardAnalytics/DashboardAnalytics";
 import Profile from "../Pages/Profile/Profile";
+import ProfileUpdate from "../Pages/Profile/ProfileUpdate";
+
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +83,10 @@ export const router = createBrowserRouter([
         path: 'profile',
         element: <Profile></Profile>,
       },
+      {
+        path: 'profile/profileUpdate',
+        element: <ProfileUpdate></ProfileUpdate>,
+      },
     ],
   },
   {
@@ -129,7 +135,7 @@ export const router = createBrowserRouter([
         loader: async ({ params }) => (await axios.get(`http://localhost:5000/products/${params.productsId}`)).data,
       },
       {
-        path: 'dashboard',
+        path: '',
         element: <DashboardAnalytics></DashboardAnalytics>,
       },
       

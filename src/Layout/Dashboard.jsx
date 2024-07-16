@@ -1,11 +1,51 @@
 import { NavLink, Outlet } from 'react-router-dom';
 // import { FaAd, FaBars, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
-
-import { FaBlog, FaDashcube, FaFileInvoiceDollar, FaProcedures, FaServicestack, FaSignOutAlt, FaUpload, FaUser } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { FaBlog, FaDashcube, FaFileInvoiceDollar, FaProcedures, FaServicestack, FaUpload, FaUser } from 'react-icons/fa';
 import DashboardNavbar from '../Pages/Dashboard/DashboardNavbar/DashboardNavbar';
+import axios from 'axios';
 
 
 const Dashboard = () => {
+/*   const [invoiceCount, setInvoiceCount] = useState(0);
+
+  useEffect(() => {
+    const fetchInvoiceCount = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/specialists');
+        // Assuming the API returns an array, count the number of specialists
+        const count = response.data.length;
+        setInvoiceCount(count);
+      } catch (error) {
+        console.error('Error fetching invoice count:', error);
+      }
+    };
+
+    fetchInvoiceCount();
+  }, []); */
+
+  const [uniqueEmailCount, setUniqueEmailCount] = useState(0);
+
+  useEffect(() => {
+    const fetchUniqueEmailCount = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/specialists');
+        const specialists = response.data;
+        
+        // Extract unique email addresses
+        const uniqueEmails = [...new Set(specialists.map(specialist => specialist.email))];
+        const count = uniqueEmails.length;
+        
+        setUniqueEmailCount(count);
+      } catch (error) {
+        console.error('Error fetching specialists:', error);
+      }
+    };
+
+    fetchUniqueEmailCount();
+  }, []);
+
+
   return (
     <div>
       <div>
@@ -40,13 +80,13 @@ const Dashboard = () => {
                 <NavLink to="/" className="flex items-center space-x-2">
                   <h1 className='text-3xl font-bold text-white'>Logo</h1>
                 </NavLink>
-              
+
               </li>
 
 
 
               <li className='text-white mb-1'>
-                <NavLink to="/dashboard/dashboard" className="flex items-center space-x-2">
+                <NavLink to="/dashboard" className="flex items-center space-x-2">
                   <FaDashcube />
                   <span>Dashboard</span>
                 </NavLink>
@@ -93,14 +133,13 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/invoice" className="flex items-center space-x-2">
                     <FaFileInvoiceDollar />
                     <span>Invoice</span>
-                    <p className='h-5 w-5 bg-blue-600 text-white text-center rounded'>5</p>
+                    <p className='h-5 w-5 bg-blue-600 text-white text-center rounded'>{uniqueEmailCount}</p>
                   </NavLink>
                 </li>
-
               </ul>
 
-
-              <li className="mb-1">
+              {
+             /*  <li className="mb-1">
                 <details className="dropdown">
                   <summary className="">
                     <FaSignOutAlt />
@@ -116,7 +155,7 @@ const Dashboard = () => {
                     <li className="mb-1"><a>Reset Password</a></li>
                   </ul>
                 </details>
-              </li>
+              </li> */}
 
             </ul>
 

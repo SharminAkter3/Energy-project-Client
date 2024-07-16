@@ -68,7 +68,7 @@ const Upload = () => {
             : selectedOption === 'Services'
                 ? 'http://localhost:5000/services'
                 : 'http://localhost:5000/blogs';  
-                {/* https://energy-project-server.vercel.app/ */}
+                {/* http://localhost:5000/ */}
                   {/* http://localhost:5000/ */}
 
         try {
