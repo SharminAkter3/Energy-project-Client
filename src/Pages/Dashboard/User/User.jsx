@@ -5,6 +5,7 @@ import user1 from '../../../assets/Images/dashboard/user-image-1.png';
 const User = () => {
     const [userData, setUserData] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
+    console.log('from user',selectedUser);
 
     useEffect(() => {
         // Fetch user data when the component mounts
@@ -33,7 +34,7 @@ const User = () => {
                 <h1>User Profile</h1>
                 <div className='text-center'>
                     <div className='w-full flex justify-center mb-2'>
-                        <img style={{ height: '100px', width: '100px', color: 'white', borderRadius: '50%' }} src={selectedUser.profileImage || user1} alt="" />
+                        <img style={{ height: '100px', width: '100px', color: 'white', borderRadius: '50%' }} src={selectedUser?.image} alt="provide image" />
                     </div>
                     <h1 className='text-2xl font-bold'>{selectedUser.firstName} {selectedUser.lastName}</h1>
                     <p>{selectedUser.email}</p>
@@ -61,12 +62,16 @@ const User = () => {
 
                 <div className='mt-4'>
                     <h1 className='text-2xl font-bold'>Details</h1>
-                    <p><span className='text-[#64748B] font-bold'>Contact number</span>: {selectedUser.contactNumber || 'Did not input yet'}</p>
-                    <p><span className='text-[#64748B] font-bold'>Address</span>: {selectedUser.address || 'Did not input yet'}</p>
-                    <p><span className='text-[#64748B] font-bold'>Business Name</span>: {selectedUser.businessName || 'Did not input yet'}</p>
-                    <p><span className='text-[#64748B] font-bold'>Business Address</span>: {selectedUser.businessAddress || 'Did not input yet'}</p>
-                    <p><span className='text-[#64748B] font-bold'>Business email</span>: {selectedUser.businessEmail || 'Did not input yet'}</p>
-                    <p><span className='text-[#64748B] font-bold'>Business phone</span>: {selectedUser.businessPhone || 'Did not input yet'}</p>
+                    <p><span className='text-[#64748B] font-bold'>Contact number</span>: {selectedUser?.personalInfo?.phone || 'Did not input yet'}</p>
+                    <p><span className='text-[#64748B] font-bold'>Address</span>: {selectedUser?.personalInfo?.address || 'Did not input yet'}</p>
+
+                    <p><span className='text-[#64748B] font-bold'>Business Name</span>: {selectedUser?.businessInfo?.
+                        businessName
+                         || 'Did not input yet'}</p>
+                    <p><span className='text-[#64748B] font-bold'>Business Address</span>: {selectedUser?.businessInfo?.businessAddress
+                        || 'Did not input yet'}</p>
+                    <p><span className='text-[#64748B] font-bold'>Business email</span>: {selectedUser?.businessInfo?.businessEmail || 'Did not input yet'}</p>
+                    <p><span className='text-[#64748B] font-bold'>Business phone</span>: {selectedUser?.businessInfo?.businessPhone || 'Did not input yet'}</p>
                 </div>
                 <div>
                     <h1 className='text-2xl font-bold'> Purchase list </h1>
@@ -90,7 +95,7 @@ const User = () => {
                     <div key={index} className='grid grid-cols-3 gap-5 mt-5 items-center justify-center cursor-pointer' onClick={() => setSelectedUser(user)}>
 
                         <div className='flex justify-center'>
-                            <img className="circular-img" style={{ height: '50px', width: '50px', color: 'white', borderRadius: '50%' }} src={user.profileImage || user1} alt="" />
+                            <img className="circular-img" style={{ height: '50px', width: '50px', color: 'white', borderRadius: '50%' }} src={user?.image} alt="provide image" />
                         </div>
                         <div className='col-span-2'>
                             <p className='text-xl font-bold'>{user.firstName} {user.lastName}</p>

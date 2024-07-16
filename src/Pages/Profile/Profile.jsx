@@ -2,32 +2,79 @@ import userImage from '../../assets/Images/Expert/teamMember3.png';
 import { FaEdit } from 'react-icons/fa';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+    const { user } = useContext(AuthContext);
+    const navigate = useNavigate()
+    // console.log('current user email',user.email);
+    const [userData, setUserData] = useState({
+        username: '',
+        email: '',
+        image:'',
+        personalInfo: {
+            username: '',
+            phone: '',
+            address: '',
+        },
+        businessInfo: {
+            businessName: '',
+            businessEmail: '',
+            businessPhone: '',
+            businessAddress: '',
+        },
+    });
+    useEffect(() => {
+        // Simulated fetch of user data (replace with actual API call)
+        const fetchUserData = async () => {
+            try {
+                // Example API call
+                const response = await axios.get(`http://localhost:5000/users/${user.email}`); // Replace with your API endpoint
+                setUserData(response.data); // Assuming API returns data in the structure similar to userData state
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        };
+
+        fetchUserData();
+    }, []); // Empty dependency array ensures useEffect runs only once
+   
+    const handleUpdate =()=>{
+        navigate('profileUpdate')
+    }
+
+
+
     return (
+
         <div className="section-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', }}>
+
             <div>
-                <div className='text-center' >
-                    <img style={{ width: '280px', height: '280px', borderRadius: '50%', }}
-                        src={userImage} alt='Esther Howard' />
+                <div className='text-center'>
+                    <img style={{ width: '280px', height: '280px', borderRadius: '50%' }} src={userData?.image ||userImage} alt='Esther Howard' />
                 </div>
 
-                <div className='mt-5 ' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', }}>
-                    <h1 className='text-4xl font-bold'>John Doe</h1>
-                    <button className="text-4xl text-black">
+                <div className='mt-5' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px' }}>
+                    <h1 className='text-4xl font-bold'>{userData.username}</h1>
+                    <button onClick={handleUpdate}  className="text-4xl text-black">
                         <FaEdit />
                     </button>
                 </div>
                 <div>
-                    <p className='text-[#6D6D6D] mt-2'>example@company.com</p>
+                    <p className='text-[#6D6D6D] mt-2'>{userData.email}</p>
                 </div>
             </div>
 
-            <div className='mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5' >
-                <div className='' style={{ backgroundColor: '#F3FAF3', padding: '30px', }}>
-                    <div className='mt-5 mb-10 ' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px', }}>
+
+
+            <div className='mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5'>
+                <div className='' style={{ backgroundColor: '#F3FAF3', padding: '30px' }}>
+                    <div className='mt-5 mb-10' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
                         <h1 className='text-3xl font-bold'>Personal information</h1>
-                        <button className="text-2xl text-black">
+                        <button onClick={handleUpdate} className="text-2xl text-black">
                             <FaEdit />
                         </button>
                     </div>
@@ -35,27 +82,27 @@ const Profile = () => {
                     <div className='text-left'>
                         <div className='mb-5'>
                             <p className='text-[#6D6D6D] mt-2'>Name</p>
-                            <h1 className='text-xl font-semibold'>John Doe</h1>
+                            <h1 className='text-xl font-semibold'>{userData?.username}</h1>
                         </div>
                         <div className='mb-5'>
                             <p className='text-[#6D6D6D] mt-2'>Email address</p>
-                            <h1 className='text-xl font-semibold'>example@company.com</h1>
+                            <h1 className='text-xl font-semibold'>{userData?.email}</h1>
                         </div>
                         <div className='mb-5'>
                             <p className='text-[#6D6D6D] mt-2'>Phone</p>
-                            <h1 className='text-xl font-semibold'>(208) 555-0112</h1>
+                            <h1 className='text-xl font-semibold'>{userData?.personalInfo?.phone}</h1>
                         </div>
                         <div className='mb-5'>
                             <p className='text-[#6D6D6D] mt-2'>Address</p>
-                            <h1 className='text-xl font-semibold'>2118 Thornridge Cir. Syracuse, Connecticut <br />35624</h1>
+                            <h1 className='text-xl font-semibold'>{userData?.personalInfo?.address}</h1>
                         </div>
                     </div>
                 </div>
 
                 <div className='' style={{ backgroundColor: '#F3FAF3', padding: '30px' }}>
-                    <div className='mt-5 mb-10 ' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px', }}>
+                    <div className='mt-5 mb-10' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
                         <h1 className='text-3xl font-bold'>Business information</h1>
-                        <button className="text-2xl text-black">
+                        <button onClick={handleUpdate}  className="text-2xl text-black">
                             <FaEdit />
                         </button>
                     </div>
@@ -63,22 +110,24 @@ const Profile = () => {
                     <div className='text-left'>
                         <div className='mb-5'>
                             <p className='text-[#6D6D6D] mt-2'>Business name</p>
-                            <h1 className='text-xl font-semibold'>Y company</h1>
+                            <h1 className='text-xl font-semibold'>{userData?.businessInfo?.businessName}</h1>
                         </div>
                         <div className='mb-5'>
                             <p className='text-[#6D6D6D] mt-2'>Business email address</p>
-                            <h1 className='text-xl font-semibold'>example@company.com</h1>
+                            <h1 className='text-xl font-semibold'>{userData?.businessInfo?.businessEmail}</h1>
                         </div>
                         <div className='mb-5'>
                             <p className='text-[#6D6D6D] mt-2'>Business phone</p>
-                            <h1 className='text-xl font-semibold'>Not inputed yet</h1>
+                            <h1 className='text-xl font-semibold'>{userData?.businessInfo?.businessPhone}</h1>
                         </div>
                         <div className='mb-5'>
                             <p className='text-[#6D6D6D] mt-2'>Business address</p>
-                            <h1 className='text-xl font-semibold'>Not inputed yet</h1>
+                            <h1 className='text-xl font-semibold'>{userData?.businessInfo?.businessAddress}</h1>
                         </div>
                     </div>
                 </div>
+
+
 
                 <div style={{ backgroundColor: '#F3FAF3', padding: '30px' }}>
                     <div className='mt-5 mb-10 text-left'>
@@ -111,6 +160,7 @@ const Profile = () => {
                 </div>
 
 
+
                 <div style={{ backgroundColor: '#F3FAF3', padding: '30px' }}>
                     <div className='mt-5 mb-10 text-left'>
                         <h1 className='text-3xl font-bold'>Purchased products</h1>
@@ -140,11 +190,7 @@ const Profile = () => {
 
                     </div>
                 </div>
-
-
             </div>
-
-
 
 
             <div className='mt-40 mb-40'>
@@ -232,4 +278,4 @@ const Profile = () => {
     );
 };
 
-export default Profile;
+export default Profile; 
