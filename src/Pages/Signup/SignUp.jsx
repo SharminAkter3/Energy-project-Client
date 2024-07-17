@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
-import img from '../../assets/Images/login/signup_img.jpeg'
+import img from '../../assets/Images/login/signup_img.jpeg';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
@@ -7,12 +7,12 @@ import Swal from 'sweetalert2';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SignUp = () => {
-
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const [error, setError] = useState('');
+    const [role, setRole] = useState('user'); // default role as 'user'
 
     const togglePasswordVisibility1 = () => {
         setShowPassword1(!showPassword1);
@@ -22,6 +22,9 @@ const SignUp = () => {
         setShowPassword2(!showPassword2);
     };
 
+    const handleRoleChange = (event) => {
+        setRole(event.target.value);
+    };
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -32,15 +35,13 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-        const role = 'user';
-        console.log({ username, email, password, confirmPassword, role });
 
-        if (password !== confirmPassword) return setError('Password does not match')
+        if (password !== confirmPassword) return setError('Password does not match');
 
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                console.log('created user', user)
+                console.log('created user', user);
 
                 updateUserProfile(username)
                     .then(() => {
@@ -51,7 +52,7 @@ const SignUp = () => {
                             username: username,
                             email: email,
                             role: role,
-                        }
+                        };
 
                         fetch(`http://localhost:5000/users`, {
                             method: "POST",
@@ -61,8 +62,8 @@ const SignUp = () => {
                             .then(res => res.json())
                             .then(data => {
                                 if (data.insertedId) {
-                                    console.log('user added to the database', data)
-                                    form.reset()
+                                    console.log('user added to the database', data);
+                                    form.reset();
                                     Swal.fire({
                                         position: 'top-start',
                                         icon: 'success',
@@ -70,49 +71,43 @@ const SignUp = () => {
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    // navigate('/dashboard');
-                                    navigate('/');
+
+                                    if (role === 'admin') {
+                                        navigate('/dashboard');
+                                    } else {
+                                        navigate('/');
+                                    }
                                 }
-                            })
+                            });
                     })
-
-                    .catch(error => console.log(error))
-            })
-
-    }
+                    .catch(error => console.log(error));
+            });
+    };
 
     return (
         <div className="text-center flex flex-col justify-between gap-5 mx-10 my-10 md:mx-20 md:my-14 lg:mx-40 lg:my-20">
-
             <p className='mt-5 text-[#4CAF50] font-bold'>Welcome</p>
             <h1 className='text-3xl font-bold my-5'>Stay connected with us</h1>
             <p>Access your account to manage energy usage, view bills, and explore our latest <br></br> services effortlessly.</p>
 
-
-            <div className=" ">
-
+            <div className="">
                 <div className="w-full mx-auto mt-10 mb-24 px-10">
                     <img src={img} alt="" />
                 </div>
-
 
                 <div className="">
                     <div className="mx-10">
                         <h1 className="text-3xl text-center font-bold my-10">Sign up a new account</h1>
                         <form onSubmit={handleSignUp}>
-
                             <div className="form-control mt-5">
-
                                 <input type="text" name='firstName' placeholder="First Name" className="input input-bordered" />
                             </div>
 
                             <div className="form-control mt-5">
-
                                 <input type="text" name='lastName' placeholder="Last Name" className="input input-bordered" />
                             </div>
 
                             <div className="form-control mt-5">
-
                                 <input type="text" name='email' placeholder="Email address" className="input input-bordered" />
                             </div>
 
@@ -148,14 +143,20 @@ const SignUp = () => {
                                 </button>
                             </div>
 
-                            {error}
+                            <div className="form-control mt-5">
+                                <select value={role} onChange={handleRoleChange} className="input input-bordered">
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
 
+                            {error && <p className="text-red-500 mt-2">{error}</p>}
 
                             <div className="form-control mt-6">
                                 <input className="btn bg-[#4CAF50] text-white" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <SocialLogin></SocialLogin>
+                        <SocialLogin />
                         <p className='my-4 text-center'>Already Have An Account? <Link className='text-[#4CAF50]' to="/login">Sign In</Link> </p>
                     </div>
                 </div>

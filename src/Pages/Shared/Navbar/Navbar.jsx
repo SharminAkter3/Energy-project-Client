@@ -27,7 +27,7 @@ const Navbar = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                navigate('/');
+                navigate('/signup');
             })
             .catch(error => console.log(error));
     };
@@ -59,7 +59,7 @@ const Navbar = () => {
         <li className=''><Link to="/guides">Guids</Link> </li>
         <li className=''><Link to="/about">About Us</Link> </li>
         <li className=''><Link to="/contact">Contact Us</Link> </li>
-        <li className=''><Link to="/dashboard">Dashboard</Link> </li>
+        {/* {user.role = 'admin' && <li className=''><Link to="/dashboard">Dashboard</Link> </li>} */}
 
         {/* {user?.email ? } */}
     </>
