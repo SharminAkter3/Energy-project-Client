@@ -88,7 +88,7 @@ const UpdateDashboardServices = () => {
             console.log('Data updated successfully:', response.data);
             if (response.data.modifiedCount) {
                 Swal.fire({
-                    position: 'top-start',
+                    position: 'top-center',
                     icon: 'success',
                     title: 'Services Updated Successfully.',
                     showConfirmButton: false,

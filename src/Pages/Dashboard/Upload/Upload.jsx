@@ -80,7 +80,7 @@ const Upload = () => {
             console.log('Data saved successfully:', response.data);
             if (response.data.insertedId) {
                 Swal.fire({
-                    position: 'top-start',
+                    position: 'top-center',
                     icon: 'success',
                     title: `${selectedOption} Added Successfully.`,
                     showConfirmButton: false,

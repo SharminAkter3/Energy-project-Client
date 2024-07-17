@@ -12,7 +12,6 @@ const SignUp = () => {
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const [error, setError] = useState('');
-    const [role, setRole] = useState('user'); // default role as 'user'
 
     const togglePasswordVisibility1 = () => {
         setShowPassword1(!showPassword1);
@@ -20,10 +19,6 @@ const SignUp = () => {
 
     const togglePasswordVisibility2 = () => {
         setShowPassword2(!showPassword2);
-    };
-
-    const handleRoleChange = (event) => {
-        setRole(event.target.value);
     };
 
     const handleSignUp = event => {
@@ -35,6 +30,7 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
+        const role = 'user'; // default role as 'user'
 
         if (password !== confirmPassword) return setError('Password does not match');
 
@@ -65,18 +61,14 @@ const SignUp = () => {
                                     console.log('user added to the database', data);
                                     form.reset();
                                     Swal.fire({
-                                        position: 'top-start',
+                                        position: 'top-center',
                                         icon: 'success',
                                         title: 'User created successfully.',
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
 
-                                    if (role === 'admin') {
-                                        navigate('/dashboard');
-                                    } else {
-                                        navigate('/');
-                                    }
+                                    navigate('/');
                                 }
                             });
                     })
@@ -141,13 +133,6 @@ const SignUp = () => {
                                 >
                                     {showPassword2 ? <FaEyeSlash /> : <FaEye />}
                                 </button>
-                            </div>
-
-                            <div className="form-control mt-5">
-                                <select value={role} onChange={handleRoleChange} className="input input-bordered">
-                                    <option value="user">User</option>
-                                    <option value="admin">Admin</option>
-                                </select>
                             </div>
 
                             {error && <p className="text-red-500 mt-2">{error}</p>}
