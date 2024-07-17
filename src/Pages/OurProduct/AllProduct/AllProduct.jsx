@@ -51,7 +51,7 @@ const AllProduct = () => {
                                 </p>
                                 <div className="mb-3">
                                     <button className="bg-white text-[#0E2510] px-4 py-2 rounded-lg">
-                                        <Link to='/single_product'>Learn More</Link>
+                                        <Link to={`/single_product/${product._id}`}>Learn More</Link>
                                     </button>
                                 </div>
                             </div>

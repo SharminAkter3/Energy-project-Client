@@ -1,28 +1,12 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { useContext, } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { FaBars } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    // const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const navigate = useNavigate()
-
-    { /*   const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
-    <div className="relative ">
-    <span onClick={toggleDropdown} className='rounded-full cursor-pointer'>
-        <img style={{ height: '30px', width: '30px', borderRadius: '50%' }} src={user?.photoURL} alt="" />
-    </span>
-    {isDropdownOpen && (
-        <div className="absolute top-10 right-0 bg-primary text-black rounded-md shadow-md">
-            <ul className='list-none'>
-                <li className="w-full py-2 px-4 font-bold" onClick={handleLogOut} style={{ whiteSpace: 'nowrap' }}>
-                    LogOut
-                </li>
-            </ul>
-        </div>
-    )}
-</div> */}
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLogOut = () => {
         logOut()
@@ -32,63 +16,131 @@ const Navbar = () => {
             .catch(error => console.log(error));
     };
 
-    const navMenu = <>
+    const [services, setServices] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-        {/*  <li className='text-[#4CAF50] font-bold'><Link to="/">Home</Link> </li> */}
+    useEffect(() => {
+        fetch('http://localhost:5000/services')
+            .then(response => response.json())
+            .then(data => setServices(data))
+            .catch(error => console.error('Error fetching services:', error));
+    }, []);
 
-        <li className=''><Link to="/">Home</Link> </li>
-        <li>
-            <details>
-                <summary><Link to="/our_service">Service</Link></summary>
-                {/* <ul className="p-2">
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
-                </ul> */}
-            </details>
-        </li>
+    useEffect(() => {
+        fetch('http://localhost:5000/products')
+            .then(response => response.json())
+            .then(data => setProducts(data))
+            .catch(error => console.error('Error fetching products:', error));
+    }, []);
 
-        <li>
-            <details>
-                <summary><Link to="/our_product">Products</Link></summary>
-                {/* <ul className="p-2">
-                    <li><a>Submenu 1</a></li>
-                    <li><a>Submenu 2</a></li>
-                </ul> */}
-            </details>
-        </li>
-        <li className=''><Link to="/guides">Guids</Link> </li>
-        <li className=''><Link to="/about">About Us</Link> </li>
-        <li className=''><Link to="/contact">Contact Us</Link> </li>
-        {/* {user.role = 'admin' && <li className=''><Link to="/dashboard">Dashboard</Link> </li>} */}
+    const handleLinkClick = () => {
+        setIsDropdownOpen(false);
+    };
 
-        {/* {user?.email ? } */}
-    </>
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
 
+    const navMenu = (
+        <>
+            <li>
+                <Link
+                    to="/"
+                    className={location.pathname === '/' ? 'active-nav-link' : ''}
+                    onClick={handleLinkClick}
+                >
+                    Home
+                </Link>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        <Link
+                            to="/our_service"
+                            className={location.pathname === '/our_service' ? 'active-nav-link' : ''}
+                            onClick={handleLinkClick}
+                        >
+                            Service
+                        </Link>
+                    </summary>
+                    <ul className="p-2">
+                        {services.map(service => (
+                            <li key={service._id}>
+                                <a>{service.titlePrefix}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <details>
+                    <summary>
+                        <Link
+                            to="/our_product"
+                            className={location.pathname === '/our_product' ? 'active-nav-link' : ''}
+                            onClick={handleLinkClick}
+                        >
+                            Products
+                        </Link>
+                    </summary>
+                    <ul className="p-2">
+                        {products.map(product => (
+                            <li key={product._id}>
+                                <a>{product.headerTitle}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </details>
+            </li>
+            <li>
+                <Link
+                    to="/guides"
+                    className={location.pathname === '/guides' ? 'active-nav-link' : ''}
+                    onClick={handleLinkClick}
+                >
+                    Guides
+                </Link>
+            </li>
+            <li>
+                <Link
+                    to="/about"
+                    className={location.pathname === '/about' ? 'active-nav-link' : ''}
+                    onClick={handleLinkClick}
+                >
+                    About Us
+                </Link>
+            </li>
+            <li>
+                <Link
+                    to="/contact"
+                    className={location.pathname === '/contact' ? 'active-nav-link' : ''}
+                    onClick={handleLinkClick}
+                >
+                    Contact Us
+                </Link>
+            </li>
+        </>
+    );
 
     return (
-        <div className="navbar  bg-white">
-
-            <div className="navbar-start  bg-white">
-
-                <div className="dropdown  bg-white">
-
+        <div className="navbar bg-white">
+            <div className="navbar-start bg-white">
+                <div className="dropdown bg-white">
                     <div className="flex flex-row justify-end mr-3">
-                        <button className="btn btn-ghost drawer-button lg:hidden">
+                        <button className="btn btn-ghost drawer-button lg:hidden" onClick={toggleDropdown}>
                             <FaBars />
                         </button>
                     </div>
-
-
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white  rounded w-52">
-                        {navMenu}
-                    </ul>
+                    {isDropdownOpen && (
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-white rounded w-52">
+                            {navMenu}
+                        </ul>
+                    )}
                 </div>
-                {/* <a className="btn btn-ghost text-xl">daisyUI</a> */}
-
-
                 <Link to='/'>
                     <div className='flex justify-center items-center sm:ml-5'>
-                        <h1 className='text-2xl font-bold'> Logo</h1>
+                        <h1 className='text-2xl font-bold'>Logo</h1>
                     </div>
                 </Link>
             </div>
@@ -97,17 +149,15 @@ const Navbar = () => {
                     {navMenu}
                 </ul>
             </div>
-
             <div className="navbar-end">
-                {user?.email ? <>
-
-                    <button className="btn btn-sm  bg-[#4CAF50]"><Link to="/profile">Profile</Link></button>
-                    <button onClick={handleLogOut} className="btn btn-sm mx-2 bg-[#4CAF50]">LogOut</button>
-
-                </>
-                    : <button className="btn btn-sm mx-5 bg-[#4CAF50]"><Link to="/login">Sign In</Link></button>
-                }
-
+                {user?.email ? (
+                    <>
+                        <button className="btn btn-sm bg-[#4CAF50]"><Link to="/profile">Profile</Link></button>
+                        <button onClick={handleLogOut} className="btn btn-sm mx-2 bg-[#4CAF50]">LogOut</button>
+                    </>
+                ) : (
+                    <button className="btn btn-sm mx-5 bg-[#4CAF50]"><Link to="/login">Sign In</Link></button>
+                )}
             </div>
         </div>
     );

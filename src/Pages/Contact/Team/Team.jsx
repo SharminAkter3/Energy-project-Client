@@ -12,6 +12,7 @@ const Team = () => {
             </div>
 
             <div className='mx-5 my-20 md:mx-40'>
+
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-40">
                     <div className='team-card'>
                         <div className='profile-image'>
@@ -31,6 +32,7 @@ const Team = () => {
                                 <p>Wade Warren</p>
                             </div>
                         </div>
+                        
                     </div>
                     <div className='team-card'>
                         <div className='profile-image'>
@@ -71,7 +73,9 @@ const Team = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
     );
 };

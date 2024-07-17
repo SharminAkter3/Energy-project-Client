@@ -2,8 +2,8 @@ import ourProductBanner from '../../../assets/Images/banner/our_product_banner.g
 
 const OurProductBanner = () => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-5 bg-[#4CAF50] min-h-screen'>
-            <div className="px-8 md:px-16 lg:px-32 py-8 md:py-16 lg:py-40">
+        <div className='flex flex-col md:flex-row items-center justify-evenly bg-[#4CAF50] min-h-screen'>
+            <div className="flex flex-col items-start justify-evenly p-5">
                 <h3 className="font-poppins text-lg md:text-xl lg:text-2xl font-medium leading-tight text-left text-[#0E2510] mb-4">Energy solution</h3>
                 <h1 className="font-sora leading-[57.6px] text-3xl md:text-4xl lg:text-5xl font-bold text-[#FEFEFE]">Our
                     <b className="text-black"> Innovative</b> <br /> Energy
@@ -12,7 +12,7 @@ const OurProductBanner = () => {
                     Empowering Your Journey to Sustainability with Advanced, <br /> Reliable, and Efficient Energy Solutions Tailored to Meet Your <br /> Unique Needs.
                 </p>
             </div>
-            <div className="flex items-center justify-center p-4">
+            <div>
                 <img
                     src={ourProductBanner}
                     alt="Banner-Illustration"
