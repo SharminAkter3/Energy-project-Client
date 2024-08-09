@@ -11,7 +11,7 @@ const SocialLogin = () => {
 
     // Fetch all users from the database
     const fetchUsers = () => {
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://energy-project-server.vercel.app/users`)
             .then(res => res.json())
             .then(data => {
                 setUsers(data);
@@ -37,6 +37,7 @@ const SocialLogin = () => {
                     email: result.user.email,
                     role: 'user', // Default role for new accounts
                 };
+                
 
                 // Check if user already exists in the database
                 const existingUser = users.find(user => user.email === userInfo.email);
@@ -44,7 +45,7 @@ const SocialLogin = () => {
                     // User exists, navigate based on the role
                     if (existingUser.role === 'admin') {
                         Swal.fire({
-                            position: 'top-start',
+                            position: 'top-center',
                             icon: 'success',
                             title: 'Admin logged in successfully.',
                             showConfirmButton: false,
@@ -63,7 +64,7 @@ const SocialLogin = () => {
                     }
                 } else {
                     // User does not exist, create new user in the database
-                    fetch(`http://localhost:5000/users`, {
+                    fetch(`https://energy-project-server.vercel.app/users`, {
                         method: "POST",
                         headers: { 'content-type': 'application/json' },
                         body: JSON.stringify(userInfo)

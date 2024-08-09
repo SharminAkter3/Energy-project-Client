@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUniqueEmailCount = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/specialists');
+        const response = await axios.get('https://energy-project-server.vercel.app/specialists');
         const specialists = response.data;
         
         // Extract unique email addresses

@@ -32,7 +32,7 @@ const Profile = () => {
         const fetchUserData = async () => {
             try {
                 // Example API call
-                const response = await axios.get(`http://localhost:5000/users/${user.email}`); // Replace with your API endpoint
+                const response = await axios.get(`https://energy-project-server.vercel.app/users/${user.email}`); // Replace with your API endpoint
                 setUserData(response.data); // Assuming API returns data in the structure similar to userData state
             } catch (error) {
                 console.error('Error fetching user data:', error);

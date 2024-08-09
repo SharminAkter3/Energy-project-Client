@@ -11,7 +11,7 @@ const User = () => {
         // Fetch user data when the component mounts
         const fetchUserData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/users'); // Update this URL with your backend endpoint
+                const response = await axios.get('https://energy-project-server.vercel.app/users'); // Update this URL with your backend endpoint
                 const sortedData = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)); // Assuming `createdAt` field for sorting
                 setUserData(sortedData.reverse());
                 setSelectedUser(sortedData[0]); // Set the most recent user as the selected user initially

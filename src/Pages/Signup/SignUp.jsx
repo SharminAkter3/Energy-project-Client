@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import img from '../../assets/Images/login/signup_img.jpeg';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
@@ -12,6 +12,29 @@ const SignUp = () => {
     const [showPassword1, setShowPassword1] = useState(false);
     const [showPassword2, setShowPassword2] = useState(false);
     const [error, setError] = useState('');
+    const [users, setUsers] = useState([]);
+    const [selectedRole, setSelectedRole] = useState('user'); // default role
+
+    // Fetch all users from the database
+    const fetchUsers = () => {
+        fetch(`https://energy-project-server.vercel.app/users`)
+            .then(res => res.json())
+            .then(data => {
+                setUsers(data);
+            })
+            .catch(error => {
+                console.error('Error fetching users:', error);
+              /*   Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error fetching users!',
+                }); */
+            });
+    };
+
+    useEffect(() => {
+        fetchUsers();
+    }, []);
 
     const togglePasswordVisibility1 = () => {
         setShowPassword1(!showPassword1);
@@ -26,11 +49,11 @@ const SignUp = () => {
         const form = event.target;
         const firstName = form.firstName.value;
         const lastName = form.lastName.value;
-        const username = firstName + " " + lastName;
+        const username = `${firstName} ${lastName}`;
         const email = form.email.value;
         const password = form.password.value;
         const confirmPassword = form.confirmPassword.value;
-        const role = 'user'; // default role as 'user'
+        const role = selectedRole; // Get the selected role
 
         if (password !== confirmPassword) return setError('Password does not match');
 
@@ -41,36 +64,46 @@ const SignUp = () => {
 
                 updateUserProfile(username)
                     .then(() => {
-                        // create user entry in the database
-                        const userInfo = {
-                            firstName: firstName,
-                            lastName: lastName,
-                            username: username,
-                            email: email,
-                            role: role,
-                        };
+                        // Check if user already exists in the database
+                        const existingUser = users.find(user => user.email === email);
+                        if (!existingUser) {
+                            // Create user entry in the database
+                            const userInfo = {
+                                firstName,
+                                lastName,
+                                username,
+                                email,
+                                role,
+                            };
 
-                        fetch(`http://localhost:5000/users`, {
-                            method: "POST",
-                            headers: { 'content-type': 'application/json' },
-                            body: JSON.stringify(userInfo)
-                        })
-                            .then(res => res.json())
-                            .then(data => {
-                                if (data.insertedId) {
-                                    console.log('user added to the database', data);
-                                    form.reset();
-                                    Swal.fire({
-                                        position: 'top-center',
-                                        icon: 'success',
-                                        title: 'User created successfully.',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
+                            fetch(`https://energy-project-server.vercel.app/users`, {
+                                method: "POST",
+                                headers: { 'content-type': 'application/json' },
+                                body: JSON.stringify(userInfo)
+                            })
+                                .then(res => res.json())
+                                .then(data => {
+                                    if (data.insertedId) {
+                                        console.log('user added to the database', data);
+                                        form.reset();
+                                        Swal.fire({
+                                            position: 'top-center',
+                                            icon: 'success',
+                                            title: 'User created successfully.',
+                                            showConfirmButton: false,
+                                            timer: 1500
+                                        });
 
-                                    navigate('/');
-                                }
-                            });
+                                        if (role === 'admin') {
+                                            navigate('/dashboard');
+                                        } else {
+                                            navigate('/');
+                                        }
+                                    }
+                                });
+                        } else {
+                            setError('Email already exists. Please login!');
+                        }
                     })
                     .catch(error => console.log(error));
             });
@@ -135,9 +168,21 @@ const SignUp = () => {
                                 </button>
                             </div>
 
+                            <div className="form-control mt-5">
+                                <select
+                                    name="role"
+                                    className="input input-bordered"
+                                    value={selectedRole}
+                                    onChange={(e) => setSelectedRole(e.target.value)}
+                                >
+                                    <option value="user">user</option>
+                                    <option value="admin">admin</option>
+                                </select>
+                            </div>
+
                             {error && <p className="text-red-500 mt-2">{error}</p>}
 
-                            <div className="form-control mt-6">
+                            <div className="form-control mt-14">
                                 <input className="btn bg-[#4CAF50] text-white" type="submit" value="Sign Up" />
                             </div>
                         </form>

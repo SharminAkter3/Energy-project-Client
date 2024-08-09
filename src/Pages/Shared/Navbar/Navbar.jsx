@@ -21,14 +21,14 @@ const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/services')
+        fetch('https://energy-project-server.vercel.app/services')
             .then(response => response.json())
             .then(data => setServices(data))
             .catch(error => console.error('Error fetching services:', error));
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://energy-project-server.vercel.app/products')
             .then(response => response.json())
             .then(data => setProducts(data))
             .catch(error => console.error('Error fetching products:', error));
