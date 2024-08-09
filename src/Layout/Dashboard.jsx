@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUniqueEmailCount = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/specialists');
+        const response = await axios.get('https://energy-project-server.vercel.app/specialists');
         const specialists = response.data;
         
         // Extract unique email addresses
@@ -51,7 +51,7 @@ const Dashboard = () => {
         <ul className="menu p-4 min-h-full">
           {/* Sidebar content here */}
           <li className='mt-6 mb-14'>
-            <NavLink to="/" className="flex items-center space-x-2" onClick={handleLinkClick}>
+            <NavLink to="/dashboard" className="flex items-center space-x-2" onClick={handleLinkClick}>
               <h1 className='text-3xl font-bold text-white'>Logo</h1>
             </NavLink>
           </li>

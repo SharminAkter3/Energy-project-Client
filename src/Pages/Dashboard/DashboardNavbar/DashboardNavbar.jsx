@@ -1,12 +1,25 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { FaBars, FaSearch } from 'react-icons/fa';
 import chatIcon from '../../../assets/Images/dashboard/chat_8214728.png';
+import { AuthContext } from '../../../Providers/AuthProvider';
+import { useNavigate } from 'react-router-dom';
 
 const DashboardNavbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+    const navigate = useNavigate()
+    console.log(user);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
+    };
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                navigate('/signup');
+            })
+            .catch(error => console.log(error));
     };
 
     return (
@@ -45,8 +58,8 @@ const DashboardNavbar = () => {
                 </button>
 
                 <div className="mx-3 text-center lg:text-right">
-                    <p className="font-bold">Thomas Anree</p>
-                    <span className="text-sm ">Ux Designer</span>
+                    <p className="font-bold">{user.displayName}</p>
+                  { /*  <span className="text-sm ">Ux Designer</span> */}
                 </div>
 
                 <div className="mx-3">
@@ -63,15 +76,16 @@ const DashboardNavbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded z-[1] mt-3 w-52 p-2 shadow">
                         {/* <li>
                             <a className="justify-between">
                                 Profile
                                 <span className="badge">New</span>
                             </a>
                         </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li> */}
+                        <li><a>Settings</a></li>*/}
+                        <li onClick={handleLogOut}><a>Logout</a></li> 
+                      
                     </ul>
                 </div>
             </div>

@@ -64,12 +64,12 @@ const Upload = () => {
         };
 
         const endpoint = selectedOption === 'Products'
-            ? 'http://localhost:5000/products'
+            ? 'https://energy-project-server.vercel.app/products'
             : selectedOption === 'Services'
-                ? 'http://localhost:5000/services'
-                : 'http://localhost:5000/blogs';  
-                {/* http://localhost:5000/ */}
-                  {/* http://localhost:5000/ */}
+                ? 'https://energy-project-server.vercel.app/services'
+                : 'https://energy-project-server.vercel.app/blogs';  
+                {/* https://energy-project-server.vercel.app/ */}
+                  {/* https://energy-project-server.vercel.app/ */}
 
         try {
             const response = await axios.post(endpoint, data, {
@@ -80,7 +80,7 @@ const Upload = () => {
             console.log('Data saved successfully:', response.data);
             if (response.data.insertedId) {
                 Swal.fire({
-                    position: 'top-start',
+                    position: 'top-center',
                     icon: 'success',
                     title: `${selectedOption} Added Successfully.`,
                     showConfirmButton: false,

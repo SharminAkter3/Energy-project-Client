@@ -82,7 +82,7 @@ const UpdateDashboardBlog = () => {
             sections: sections
         };
 
-        const endpoint = `http://localhost:5000/blogs/${blogId}`;
+        const endpoint = `https://energy-project-server.vercel.app/blogs/${blogId}`;
 
         try {
             const response = await axios.put(endpoint, data, {
@@ -93,7 +93,7 @@ const UpdateDashboardBlog = () => {
             console.log('Data updated successfully:', response.data);
             if (response.data.modifiedCount) {
                 Swal.fire({
-                    position: 'top-start',
+                    position: 'top-center',
                     icon: 'success',
                     title: 'Blog Updated Successfully.',
                     showConfirmButton: false,

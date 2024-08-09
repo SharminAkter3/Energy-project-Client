@@ -1,125 +1,126 @@
-// import { FaGoogle } from "react-icons/fa";
-import useAuth from "../../Hooks/useAuth";
-// import { useLocation, useNavigate } from "react-router-dom";
-import {  useNavigate } from "react-router-dom";
-// import icons from '../../assets/Images/icons/google_icons.jpeg'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
-
+import useAuth from "../../Hooks/useAuth";
 
 const SocialLogin = () => {
-    // const { googleSignIn , facebookSignIn } = useAuth();
-    const { googleSignIn  } = useAuth();
-    const navigate = useNavigate()
-    // const location = useLocation();
-    // let from = location.state?.from?.pathname || "/dashboard";
+    const { googleSignIn } = useAuth();
+    const navigate = useNavigate();
+    const [users, setUsers] = useState([]);
 
+    // Fetch all users from the database
+    const fetchUsers = () => {
+        fetch(`https://energy-project-server.vercel.app/users`)
+            .then(res => res.json())
+            .then(data => {
+                setUsers(data);
+            })
+            .catch(error => {
+                console.error('Error fetching users:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error fetching users!',
+                });
+            });
+    };
 
+    // Function to handle Google sign-in
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
-                console.log(result.user);
-                {  /*    {   const userInfo = {
-                    email: result.user?.email,
-                    name: result.user?.displayName
-                }} 
-                console.log(result.user?.password); */}
                 const userInfo = {
                     firstName: result.user.displayName.split(' ')[0],
                     lastName: result.user.displayName.split(' ')[1],
                     username: result.user.displayName,
                     email: result.user.email,
-                    role: 'user',
-                }
-
-                fetch(`http://localhost:5000/users`, {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(userInfo)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.insertedId) {
-                            console.log('user added to the database', data)
-
-                            Swal.fire({
-                                position: 'top-start',
-                                icon: 'success',
-                                title: 'User created successfully.',
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            navigate('/');
-                            // navigate('/dashboard');
-                            // navigate(from, { replace: true });
-                        }
-                    })
-
-
-                // navigate(from, { replace: true });
-                // navigate('/dashboard')
-
-            })
-    }
-
-
-  {/*   const handleFacebookSignIn = () => {
-        facebookSignIn()
-            .then(result => {
-                const userInfo = {
-                    firstName: result.user.displayName.split(' ')[0],
-                    lastName: result.user.displayName.split(' ')[1],
-                    username: result.user.displayName,
-                    email: result.user.email,
-                    role: 'admin',
+                    role: 'user', // Default role for new accounts
                 };
+                
 
-                fetch(`http://localhost:5000/users`, {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(userInfo)
-                })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.insertedId) {
+                // Check if user already exists in the database
+                const existingUser = users.find(user => user.email === userInfo.email);
+                if (existingUser) {
+                    // User exists, navigate based on the role
+                    if (existingUser.role === 'admin') {
                         Swal.fire({
-                            position: 'top-start',
+                            position: 'top-center',
                             icon: 'success',
-                            title: 'User created successfully.',
+                            title: 'Admin logged in successfully.',
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        navigate(from, { replace: true });
+                        navigate('/dashboard');
+                    } else {
+                        Swal.fire({
+                            position: 'top-center',
+                            icon: 'success',
+                            title: 'User logged in successfully.',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
                     }
-                });
-
-                navigate(from, { replace: true });
+                } else {
+                    // User does not exist, create new user in the database
+                    fetch(`https://energy-project-server.vercel.app/users`, {
+                        method: "POST",
+                        headers: { 'content-type': 'application/json' },
+                        body: JSON.stringify(userInfo)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.insertedId) {
+                                Swal.fire({
+                                    position: 'top-center',
+                                    icon: 'success',
+                                    title: 'User created and logged in successfully.',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                navigate('/');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error creating user:', error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Error creating user!',
+                            });
+                        });
+                }
             })
             .catch(error => {
-                console.error(error);
+                console.error('Error signing in with Google:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error signing in with Google!',
+                });
             });
     };
- */}
 
+    const handleFacebookSignIn = () => {
+        // Implement Facebook sign-in logic similarly if needed
+    };
+
+    // Fetch users on component mount
+    useEffect(() => {
+        fetchUsers();
+    }, []);
 
     return (
         <div className="">
             <div className="font-bold mt-3">or</div>
             <div className="">
-                {/*     <button onClick={handleGoogleSignIn} className="btn w-full bg-secondary text-white">
-                    <FaGoogle className="mr-2"></FaGoogle>
-                    Google
-                </button> */}
-
                 <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline btn-[#4CAF50] text-center mt-3">
-                    { /*  <img src={icons} style={{height:'30px' , width:'30px', borderRadius:'50%'}} alt="" /> */}
                     <FaGoogle className=""></FaGoogle>
                 </button>
-                <button onClick={handleGoogleSignIn} className="btn btn-circle btn-outline btn-[#4CAF50] text-center ml-3 mt-3">
+                <button onClick={handleFacebookSignIn} className="btn btn-circle btn-outline btn-[#4CAF50] text-center ml-3 mt-3">
                     <FaFacebook className=""></FaFacebook>
                 </button>
-
-
             </div>
         </div>
     );

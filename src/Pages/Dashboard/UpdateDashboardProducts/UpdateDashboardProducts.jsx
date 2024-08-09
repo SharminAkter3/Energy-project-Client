@@ -77,7 +77,7 @@ const UpdateDashboardProducts = () => {
             sections: sections
         };
 
-        const endpoint = `http://localhost:5000/products/${productsId}`;
+        const endpoint = `https://energy-project-server.vercel.app/products/${productsId}`;
 
         try {
             const response = await axios.put(endpoint, data, {
@@ -88,7 +88,7 @@ const UpdateDashboardProducts = () => {
             console.log('Data updated successfully:', response.data);
             if (response.data.modifiedCount) {
                 Swal.fire({
-                    position: 'top-start',
+                    position: 'top-center',
                     icon: 'success',
                     title: 'Products Updated Successfully.',
                     showConfirmButton: false,

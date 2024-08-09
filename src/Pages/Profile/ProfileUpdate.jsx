@@ -30,7 +30,7 @@ const ProfileUpdate = () => {
         if (user && user.email) {
             const fetchUserData = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:5000/users/${user.email}`); // Replace with your API endpoint
+                    const response = await axios.get(`https://energy-project-server.vercel.app/users/${user.email}`); // Replace with your API endpoint
                     const data = response.data;
 
                     // Ensure personalInfo and businessInfo are properly initialized
@@ -99,7 +99,7 @@ const ProfileUpdate = () => {
         };
 
         try {
-            const response = await axios.put(`http://localhost:5000/users/${user.email}`, updatedUserData);
+            const response = await axios.put(`https://energy-project-server.vercel.app/users/${user.email}`, updatedUserData);
             console.log('Updated user data:', response.data);
 
             Swal.fire({

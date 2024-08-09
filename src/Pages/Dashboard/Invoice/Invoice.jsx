@@ -9,7 +9,7 @@ const Invoice = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/users');
+                const response = await axios.get('https://energy-project-server.vercel.app/users');
                 const fetchedUsers = response.data.reverse();
                 setUsers(fetchedUsers);
             } catch (error) {
@@ -19,7 +19,7 @@ const Invoice = () => {
 
         const fetchSpecialists = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/specialists');
+                const response = await axios.get('https://energy-project-server.vercel.app/specialists');
                 const fetchedSpecialists = response.data.reverse();
                 setSpecialists(fetchedSpecialists);
                 // Set the last input specialist as the initially selected user
