@@ -12,9 +12,9 @@ const DashboardAnalytics = () => {
 
     const fetchData = async () => {
         try {
-            const productsResponse = await axios.get('http://localhost:5000/products');
-            const servicesResponse = await axios.get('http://localhost:5000/services');
-            const blogsResponse = await axios.get('http://localhost:5000/blogs');
+            const productsResponse = await axios.get('https://energy-project-server.vercel.app/products');
+            const servicesResponse = await axios.get('https://energy-project-server.vercel.app/services');
+            const blogsResponse = await axios.get('https://energy-project-server.vercel.app/blogs');
 
             setCounts({
                 products: productsResponse.data.length,

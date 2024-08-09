@@ -19,7 +19,7 @@ const SpecialistForm = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/users/${user.email}`);
+                const response = await axios.get(`https://energy-project-server.vercel.app/users/${user.email}`);
                 const userData = response.data;
                 setFormData({
                     username: userData?.username || '',
@@ -54,7 +54,7 @@ const SpecialistForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:5000/specialists', formData);
+            const response = await axios.post('https://energy-project-server.vercel.app/specialists', formData);
             if (response.status === 201) {
                 Swal.fire({
                     position: 'top-start',

@@ -3,6 +3,19 @@
 /* ------------------------------
        banner section CSS
  --------------------------- */
+.navbar a {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.navbar .active-nav-link {
+    color: #4CAF50;
+    /* Custom active color */
+    font-weight: bold;
+}
 
 .banner {
     display: flex;

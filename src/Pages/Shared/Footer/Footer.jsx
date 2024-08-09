@@ -7,16 +7,19 @@ import InstragramIcon from '../../../assets/Images/icons/instragram.png';
 const Footer = () => {
     return (
         <footer className="bg-[#0E2510] text-white text-left mt-20 mb-0 py-20 px-10 md:px-40 font-sora">
+
             <div className="flex flex-col lg:flex-row justify-between mb-14">
                 <div>
                     <h2 className="text-2xl lg:text-4xl font-semibold leading-tight">Subscribe for our <span className="text-[#4CAF50]">newsletter</span></h2>
                     <p className="text-gray-400 mb-5 lg:mb-10 text-lg lg:text-xl font-medium">Stay up-to-date by getting our new blogs</p>
                 </div>
+
                 <div className="flex justify-center items-center">
-                    <input type="email" placeholder="Enter e-mail" className="px-5 py-3 lg:py-5 rounded-l-full border-4 border-[#4CAF50] w-64 lg:w-96" />
-                    <button className="px-5 py-3 lg:py-5 bg-[#4CAF50] text-white border-4 border-[#4CAF50] rounded-r-full">Subscribe</button>
+                    <input type="email" placeholder="Enter e-mail" className="px-3 py-3 lg:py-5 rounded-l-full border-4 border-[#4CAF50] w-64 lg:w-96" />
+                    <button className="px-3 py-3 lg:py-5 bg-[#4CAF50] text-white border-4 border-[#4CAF50] rounded-r-full">Subscribe</button>
                 </div>
             </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-20 w-full mb-10">
                 <div className="flex flex-col gap-4">
                     <h3 className="text-4xl font-bold mb-4">Logo</h3>
