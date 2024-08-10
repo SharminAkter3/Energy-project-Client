@@ -3,6 +3,7 @@ import FacebookIcon from '../../../assets/Images/icons/facebook.png';
 import LinkedInIcon from '../../../assets/Images/icons/linkedIn.png';
 import XIcon from '../../../assets/Images/icons/x.png';
 import InstragramIcon from '../../../assets/Images/icons/instragram.png';
+import logo from '../../../assets/Images/logo/logo_1.png';
 
 const Footer = () => {
     return (
@@ -22,17 +23,20 @@ const Footer = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-20 w-full mb-10">
                 <div className="flex flex-col gap-4">
-                    <h3 className="text-4xl font-bold mb-4">Logo</h3>
-                    <div className="w-12 h-12 flex justify-center items-center cursor-pointer">
+                    {/* <h3 className="text-4xl font-bold mb-4">Logo</h3> */}
+                    <div className='w-24 h-24 flex justify-center items-center cursor-pointer'>
+                        <img  src={logo} alt="" />
+                    </div>
+                    <div className="ms-6 w-12 h-12 flex justify-center items-center cursor-pointer">
                         <img src={FacebookIcon} alt="facebook-icon" />
                     </div>
-                    <div className="w-12 h-12 flex justify-center items-center cursor-pointer">
+                    <div className="ms-6 w-12 h-12 flex justify-center items-center cursor-pointer">
                         <img src={LinkedInIcon} alt="linkedIn-icon" />
                     </div>
-                    <div className="w-12 h-12 flex justify-center items-center cursor-pointer">
+                    <div className="ms-6 w-12 h-12 flex justify-center items-center cursor-pointer">
                         <img src={XIcon} alt="x-icon" />
                     </div>
-                    <div className="w-12 h-12 flex justify-center items-center cursor-pointer">
+                    <div className="ms-6 w-12 h-12 flex justify-center items-center cursor-pointer">
                         <img src={InstragramIcon} alt="instragram-icon" />
                     </div>
                 </div>
@@ -51,7 +55,7 @@ const Footer = () => {
                 <div className="flex-1 lg:mr-10">
                     <h3 className="text-2xl lg:text-3xl font-bold mb-5">Contacts</h3>
                     <p className="text-lg font-medium mb-2">8859 Birch Road, North <br /> Paytoncester 73622</p>
-                    <p className="text-lg font-medium mb-2">tim.jennings@example.com</p>
+                    {/* <p className="text-lg font-medium mb-2">tim.jennings@example.com</p> */}
                     <p className="text-lg font-medium mb-2">(230) 833-7709</p>
                 </div>
                 <div className="flex-1">
