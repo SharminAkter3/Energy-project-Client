@@ -2,6 +2,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import { FaBars } from 'react-icons/fa';
+import logo from '../../../assets/Images/logo/logo_1.png';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -140,7 +141,11 @@ const Navbar = () => {
                 </div>
                 <Link to='/'>
                     <div className='flex justify-center items-center sm:ml-5'>
-                        <h1 className='text-2xl font-bold'>Logo</h1>
+                        {/* <h1 className='text-2xl font-bold'>Logo</h1> */}
+                        
+                            <img style={{height:'50px',width:'50px'}} src={logo} alt="" />
+                            <h1 className='ms-2 font-bold'>Prime Services</h1>
+                       
                     </div>
                 </Link>
             </div>
