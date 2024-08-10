@@ -16,14 +16,14 @@ const SocialLogin = () => {
             .then(data => {
                 setUsers(data);
             })
-            .catch(error => {
+        /*     .catch(error => {
                 console.error('Error fetching users:', error);
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Error fetching users!',
                 });
-            });
+            }); */
     };
 
     // Function to handle Google sign-in
@@ -82,24 +82,24 @@ const SocialLogin = () => {
                                 navigate('/');
                             }
                         })
-                        .catch(error => {
+                     /*    .catch(error => {
                             console.error('Error creating user:', error);
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
                                 text: 'Error creating user!',
                             });
-                        });
+                        }); */
                 }
             })
-            .catch(error => {
+         /*    .catch(error => {
                 console.error('Error signing in with Google:', error);
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Error signing in with Google!',
                 });
-            });
+            }); */
     };
 
     const handleFacebookSignIn = () => {

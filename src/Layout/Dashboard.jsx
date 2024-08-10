@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { FaBars, FaBlog, FaDashcube, FaFileInvoiceDollar, FaProcedures, FaServicestack, FaUpload, FaUser } from 'react-icons/fa';
 import DashboardNavbar from '../Pages/Dashboard/DashboardNavbar/DashboardNavbar';
 import axios from 'axios';
+import logo from '../assets/Images/logo/logo_1.png'
 
 const Dashboard = () => {
   const [uniqueEmailCount, setUniqueEmailCount] = useState(0);
@@ -52,7 +53,9 @@ const Dashboard = () => {
           {/* Sidebar content here */}
           <li className='mt-6 mb-14'>
             <NavLink to="/dashboard" className="flex items-center space-x-2" onClick={handleLinkClick}>
-              <h1 className='text-3xl font-bold text-white'>Logo</h1>
+              {/* <h1 className='text-3xl font-bold text-white'>Logo</h1> */}
+              <img style={{height:'50px',width:'50px'}} src={logo} alt="" />
+              <h1 className=' font-bold text-white'>Prime Services</h1>
             </NavLink>
           </li>
           <li className='text-white mb-1'>

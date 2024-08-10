@@ -22,14 +22,14 @@ const SignUp = () => {
             .then(data => {
                 setUsers(data);
             })
-            .catch(error => {
+         /*    .catch(error => {
                 console.error('Error fetching users:', error);
-              /*   Swal.fire({
+           Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Error fetching users!',
-                }); */
-            });
+                }); 
+            }); */
     };
 
     useEffect(() => {
@@ -96,7 +96,8 @@ const SignUp = () => {
 
                                         if (role === 'admin') {
                                             navigate('/dashboard');
-                                        } else {
+                                        } 
+                                        if(role === 'user') {
                                             navigate('/');
                                         }
                                     }

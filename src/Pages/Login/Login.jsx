@@ -23,7 +23,7 @@ const Login = () => {
         fetch('https://energy-project-server.vercel.app/users')
             .then(res => res.json())
             .then(data => setUsers(data))
-            .catch(error => console.error('Error fetching users:', error));
+            // .catch(error => console.error('Error fetching users:', error));
     };
 
     const togglePasswordVisibility = () => {
@@ -67,18 +67,18 @@ const Login = () => {
                 })
                 .catch(error => {
                     console.error('Error signing in:', error);
-                   /*  Swal.fire({
+                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Error signing in!',
-                    }); */
+                    }); 
                 });
         } else {
-           /*  Swal.fire({
+         Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'User not found!',
-            }); */
+            });
         }
     };
 
@@ -95,11 +95,11 @@ const Login = () => {
             })
             .catch(error => {
                 console.error('Error resetting password:', error);
-            /*     Swal.fire({
+               Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: 'Error resetting password!',
-                }); */
+                }); 
             });
     };
 
